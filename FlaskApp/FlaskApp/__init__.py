@@ -40,3 +40,5 @@ def scrapeData():
 
 if(__name__ == 'main'):
 	app.run()
+
+scrapeData()
