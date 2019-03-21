@@ -2,6 +2,7 @@ from flask import Flask, render_template, session, redirect, flash, request
 import urllib.request
 from bs4 import BeautifulSoup
 import pymysql
+import requests
 
 app = Flask(__name__)
 
