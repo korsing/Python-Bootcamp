@@ -11,7 +11,7 @@ def homepage():
 	return render_template('index.html')
 
 # 웹 크롤링 수행
-@app.route('/crawl'+'<url>)
+@app.route('/crawl'+'<url>')
 def scrapeData(url):
 	return 'This is Crawling Page'
 
