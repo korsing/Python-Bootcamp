@@ -30,7 +30,7 @@ def scrapeData():
 	headLine_Title = []
 	headLine_Url = []
 	headLine_Summary = []
-	
+
 	url = 'https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=101'
 	request = requests.get(url)
 	soup = BeautifulSoup(request.content, "lxml")
@@ -43,12 +43,12 @@ def scrapeData():
 		news = Article(article_url, language='ko')
 		news.download()
 		news.parse()
-		headLine_Summary.append(summarize(news.text, word_count=50))
+		summarize(news.text, word_count=50)
 
 	for i in range(len(headLine_Url)):
 		print(headLine_Title[i])
 		print(headLine_Url[i])
-		print(headLine_Summary[i])
+		#print(headLine_Summary[i])
 
 
 
