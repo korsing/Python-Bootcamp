@@ -23,7 +23,7 @@ def scrapeData():
 	for element in data:
 		headLine_Title.append(element.text)
 		headLine_Url.append(element.get('href'))
-	return headLine_Title
+	return headLine_Title[0]
 '''
 def Scrape_DB(scraped_Data):
 	db = pymysql.connect(host="localhost", user="root", passwd="skgkdlslrtm", db="Bootcamp", charset='utf8')
