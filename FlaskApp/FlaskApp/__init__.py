@@ -13,15 +13,17 @@ def homepage():
 # 웹 크롤링 수행
 @app.route('/crawl')
 def scrapeData():
-	scraped_Data = {}
+	headLine_Title = []
+	headLine_Url = []
 
 	url = 'https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=101'
 	request = requests.get(url)
 	soup = BeautifulSoup(request.content, "lxml")
 	data = soup.find_all('a', {'class': 'cluster_text_headline nclicks(cls_eco.clsart)'})
 	for element in data:
-		scraped_Data[element.text] = element.get('href')
-	return scraped_Data
+		headLine_Title.append(element.text)
+		headLine_Url.append(element.get('href'))
+	return headLine_Title
 '''
 def Scrape_DB(scraped_Data):
 	db = pymysql.connect(host="localhost", user="root", passwd="skgkdlslrtm", db="Bootcamp", charset='utf8')
