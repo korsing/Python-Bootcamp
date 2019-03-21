@@ -20,10 +20,11 @@ def scrapeData():
 	request = requests.get(url)
 	soup = BeautifulSoup(request.content, "lxml")
 	data = soup.find_all('a', {'class': 'cluster_text_headline nclicks(cls_eco.clsart)'})
+	return "Gekko1"
 	for element in data:
 		headLine_Title.append(element.text)
 		headLine_Url.append(element.get('href'))
-	return "Gekko"
+	return "Gekko2"
 '''
 def Scrape_DB(scraped_Data):
 	db = pymysql.connect(host="localhost", user="root", passwd="skgkdlslrtm", db="Bootcamp", charset='utf8')
