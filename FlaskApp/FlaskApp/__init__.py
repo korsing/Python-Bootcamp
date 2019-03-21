@@ -1,7 +1,7 @@
 from flask import Flask, render_template, session, redirect, flash, request
 import urllib.request
 from bs4 import BeautifulSoup
-
+import pymysql
 
 app = Flask(__name__)
 
@@ -11,18 +11,28 @@ def homepage():
 	return render_template('index.html')
 
 # 웹 크롤링 수행
-@app.route('/crawl'+'<url>')
-def scrapeData(url):
-	return 'This is Crawling Page'
+@app.route('/crawl')
+def scrapeData():
+	scraped_Data = {}
 
-	'''
-	request = urllib.request.Request(url) # url 유효성 검사
-	data = urllib.request.urlopen(request, timeout=5).read() # 5초안에 페이지가 안열리면 에러 띄우기
-	soup = BeautifulSoup(data, lxml) # 웹사이트 html 코드 전체를 긁어옴
-	'''
-
-
-
-
+	url = 'https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=101'
+	request = requests.get(url)
+	soup = BeautifulSoup(request.content, "lxml")
+	data = soup.find_all('a', {'class': 'cluster_text_headline nclicks(cls_eco.clsart)'})
+	for element in data:
+		scraped_Data[element.text] = element.get('href')
+	return scraped_Data
+'''
+def Scrape_DB(scraped_Data):
+	db = pymysql.connect(host="localhost", user="root", passwd="skgkdlslrtm", db="Bootcamp", charset='utf8')
+	cur = db.cursor()
+	# 현재 
+	cur.execute("SELECT max(seq) from scrape;")
+	maxseq = cur.fetchone()[0]
+	if(maxseq != None):
+		cur.execute("INSERT INTO scrape (seq, title, url) VALUES ({},{},{})".format(maxseq+1, titles))
+	db.commit()
+	db.close()
+'''
 if(__name__ == 'main'):
 	app.run()
