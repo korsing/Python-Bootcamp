@@ -6,6 +6,9 @@ from gensim.summarization import summarize
 from newspaper import Article
 from konlpy.tag import Komoran
 
+
+
+
 def scrapeData():
 	headLine_Title = []
 	headLine_Url = []
@@ -33,8 +36,12 @@ def scrapeData():
 	return headLine_Title, headLine_Url, headLine_Summary
 
 a, b, c = scrapeData()
+komoran = Komoran()
 
 for i in range(len(a)):
-    print(i+1)
-    print(a[i])
-    
+    print(a[i]) #제목
+    print(b[i]) #URL
+    print(c[i]) #50자 요약
+    print(komoran.nouns(a[i]))
+
+    print("==========================================")
