@@ -31,3 +31,11 @@ def scrapeData(url):
 		headLine_Summary.append(summarize(news.text, word_count=50))
 	
 	return headLine_Title, headLine_Url, headLine_Summary
+
+a, b, c = scrapeData()
+
+for i in range(len(a)):
+    print(a[i])
+    print(b[i])
+    print(c[i])
+    
