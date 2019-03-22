@@ -35,6 +35,6 @@ def scrapeData():
 a, b, c = scrapeData()
 
 for i in range(len(a)):
+    print(i+1)
     print(a[i])
-    print(b[i])
-    print(c[i])
+    
