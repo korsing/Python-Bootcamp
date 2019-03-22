@@ -31,5 +31,6 @@ def scrapeData():
 temp = scrapeData()
 
 for title in temp:
-    print(komoran.morphs(title))
+    print(komoran.nouns(title))
+    print("\n\n\n\n\n")
 
