@@ -6,7 +6,7 @@ from gensim.summarization import summarize
 from newspaper import Article
 from konlpy.tag import Komoran
 
-def scrapeData(url):
+def scrapeData():
 	headLine_Title = []
 	headLine_Url = []
 	headLine_Summary = []
@@ -38,4 +38,3 @@ for i in range(len(a)):
     print(a[i])
     print(b[i])
     print(c[i])
-    
