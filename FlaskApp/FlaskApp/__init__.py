@@ -43,13 +43,13 @@ def scrapeData():
 		news = Article(article_url, language='ko')
 		news.download()
 		news.parse()
-		a = summarize(news.text, word_count=50)
-		print(a)
-
+		temp = summarize(news.text, word_count=50)
+		print(temp)
+	'''
 	for i in range(len(headLine_Url)):
 		print(headLine_Title[i])
 		print(headLine_Url[i])
-		#print(headLine_Summary[i])
+	'''
 
 
 
