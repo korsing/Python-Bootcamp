@@ -32,5 +32,5 @@ temp = scrapeData()
 
 for title in temp:
     print(komoran.nouns(title))
-    print("\n\n\n\n\n")
+    print()
 
