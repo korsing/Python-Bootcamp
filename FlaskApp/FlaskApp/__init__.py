@@ -1,3 +1,4 @@
+ #-*- coding: utf-8-*-
 from flask import Flask, render_template, session, redirect, flash, request
 import urllib.request
 from bs4 import BeautifulSoup
@@ -44,12 +45,7 @@ def scrapeData():
 		news.download()
 		news.parse()
 		headLine_Summary.append(news.text, word_count=50)
-	
-	return 
 
-
-
+	return None
 if(__name__ == 'main'):
 	app.run()
-
-scrapeData()
