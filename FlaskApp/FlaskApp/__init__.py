@@ -44,13 +44,8 @@ def scrapeData():
 		news.download()
 		news.parse()
 		headLine_Summary.append(news.text, word_count=50)
-
-
-	for i in range(len(headLine_Url)):
-		print("★")
-		print(headLine_Title[i])
-		print(headLine_Url[i])
-		print(headLine_Summary[i])
+	
+	return 
 
 
 
