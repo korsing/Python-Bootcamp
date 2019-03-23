@@ -12,6 +12,7 @@ app = Flask(__name__)
 # 전체보기 (홈화면)
 @app.route('/')
 def homepage():
+	scrapeData()
 	return render_template('index.html')
 
 def scrapeData(url):

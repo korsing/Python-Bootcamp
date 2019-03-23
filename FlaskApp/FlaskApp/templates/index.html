@@ -18,11 +18,11 @@
 				<div class="inner">
 
 					<!-- Post -->
-					{% for i in range(2): %}
+					{% for i in range(len(title)): %}
 					<article class="box post post-excerpt">
 						<header>
-							<h2><a href="#">SK 하이닉스 올해 보너스 0%라고?</a></h2>
-							<p>하이닉스 구성원들의 탈주 소리가 커지는 소리가 여기까지 들린다.</p>
+							<h2><a href="{{ url[i] }}">{{ title[i] }}</a></h2>
+							<p>{{ summary[i] }}</p>
 						</header>
 						<div class="info">
 
