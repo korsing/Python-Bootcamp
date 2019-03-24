@@ -18,11 +18,11 @@
 				<div class="inner">
 
 					<!-- Post -->
-					{% for i in range(5): %}
+					{% for i in range(0,count,1): %}
 					<article class="box post post-excerpt">
 						<header>
-							<h2><a href="#">#하이닉스, #삼성전자, #반도체</a></h2>
-							<p>{{ title[0] }}</p>
+							<h2><a href="#">{{ title[i] }}</a></h2>
+							<p>{{ url[i] }}</p>
 						</header>
 						<div class="info">
 
