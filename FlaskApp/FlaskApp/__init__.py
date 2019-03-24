@@ -12,8 +12,8 @@ app = Flask(__name__)
 # 전체보기 (홈화면)
 @app.route('/')
 def homepage():
-	#title, url, summary = scrapeData()
-	title=[1,2,3];url=[4,5,6];summary=[7,8,9]
+	title, url, summary = scrapeData()
+	#title=[1,2,3];url=[4,5,6];summary=[7,8,9]
 	article_count = len(title)
 	return render_template('index.html', title=title,url=url,summary=summary,count=article_count)
 
