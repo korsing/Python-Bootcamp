@@ -163,19 +163,19 @@
 					</ul>
 				</label>
 				<table class='type01' style='width:98%;'>
-					{% for i in companyNames.length %}
+					{% for i in range(0,len_comp,1): %}
 						<tr>
-							{% if i==0 %}
+							{% if (i==0): %}
 								<th style="width:22%;">Company</th>
 								<th style="width:12%;">Keyword</th>
 								<th style="width:5%;">Count</th>
-							{% else %}
-								{% for j in range(x) %}
-									{% if j==0 %}
+							{% else: %}
+								{% for j in range(0,x,1): %}
+									{% if j==0: %}
 										<td>{{companyNames[i-1]}}</td>
-									{% elif(j%2==1) %}
+									{% elif(j%2==1): %}
 										<td style='width:12%;'>{{keywords[i-1][(j-1)/2]}}</td>
-									{% else %}
+									{% else: %}
 										<td style='width:5%;text-align:center;'>{{count[i-1][(j-2)/2]}}</td>
 									{% endif %}
 						    {% endfor %}
