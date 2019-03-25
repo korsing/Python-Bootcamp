@@ -151,7 +151,7 @@
 						<table class='type01' style='width:98%;'>
 							{% for y in companyNames: %}
 								<tr>
-									{% if(y.index==0): %}
+									{% if(companyNames.index(y)==0): %}
 										<th style="width:22%;">Company</th>
 										<th style="width:12%;">Keyword</th>
 										<th style="width:5%;">Count</th>
