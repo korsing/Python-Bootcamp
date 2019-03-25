@@ -17,12 +17,6 @@
 		  h1 {
 			font-size: 30pt;
 		  }
-<<<<<<< HEAD
-=======
-		  .saw {
-			color:green;
-		  }
->>>>>>> 157f1788ba8005975cd731c51779f402f09f197d
 		  .jb-th-1 {
 				    width: 10px;
 		  }
@@ -47,7 +41,6 @@
 			border: 1px solid #ccc;
 		  }
 		  .dropdown {
-<<<<<<< HEAD
   		display: inline-block;
   		position: relative;
 			}
@@ -145,109 +138,6 @@
 	</script> -->
 
 		<div style="
-=======
-  display: inline-block;
-  position: relative;
-}
-
-.dd-button {
-  display: inline-block;
-  border: 1px solid gray;
-  border-radius: 4px;
-  padding: 5px 30px 5px 20px;
-  margin-top: 5px;
-  background-color: #ffffff;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.dd-button:after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid black;
-}
-
-.dd-button:hover {
-  background-color: #eeeeee;
-}
-
-
-.dd-input {
-  display: none;
-}
-
-.dd-menu {
-  position: absolute;
-  top: 100%;
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 0;
-  margin: 2px 0 0 0;
-  box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
-  background-color: #ffffff;
-  list-style-type: none;
-}
-
-.dd-input + .dd-menu {
-  display: none;
-}
-
-.dd-input:checked + .dd-menu {
-  display: block;
-}
-
-.dd-menu li {
-  padding: 10px 20px;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.dd-menu li:hover {
-  background-color: #f6f6f6;
-}
-
-.dd-menu li a {
-  display: block;
-  margin: -10px -20px;
-  padding: 10px 20px;
-}
-
-.dd-menu li.divider{
-  padding: 0;
-  border-bottom: 1px solid #cccccc;
-}
-	</style>
-</head>
-<body class="is-preload">
-<!-- Content -->
-
-<div id="content" style="margin-left: 0px;">
-	<!--p id="days" style="font-size:90px"></p-->
-	<h1 id="logo"  style="margin-left: 40px;">
-		<p id="getDateInfo" style="font-size:50px;margin-top: 30px;"></p>
-	</h1>
-
-	<script>
-	 var d = new Date();
-	 document.getElementById("getDateInfo").innerHTML = d.getFullYear()+'. '
-	 													+(d.getMonth()+1)+'. '+d.getDate();
-	</script>
-	<script>
-      var companyList = ['SK','SAMSUNG','KT','SKY','Apple','IBM'];
-    </script>
-	<script>
-   	  var i = 0;
-  	</script>
-	<div style="
->>>>>>> 157f1788ba8005975cd731c51779f402f09f197d
     width:70%;
     float:left;">
 		<div style="
@@ -277,14 +167,13 @@
 						<li>50</li>
 					</ul>
 				</label>
-<<<<<<< HEAD
 				<table class='type01' style='width:98%;'>
 					{% for i in companyNames.length %}
 						<tr>
 							{% if i==0 %}
 								<th style="width:22%;">{{Company}}</th>
 								<th style="width:12%;">{{Keyword}}</th>
-								<th style="width:5%;">Count</th>
+								<th style="width:5%;">{{Count}}</th>
 							{% else %}
 								{% for j in range(x) %}
 									{% if j==0 %}
@@ -299,60 +188,6 @@
 			  		</tr>
 					{% endfor %}
 				</table>
-				<!-- <script>
-					x=7;
-					num = 0;
-					companyNames
-					keywords
-					count
-=======
-				<script>
-					var x=7;
-					<!--var y=20;-->
-					var num = 0;
-					var companyNames = ["(주)LG화학","S-OIL(주)","에스케이네트웍스(주)","에스케이하이닉스(주)","현대모비스(주)","삼성화재해상보험(주)","한국토지주택공사","현대중공업(주)","한국가스공사",
-										"(주)포스코","엘지디스플레이(주)","삼성디스플레이(주)","GS칼텍스(주)","삼성생명보험(주)","SK에너지(주)","LG전자(주)","기아자동차(주)","현대자동차(주)","한국전력공사","삼성전자(주)","한국전력공사"];
-					var keywords = [['키워드1_1','키워드1_2','키워드1_3'],['키워드2_1','키워드2_2','키워드2_3'],['키워드3_1','키워드3_2','키워드3_3'],['키워드4_1','키워드4_2','키워드4_3'],['키워드5_1','키워드5_2','키워드5_3'],['키워드6_1','키워드6_2','키워드6_3'],
-									['키워드1_1','키워드1_2','키워드1_3'],['키워드2_1','키워드2_2','키워드2_3'],['키워드3_1','키워드3_2','키워드3_3'],['키워드4_1','키워드4_2','키워드4_3'],['키워드5_1','키워드5_2','키워드5_3'],['키워드6_1','키워드6_2','키워드6_3'],
-									['키워드1_1','키워드1_2','키워드1_3'],['키워드2_1','키워드2_2','키워드2_3'],['키워드3_1','키워드3_2','키워드3_3'],['키워드4_1','키워드4_2','키워드4_3'],['키워드5_1','키워드5_2','키워드5_3'],['키워드6_1','키워드6_2','키워드6_3'],
-									['키워드1_1','키워드1_2','키워드1_3'],['키워드2_1','키워드2_2','키워드2_3'],['키워드3_1','키워드3_2','키워드3_3'],['키워드4_1','키워드4_2','키워드4_3'],['키워드5_1','키워드5_2','키워드5_3'],['키워드6_1','키워드6_2','키워드6_3']];
-					var count = [[1,2,3],[3,4,5],[2,3,4],[3,1,4],[7,3,7],[8,4,7],[1,2,3],[3,4,5],[2,3,4],[3,1,4],[7,3,7],[8,4,7],[1,2,3],[3,4,5],[2,3,4],[3,1,4],[7,3,7],[8,4,7],[1,2,3],[3,4,5],[2,3,4],[3,1,4],[7,3,7],[8,4,7],
-								[1,2,3],[3,4,5],[2,3,4],[3,1,4],[7,3,7],[8,4,7]];
->>>>>>> 157f1788ba8005975cd731c51779f402f09f197d
-					document.write("<table class='type01' style='width:98%;'>");
-					for(i=0;i<companyNames.length;i++)
-					{
-					   document.write("<tr>");
-					   if(i==0)
-					   {
-							document.write('<th style="width:22%;">Company</th>');
-							document.write('<th style="width:12%;">Keyword</th>');
-							document.write('<th style="width:5%;">Count</th>');
-						}else{
-					   		for(j=0;j<x;j++)
-					   		{
-					       		if(j==0){
-					       			document.write("<td>"+companyNames[i-1]+"</td>");
-					       		}else if(j%2==1){
-					       			document.write("<td style='width:12%;'>"+keywords[i-1][(j-1)/2]+"</td>");
-					       		}else{
-					       			document.write("<td style='width:5%;text-align:center;'>"+count[i-1][(j-2)/2]+"</td>");
-					       			num++;
-					       		}
-					   		}
-<<<<<<< HEAD
-			       	}
-					    document.write("</tr>");
-					}
-					document.write("</table>");
-				</script> -->
-=======
-			       		}
-					    document.write("</tr>");
-					}
-					document.write("</table>");
-				</script>
->>>>>>> 157f1788ba8005975cd731c51779f402f09f197d
 			</div>
 			<!--<p style="margin-left: 10px;">Rows per page</p>-->
 			<div style="width:580px; float:bottom;">
@@ -381,42 +216,6 @@
     background-color:rgb(247,247,247);
     ">
 			<h1  class="active"><strong>User log</strong></h1>
-<<<<<<< HEAD
-			<!-- <script>
-=======
-			<script>
->>>>>>> 157f1788ba8005975cd731c51779f402f09f197d
-					var x=2;
-					var y=8;
-					var num = 0;
-					var UserNames = ["홍길동","고길동","한수위","Jason","정주용","Peter","최재혁","김날수"];
-					var OnClick = ["한국가스공사","(주)포스코","엘지디스플레이(주)","삼성디스플레이(주)","GS칼텍스(주)","삼성생명보험(주)","SK에너지(주)","LG전자(주)"];
-					document.write("<table class='type01' style='margin-left: 0px;'>");
-					for(i=0;i<y;i++)
-					{
-					   document.write("<tr>");
-					   if(i==0)
-					   {
-							document.write('<th style="width:40%;">User</th>');
-							document.write('<th>OnClick</th>');
-						}else{
-					   		for(j=0;j<x;j++)
-					   		{
-					       		if(j==0){
-					       			document.write("<td>"+UserNames[i-1]+"</td>");
-					       		}else{
-					       			document.write("<td>"+OnClick[i-1]+"</td>");
-					       		}
-					   		}
-			       		}
-					    document.write("</tr>");
-					}
-					document.write("</table>");
-<<<<<<< HEAD
-			</script> -->
-=======
-			</script>
->>>>>>> 157f1788ba8005975cd731c51779f402f09f197d
 		</div>
 		<div style="
     float:left;
@@ -427,42 +226,7 @@
     background-color:rgb(247,247,247);
     ">
 			<h1  class="active"><strong>Keyword rank</strong></h1>
-<<<<<<< HEAD
-			<!-- <script>
-=======
-			<script>
->>>>>>> 157f1788ba8005975cd731c51779f402f09f197d
-					var x=2;
-					var y=11;
-					var num = 0;
-					var keywords_ranked = ["키워드랭크1","키워드랭크2","키워드랭크3","키워드랭크4","키워드랭크5","키워드랭크6","키워드랭크7","키워드랭크8","키워드랭크9","키워드랭크10"];
-					var ranked_count = [15,12,11,10,8,7,5,4,3,2];
-					document.write("<table class='type01' style='margin-left: 0px;'>");
-					for(i=0;i<y;i++)
-					{
-					   document.write("<tr>");
-					   if(i==0)
-					   {
-							document.write('<th style="width:40%;">Keyword</th>');
-							document.write('<th>Count</th>');
-						}else{
-					   		for(j=0;j<x;j++)
-					   		{
-					       		if(j==0){
-					       			document.write("<td>"+keywords_ranked[i-1]+"</td>");
-					       		}else{
-					       			document.write("<td>"+ranked_count[i-1]+"</td>");
-					       		}
-					   		}
-			       		}
-					    document.write("</tr>");
-					}
-					document.write("</table>");
-<<<<<<< HEAD
-			</script> -->
-=======
-			</script>
->>>>>>> 157f1788ba8005975cd731c51779f402f09f197d
+	
 		</div>
 	</div>
 </div>
