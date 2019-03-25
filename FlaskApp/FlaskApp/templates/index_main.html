@@ -158,11 +158,11 @@
 									<tr>
 											{% for x in range(0,7,1): %}
 												{% if(x==0): %}
-													<td>{{companyNames[x-1]}}</td>
+													<td>{{companyNames[y]}}</td>
 												{% elif(x%2==1): %}
-													<td>{{keywords[y-1][(x-1)/2]}}</td>
+													<td>{{keywords[y][(x-1)/2]}}</td>
 												{% else: %}
-													<td>{{count[y-1][(x-1)/2]}}</td>
+													<td>{{count[y][(x-1)/2]}}</td>
 												{% endif %}
 											{% endfor %}
 								  </tr>
