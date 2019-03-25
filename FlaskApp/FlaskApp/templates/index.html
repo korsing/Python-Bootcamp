@@ -162,8 +162,8 @@
 						<li>50</li>
 					</ul>
 				</label>
-				{% for i in range(len_comp):%}
-					{{ companyNames[i] }}
+				{% for names in companyNames: %}
+					{{ names }}
 				{% endfor %}
 				<!--
 				<table class='type01' style='width:98%;'>
