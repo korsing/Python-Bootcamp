@@ -72,7 +72,8 @@ def homepage():
 	#return render_template('index.html', title=title,url=url,summary=summary,count=article_count)
 @app.route('/headlines')
 def gather_Headlines():
-	return render_template('index_2.html', month = month, monthEn = monthEn, day = day, headlineNum = headlineNum)
+	return render_template('index_2.html', month = month, monthEn = monthEn, day = day, headlineNum = headlineNum
+							,headlines = headlines, headlineUrl = headlineUrl, contents = contents, compName = compName, compPrice = compPrice)
 
 def scrapeData(url):
 	headLine_Title = []
