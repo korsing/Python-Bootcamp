@@ -1,8 +1,7 @@
 import csv
-#import pymysql
-import mysql.connector
+import pymysql
 
-mydb = mysql.connector.connect(host='localhost',
+mydb = pymysql.connect(host='localhost',
     user='root',
     passwd='skgkdlslrtm',
     db='Bootcamp',
