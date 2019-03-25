@@ -3,4 +3,4 @@ komoran = Komoran()
 
 
 
-print(komoran.morphs(u'우왕 코모란도 오픈소스가 되었어요'))
+print(komoran.nouns(u'우왕 코모란도 오픈소스가 되었어요'))
