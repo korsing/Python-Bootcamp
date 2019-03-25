@@ -13,10 +13,17 @@
 	</head>
 	<body class="is-preload">
 
-		<table style="width:100%">
+		<table style="width:50%; float:left;">
 			{% for names in companyNames: %}
 			<tr>
 				<td>{{ names }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		<table style="width:50%; float:left;">
+			{% for keys in keywords: %}
+			<tr>
+				<td>{{ keys }}</td>
 			</tr>
 			{% endfor %}
 		</table>
