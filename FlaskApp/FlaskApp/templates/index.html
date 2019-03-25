@@ -121,8 +121,44 @@
 		}
 	</style>
 </head>
-	<body class="is-preload">
+<body class="is-preload">
+	<div id="content" style="margin-left: 0px;">
+		<!--p id="days" style="font-size:90px"></p-->
+		<h1 id="logo"  style="margin-left: 40px;">
+			<p style="font-size:50px;margin-top: 30px;">{{today}}</p>
+		</h1>
 
+
+			<div style="
+	    width:70%;
+	    float:left;">
+			<div style="
+	    padding: 0.875em 0.875em;
+	    margin-right: 20px;
+	    width:100%;
+	    ">
+				<div style="
+	    float:left;
+	    padding: 0.875em 0.875em;
+	    border:2px solid grey;
+	    border-radius: 2em;
+	    margin-right: 20px;
+	    box-shadow: 10px 10px 5px grey;
+	    width:100%;
+	    margin-bottom: 50px;
+	    ">
+					<h2 class="active" style="margin-left: 10px;margin-top: 13px;float:left;"><strong style="margin-right: 50px;">Today's Keywords</strong></h2>
+					<label class="dropdown">
+						<div class="dd-button" style="float:left;">
+							Rows per page
+						</div>
+						<input type="checkbox" class="dd-input" id="test">
+						<ul class="dd-menu">
+							<li>20</li>
+							<li>30</li>
+							<li>50</li>
+						</ul>
+					</label>
 		<table style="width:50%; float:left;">
 			{% for names in companyNames: %}
 			<tr>
@@ -174,9 +210,9 @@
 			<ul id="copyright">
 				<li>&copy; Copyright 2019. 개발엔 커피가 필요하조. All rights Reserved.</li>
 			</ul>
-
 		</div>
-
-
+		</div>
+		</div>
+		</div>
 	</body>
 </html>
