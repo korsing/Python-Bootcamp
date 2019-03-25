@@ -23,11 +23,15 @@
 			<div style="float: left;width: 100%;padding-top: 15px;">
 					{% for i in range(0,headlineNum,1): %}
 							{% if(i%2==0): %}
-								<div style='float: left; width: 45%;height:200px;margin-bottom:48px;'>
+								<div style='float: left; width: 45%;height:200px;margin-bottom:48px;
+														padding: 0.875em 0.875em;border:0px solid grey;box-shadow: 7px 7px 4px grey;
+														margin-bottom: 10px;background-color:rgb(247,247,247);'>
 									<p><a href={{headlineUrl[i]}}><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
 							{% else: %}
-								<div style='float: right; width: 45%;height:200px;margin-bottom:48px;'>
-								<p><a href="#"><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
+								<div style='float: right; width: 45%;height:200px;margin-bottom:48px;
+														padding: 0.875em 0.875em;border:0px solid grey;box-shadow: 7px 7px 4px grey;
+														margin-bottom: 10px;background-color:rgb(247,247,247);'>
+								<p><a href={{headlineUrl[i]}}><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
 							{% endif %}
 					 {% endfor %}
 			</div>
@@ -42,15 +46,19 @@
 					</ul>
 				</div>
 				<div style="float: left;width: 100%;padding-top: 15px;">
-						{% for i in range(0,headlineNum,1): %}
-								{% if(i%2==0): %}
-									<div style='float: left; width: 45%;height:200px;margin-bottom:48px;'>
-										<p><a href="#"><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
-								{% else: %}
-									<div style='float: right; width: 45%;height:200px;margin-bottom:48px;'>
-									<p><a href="#"><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
-								{% endif %}
-						 {% endfor %}
+					{% for i in range(0,headlineNum,1): %}
+							{% if(i%2==0): %}
+								<div style='float: left; width: 45%;height:200px;margin-bottom:48px;
+														padding: 0.875em 0.875em;border:0px solid grey;box-shadow: 7px 7px 4px grey;
+														margin-bottom: 10px;background-color:rgb(247,247,247);'>
+									<p><a href={{headlineUrl[i]}}><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
+							{% else: %}
+								<div style='float: right; width: 45%;height:200px;margin-bottom:48px;
+														padding: 0.875em 0.875em;border:0px solid grey;box-shadow: 7px 7px 4px grey;
+														margin-bottom: 10px;background-color:rgb(247,247,247);'>
+								<p><a href={{headlineUrl[i]}}><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
+							{% endif %}
+					 {% endfor %}
 				</div>
 				</article>
 				</div>
