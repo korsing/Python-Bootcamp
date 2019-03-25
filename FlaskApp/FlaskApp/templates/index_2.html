@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<!--
+	Striped by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+-->
+<html>
+<head>
+	<title>Python Bootcamp Project</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../static/assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+<!-- Content -->
+<div id="content">
+	<div class="inner">
+
+		<!-- Post -->
+		<h1 id="logo" style="margin-bottom:10px;">Headlines</h1>
+		<div style="float: left;width: 100%;margin-bottom:20px;">
+		<article class="box post post-excerpt">
+			<div class="info">
+				<span class="date"><span class="month" id="getMonthInfo"></span> <span class="day" id="getDateInfo">14</span><span class="year">, 2014</span></span>
+				<script>
+	 			var d = new Date();
+	 			var month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+	 			document.getElementById("getMonthInfo").innerHTML = month[d.getMonth()];
+	 			document.getElementById("getDateInfo").innerHTML = d.getDate();
+				</script>
+				<ul class="stats">
+					<li><a href="#" class="icon fa-heart">32</a></li>
+				</ul>
+			</div>
+			<div style="float: left;width: 100%;padding-top: 15px;">
+				<script>
+					var headlines = ["2019년 불확실성↑, 본원적 경쟁력 강화…SK하이닉스, 정기 주총 개최","이철희 KT 황창규, 수십억 들여 정관계 고문 위촉...로비 의혹!","LG CNS, 전 계열사 IT시스템 90% '구름 위로'",
+									"2019년 불확실성↑, 본원적 경쟁력 강화…SK하이닉스, 정기 주총 개최","이철희 KT 황창규, 수십억 들여 정관계 고문 위촉...로비 의혹!","LG CNS, 전 계열사 IT시스템 90% '구름 위로'"];
+					var headlineUrl = ["https://search.naver.com/p/crd/rd?m=1&px=667&py=1029&sx=667&sy=528&p=U5PqLspVuEhssuvBWJVssssssi8-288258&q=%C7%CF%C0%CC%B4%D0%BD%BA&ssc=tab.nx.all&f=nexearch&w=nexearch&s=PIS3SHZh8lrbCOlvMorRCg==&time=1553443478068&a=nws_all*h.tit&r=2&i=880000AC_000000000000000002071309&g=138.0002071309&u=http%3A//www.ddaily.co.kr/news/article.html%3Fno%3D179183&cr=3",
+										"https://www.ytn.co.kr/_ln/0101_201903241103419484",
+										"http://www.economytalk.kr/news/articleView.html?idxno=181959",
+										"https://search.naver.com/p/crd/rd?m=1&px=667&py=1029&sx=667&sy=528&p=U5PqLspVuEhssuvBWJVssssssi8-288258&q=%C7%CF%C0%CC%B4%D0%BD%BA&ssc=tab.nx.all&f=nexearch&w=nexearch&s=PIS3SHZh8lrbCOlvMorRCg==&time=1553443478068&a=nws_all*h.tit&r=2&i=880000AC_000000000000000002071309&g=138.0002071309&u=http%3A//www.ddaily.co.kr/news/article.html%3Fno%3D179183&cr=3",
+										"https://www.ytn.co.kr/_ln/0101_201903241103419484",
+										"http://www.economytalk.kr/news/articleView.html?idxno=181959"
+										];
+					var contents = ["공정 미세화·수율향상 지속…사회적·재무적 가치 동시 창출 추진 SK하이닉스가 제71기 정기... 22일 SK하이닉스는 경기 이천시 SK하이닉스 영빈관에서 제71기 정기 주총을 열었다. 의결권 있는 주식 77.43%가",
+									"[앵커] KT 황창규 회장이 박근혜 정부 시절 정관계 인사들을 이른바 경영 고문으로 위촉해 많게는 수억 원대의 자문료를 주며 각종 민원 해결 등 로비에 활용했다는 주장이 제기됐습니다. 특히 KT 측에 보좌진 특혜",
+									"LG CNS, 아시아태평양 클라우드 정보시스템 'TOP 3' 진입",
+									"공정 미세화·수율향상 지속…사회적·재무적 가치 동시 창출 추진 SK하이닉스가 제71기 정기... 22일 SK하이닉스는 경기 이천시 SK하이닉스 영빈관에서 제71기 정기 주총을 열었다. 의결권 있는 주식 77.43%가",
+									"[앵커] KT 황창규 회장이 박근혜 정부 시절 정관계 인사들을 이른바 경영 고문으로 위촉해 많게는 수억 원대의 자문료를 주며 각종 민원 해결 등 로비에 활용했다는 주장이 제기됐습니다. 특히 KT 측에 보좌진 특혜",
+									"LG CNS, 아시아태평양 클라우드 정보시스템 'TOP 3' 진입"];
+					var compName = ["SK하이닉스","KT","LG전자","SK하이닉스","KT","LG전자"];
+					var compPrice = ["76,100(+0.26%)","27,950(+0.0%)","76,100(+2.7%)","76,100(+0.26%)","27,950(+0.0%)","76,100(+2.7%)"];
+					for(i=0;i<headlines.length;i++)
+					{
+						if(i%2==0){
+						document.write("<div style='float: left; width: 45%;height:200px;margin-bottom:48px'>"+
+										"<p><a href='"+headlineUrl[i]+"'><strong>"+headlines[i]+"</strong></a></p><p>"+contents[i]+"</p><strong>"+compPrice[i]+"</strong></p></div>");
+						}else{
+						document.write("<div style='float: right; width: 45%;height:200px;margin-bottom:48px'>"+
+										"<p><a href='"+headlineUrl[i]+"'><strong>"+headlines[i]+"</strong></a></p><p>"+contents[i]+"</p><strong>"+compPrice[i]+"</strong></p></div>");
+						}
+
+					}
+				</script>
+			</div>
+		</article>
+		</div>
+		<div style="float: left; width: 100%;">
+		<article class="box post post-excerpt">
+			<div class="info">
+				<span class="date"><span class="month" id="getMonthInfo2"></span> <span class="day" id="getDateInfo2">14</span><span class="year">, 2014</span></span>
+				<script>
+	 			document.getElementById("getMonthInfo2").innerHTML = month[d.getMonth()];
+	 			document.getElementById("getDateInfo2").innerHTML = d.getDate()-1;
+				</script>
+				<ul class="stats">
+					<li><a href="#" class="icon fa-heart">32</a></li>
+				</ul>
+			</div>
+			<div style="float: left;width: 100%;padding-top: 15px;">
+				<div style="float: left; width: 47%;">
+					<a href="#" class="image featured"><img src="../static/images/samsung.png" alt="" /></a>
+					<p><strong>Aenean!</strong> Aenean blandit at Eleifend, non massa adipiscing augue nisl faucibus accumsan ut Pellentesque Adipiscing Et interdum cep primis, pellentesque egestas, aliquet col sed morbi elit pharetra vestibulum pellentesque, lectus vis laoreet, pellentesque iaculis justo ac feugiat, sit parturient arcu accumsan ata vitae leo ante pellentesque quam duis accumsan mus penatibus.</p>
+					<p>Pretium mi accumsan sed erat felis vel Suscipit Aliquet Condimentum natoque at arcu diam ut cep eu mus eleifend pellentesque quam adipiscing cras aliquam urna et duis mi aenean Vestibulum dis nec blandit. Id sem amet nibh ata col risus, mi elit in augue sollicitudin non orci enim euismod at nullam at ut Commodo sit vis lobortis mus faucibus.</p>
+				</div>
+				<div style="float: right; width: 47%;">
+					<a href="#" class="image featured"><img src="../static/images/030200_search.png" alt="" /></a>
+					<p><strong>Aenean!</strong> Aenean blandit at Eleifend, non massa adipiscing augue nisl faucibus accumsan ut Pellentesque Adipiscing Et interdum cep primis, pellentesque egestas, aliquet col sed morbi elit pharetra vestibulum pellentesque, lectus vis laoreet, pellentesque iaculis justo ac feugiat, sit parturient arcu accumsan ata vitae leo ante pellentesque quam duis accumsan mus penatibus.</p>
+					<p>Pretium mi accumsan sed erat felis vel Suscipit Aliquet Condimentum natoque at arcu diam ut cep eu mus eleifend pellentesque quam adipiscing cras aliquam urna et duis mi aenean Vestibulum dis nec blandit. Id sem amet nibh ata col risus, mi elit in augue sollicitudin non orci enim euismod at nullam at ut Commodo sit vis lobortis mus faucibus.</p>
+				</div>
+			</div>
+			</article>
+		</div>
+		<!-- Pagination -->
+		<div class="pagination">
+			<!--<a href="#" class="button previous">Previous Page</a>-->
+			<div class="pages">
+				<a href="#" class="active">1</a>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<span>&hellip;</span>
+				<a href="#">20</a>
+			</div>
+			<a href="#" class="button next">Next Page</a>
+		</div>
+
+	</div>
+</div>
+
+<!-- Sidebar -->
+<div id="sidebar">
+
+	<!-- Logo -->
+	<h1 id="logo"><a href="index.html">SK Hynix</a></h1>
+
+	<!-- Nav -->
+	<nav id="nav">
+		<ul>
+			<li><a href="index.html">DashBoard</a></li>
+			<li class="current"><a href=""index_2.html"">Headlines</a></li>
+			<li><a href="#">About Me</a></li>
+			<li><a href="#">Contact Me</a></li>
+		</ul>
+	</nav>
+
+	<!-- Search -->
+	<section class="box search">
+		<form method="post" action="#">
+			<input type="text" class="text" name="search" placeholder="Search" />
+		</form>
+	</section>
+
+	<!-- Text -->
+	<section class="box text-style1">
+		<div class="inner">
+			<p>
+				<strong>Aliquam:</strong> A nibh mus fusce adipiscing morbi pellentesque faucibus mi et nec Parturient
+			</p>
+		</div>
+	</section>
+
+	<!-- Copyright -->
+	<ul id="copyright">
+		<li>&copy; Copyright 2019. 개발엔 커피가 필요하조. All rights Reserved.</li>
+	</ul>
+
+</div>
+
+<!-- Scripts -->
+<script src="../static/assets/js/jquery.min.js"></script>
+<script src="../static/assets/js/browser.min.js"></script>
+<script src="../static/assets/js/breakpoints.min.js"></script>
+<script src="../static/assets/js/util.js"></script>
+<script src="../static/assets/js/main.js"></script>
+
+</body>
+</html>
