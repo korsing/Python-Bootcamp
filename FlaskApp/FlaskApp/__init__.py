@@ -39,7 +39,7 @@ def homepage():
 	#title, url, summary = scrapeData()
 	title=[1,2,3];url=[4,5,6];summary=[7,8,9]
 	article_count = len(title)
-	return "RUDA"
+	return render_template('index.html',companyNames=companyNames,keywords=keywords,count=count)
 	#return render_template('index.html', title=title,url=url,summary=summary,count=article_count)
 
 def scrapeData(url):
