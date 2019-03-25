@@ -59,10 +59,10 @@ compPrice = ["76,100(+0.26%)","27,950(+0.0%)","76,100(+2.7%)","76,100(+0.26%)","
 ############################################################################
 @app.route('/')
 def homepage():
-	
+	date = today()
 	title=[1,2,3];url=[4,5,6];summary=[7,8,9]
 	article_count = len(title)
-	return render_template('index_main.html', today = today, companyNames = companyNames, compNum = compNum, keywords = keywords, count = count,
+	return render_template('index_main.html', date = date, companyNames = companyNames, compNum = compNum, keywords = keywords, count = count,
 							UserNames = UserNames, OnClick = OnClick, keywords_ranked = keywords_ranked, ranked_count = ranked_count)
 	#return render_template('index.html', title=title,url=url,summary=summary,count=article_count)
 @app.route('/headlines')
