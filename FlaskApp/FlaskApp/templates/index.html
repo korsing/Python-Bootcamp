@@ -131,11 +131,6 @@
 		<p style="font-size:50px;margin-top: 30px;">{{today}}</p>
 	</h1>
 
-	<!-- <script>
-	 var d = new Date();
-	 document.getElementById("getDateInfo").innerHTML = d.getFullYear()+'. '
-	 													+(d.getMonth()+1)+'. '+d.getDate();
-	</script> -->
 
 		<div style="
     width:70%;
@@ -171,9 +166,9 @@
 					{% for i in companyNames.length %}
 						<tr>
 							{% if i==0 %}
-								<th style="width:22%;">{{Company}}</th>
-								<th style="width:12%;">{{Keyword}}</th>
-								<th style="width:5%;">{{Count}}</th>
+								<th style="width:22%;">Company</th>
+								<th style="width:12%;">Keyword</th>
+								<th style="width:5%;">Count</th>
 							{% else %}
 								{% for j in range(x) %}
 									{% if j==0 %}
@@ -272,7 +267,6 @@
 
 </div>
 
-<!-- Scripts -->
 
 </body>
 </html>
