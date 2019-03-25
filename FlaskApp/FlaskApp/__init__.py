@@ -31,7 +31,7 @@ keywords = [['키워드1_1','키워드1_2','키워드1_3'],['키워드2_1','키�
 			['키워드1_1','키워드1_2','키워드1_3'],['키워드2_1','키워드2_2','키워드2_3'],['키워드3_1','키워드3_2','키워드3_3'],['키워드4_1','키워드4_2','키워드4_3'],['키워드5_1','키워드5_2','키워드5_3'],['키워드6_1','키워드6_2','키워드6_3']];
 count = [[1,2,3],[3,4,5],[2,3,4],[3,1,4],[7,3,7],[8,4,7],[1,2,3],[3,4,5],[2,3,4],[3,1,4],[7,3,7],[8,4,7],[1,2,3],[3,4,5],[2,3,4],[3,1,4],[7,3,7],[8,4,7],[1,2,3],[3,4,5],[2,3,4],[3,1,4],[7,3,7],[8,4,7],
 		[1,2,3],[3,4,5],[2,3,4],[3,1,4],[7,3,7],[8,4,7]];
-
+compNum = len(companyNames)
 
 ############################################################################
 @app.route('/')
@@ -39,7 +39,7 @@ def homepage():
 	#title, url, summary = scrapeData()
 	title=[1,2,3];url=[4,5,6];summary=[7,8,9]
 	article_count = len(title)
-	return render_template('index_main.html', today = today, companyNames = companyNames, keywords = keywords)
+	return render_template('index_main.html', today = today, companyNames = companyNames, compNum = compNum, keywords = keywords, count = count)
 	#return render_template('index.html', title=title,url=url,summary=summary,count=article_count)
 
 def scrapeData(url):

@@ -149,17 +149,24 @@
 							</ul>
 						</label>
 						<table>
-							{% for y in companyNames: %}
-								<tr>
-									{% if(companyNames.index(y)==0): %}
-										<th style="width:22%;">Company</th>
-										<th style="width:12%;">Keyword</th>
-										<th style="width:5%;">Count</th>
-									{% else: %}
-										<tb>y</tb>
-									{% endif %}
-								</tr>
-							{% endfor %}
+							<tr>
+								<th style="width:22%;">Company</th>
+								<th style="width:12%;">Keyword</th>
+								<th style="width:5%;">Count</th>
+							</tr>
+								{% for y in range(0,compNum,1): %}
+									<tr>
+											{% for x in range(0,7,1): %}
+												{% if(x==0): %}
+													<td>{{companyNames[x-1]}}</td>
+												{% elif(x%2==1) %}
+													<td>{{keywords[y-1][(x-1)/2]}}</td>
+												{% else %}
+													<td>{{count[y-1][(x-1)/2]}}</td>
+												{% endif %}
+											{% endfor %}
+								  </tr>
+								{% endfor %}
 						</table>
 
 
