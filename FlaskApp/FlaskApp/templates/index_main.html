@@ -207,7 +207,23 @@
 					background-color:rgb(247,247,247);
 					">
 						<h1  class="active"><strong>User log</strong></h1>
-
+						<table class='type01' style='margin-left: 0px;'>
+								<tr>
+									<th style="width:40%;">User</th>
+									<th>OnClick</th>
+								</tr>
+							{% for y in range(0,7,1): %}
+									<tr>
+										{% for x in range(0,2,1): %}
+											{% if(x==0): %}
+										  	<td>{{UserNames[y]}}</td>
+											{% else: %}
+												<td>{{OnClick[y]}}</td>
+											{% endif %}
+										{% endfor %}
+									</tr>
+							{% endfor %}
+						</table>
 					</div>
 					<div style="
 					float:left;
@@ -218,6 +234,23 @@
 					background-color:rgb(247,247,247);
 					">
 						<h1  class="active"><strong>Keyword rank</strong></h1>
+						<table class='type01' style='margin-left: 0px;'>
+								<tr>
+									<th style="width:40%;">Keyword</th>
+									<th>Freq</th>
+								</tr>
+							{% for y in range(0,10,1): %}
+									<tr>
+										{% for x in range(0,2,1): %}
+											{% if(x==0): %}
+										  	<td>{{keywords_ranked[y]}}</td>
+											{% else: %}
+												<td>{{ranked_count[y]}}</td>
+											{% endif %}
+										{% endfor %}
+									</tr>
+							{% endfor %}
+						</table>
 					</div>
 				</div>
 			</div>
