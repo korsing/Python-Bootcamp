@@ -12,10 +12,15 @@
 		<link rel="stylesheet" href="../static/assets/css/main.css" />
 	</head>
 	<body class="is-preload">
-		{% for names in companyNames: %}
-			<td>{{ names }}</td>
-		{% endfor %}
-		
+
+		<table style="width:100%">
+			{% for names in companyNames: %}
+			<tr>
+				<td>{{ names }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+
 		<!-- Sidebar -->
 		<div id="sidebar">
 
