@@ -149,9 +149,9 @@
 							</ul>
 						</label>
 						<table class='type01' style='width:98%;'>
-							{% for y in range(0,compLen,1): %}
+							{% for y in companyNames: %}
 								<tr>
-									{% if (y==0): %}
+									{% if(y.index==0): %}
 										<th style="width:22%;">Company</th>
 										<th style="width:12%;">Keyword</th>
 										<th style="width:5%;">Count</th>
