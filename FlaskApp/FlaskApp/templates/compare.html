@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<!--
+	Striped by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+-->
+<html>
+<head>
+	<title>Python Bootcamp Project</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../static/assets/css/main.css" />
+	<style >
+		  .active{
+			font-size:20px;
+		  }
+		  h1 {
+			font-size: 30pt;
+		  }
+		  .jb-th-1 {
+				    width: 10px;
+		  }
+		  table.type01 {
+			border-collapse: collapse;
+			text-align: left;
+			line-height: 1.5;
+			margin : 20px 10px;
+		  }
+		  table.type01 th {
+			width: 150px;
+			padding: 10px;
+			font-weight: bold;
+			font-size: 10px
+			vertical-align: top;
+			border: 1px solid #ccc;
+		  }
+		  table.type01 td {
+		 	width: 350px;
+			padding: 10px;
+			vertical-align: top;
+			border: 1px solid #ccc;
+		  }
+		  .dropdown {
+  		display: inline-block;
+  		position: relative;
+			}
+
+			.dd-button {
+  		display: inline-block;
+  		border: 1px solid gray;
+  		border-radius: 4px;
+  		padding: 5px 30px 5px 20px;
+  		margin-top: 5px;
+  		background-color: #ffffff;
+  		cursor: pointer;
+  		white-space: nowrap;
+			}
+
+			.dd-button:after {
+  		content: '';
+  		position: absolute;
+  		top: 50%;
+  		right: 15px;
+  		transform: translateY(-50%);
+  		width: 0;
+  		height: 0;
+  		border-left: 5px solid transparent;
+  		border-right: 5px solid transparent;
+  		border-top: 5px solid black;
+			}
+
+			.dd-button:hover {
+  		background-color: #eeeeee;
+			}
+
+
+		.dd-input {
+  	display: none;
+		}
+
+		.dd-menu {
+  	position: absolute;
+  	top: 100%;
+  	width: 100%;
+  	border: 1px solid #ccc;
+  	border-radius: 4px;
+  	padding: 0;
+  	margin: 2px 0 0 0;
+  	box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
+  	background-color: #ffffff;
+  	list-style-type: none;
+		}
+
+		.dd-input + .dd-menu {
+  	display: none;
+		}
+
+		.dd-input:checked + .dd-menu {
+  	display: block;
+		}
+
+		.dd-menu li {
+  	padding: 10px 20px;
+  	cursor: pointer;
+  	white-space: nowrap;
+		}
+
+		.dd-menu li:hover {
+  	background-color: #f6f6f6;
+		}
+
+		.dd-menu li a {
+  	display: block;
+  	margin: -10px -20px;
+  	padding: 10px 20px;
+		}
+
+		.dd-menu li.divider{
+  	padding: 0;
+  	border-bottom: 1px solid #cccccc;
+		}
+	</style>
+</head>
+
+<body class="is-preload">
+<!-- Content -->
+
+<div id="content" style="margin-left: 0px;">
+	<!--p id="days" style="font-size:90px"></p-->
+	<h1 id="logo"  style="margin-left: 40px;">
+		<p style="font-size:50px;margin-top: 30px;">{{today}}</p>
+	</h1>
+
+
+		<div style="
+    width:70%;
+    float:left;">
+		<div style="
+    padding: 0.875em 0.875em;
+    margin-right: 20px;
+    width:100%;
+    ">
+			<div style="
+    float:left;
+    padding: 0.875em 0.875em;
+    border:2px solid grey;
+    border-radius: 2em;
+    margin-right: 20px;
+    box-shadow: 10px 10px 5px grey;
+    width:100%;
+    margin-bottom: 50px;
+    ">
+				<h2 class="active" style="margin-left: 10px;margin-top: 13px;float:left;"><strong style="margin-right: 50px;">Today's Keywords</strong></h2>
+				<label class="dropdown">
+					<div class="dd-button" style="float:left;">
+						Rows per page
+					</div>
+					<input type="checkbox" class="dd-input" id="test">
+					<ul class="dd-menu">
+						<li>20</li>
+						<li>30</li>
+						<li>50</li>
+					</ul>
+				</label>
+				{% for names in companyNames %}
+					{{ names }}
+				{% endfor %}
+				
+				<table class='type01' style='width:98%;'>
+					{% for i in range(0,len_comp,1): %}
+						<tr>
+							{% if (i==0): %}
+								<th style="width:22%;">Company</th>
+								<th style="width:12%;">Keyword</th>
+								<th style="width:5%;">Count</th>
+							{% else: %}
+								{% for j in range(0,x,1): %}
+									{% if j==0: %}
+										<td>{{companyNames[i-1]}}</td>
+									{% elif(j%2==1): %}
+										<td style='width:12%;'>{{keywords[i-1][(j-1)/2]}}</td>
+									{% else: %}
+										<td style='width:5%;text-align:center;'>{{count[i-1][(j-2)/2]}}</td>
+									{% endif %}
+						    {% endfor %}
+							{% endif %}
+			  		</tr>
+					{% endfor %}
+				</table>
+
+			</div>
+			<!--<p style="margin-left: 10px;">Rows per page</p>-->
+			<div style="width:580px; float:bottom;">
+				<div class="pagination">
+					<!--<a href="#" class="button previous">Previous Page</a>-->
+					<div class="pages" style="margin-left: 10px;">
+						<a href="#" class="active">1</a>
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#">4</a>
+						<span>&hellip;</span>
+						<a href="#">20</a>
+					</div>
+					<a href="#" class="button next">Next Page</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="width:25%; float:left; min-width:300px;padding: 0.875em 0.875em; ">
+		<div style="
+    float:left;
+    padding: 0.875em 0.875em;
+    border:0px solid grey;
+    box-shadow: 7px 7px 4px grey;
+    margin-bottom: 10px;
+    background-color:rgb(247,247,247);
+    ">
+			<h1  class="active"><strong>User log</strong></h1>
+		</div>
+		<div style="
+    float:left;
+    padding: 0.875em 0.875em;
+    border:0px solid grey;
+    box-shadow: 7px 7px 4px grey;
+    margin-bottom: 40px;
+    background-color:rgb(247,247,247);
+    ">
+			<h1  class="active"><strong>Keyword rank</strong></h1>
+
+		</div>
+	</div>
+</div>
+<!-- Pagination -->
+</div>
+
+<!-- Sidebar -->
+<div id="sidebar">
+
+	<!-- Logo -->
+	<h1 id="logo"><a href="index.html">SK Hynix</a></h1>
+
+	<!-- Nav -->
+	<nav id="nav">
+		<ul>
+			<li class="current"><a href="index.html">DashBoard</a></li>
+			<li><a href="index_2.html">Headlines</a></li>
+			<li><a href="#">About Me</a></li>
+			<li><a href="#">Contact Me</a></li>
+		</ul>
+	</nav>
+
+	<!-- Search -->
+	<section class="box search">
+		<form method="post" action="#">
+			<input type="text" class="text" name="search" placeholder="Search" />
+		</form>
+	</section>
+
+	<!-- Text -->
+	<section class="box text-style1">
+		<div class="inner">
+			<p>
+				<strong>Aliquam:</strong> A nibh mus fusce adipiscing morbi pellentesque faucibus mi et nec Parturient
+			</p>
+		</div>
+	</section>
+
+	<!-- Copyright -->
+	<ul id="copyright">
+		<li>&copy; Copyright 2019. 개발엔 커피가 필요하조. All rights Reserved.</li>
+	</ul>
+
+</div>
+
+
+</body>
+</html>

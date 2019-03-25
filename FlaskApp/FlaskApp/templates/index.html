@@ -5,12 +5,122 @@
 	License: pixelarity.com/license
 -->
 <html>
-	<head>
-		<title>Python Bootcamp Project</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../static/assets/css/main.css" />
-	</head>
+<head>
+	<title>Python Bootcamp Project</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../static/assets/css/main.css" />
+	<style >
+		  .active{
+			font-size:20px;
+		  }
+		  h1 {
+			font-size: 30pt;
+		  }
+		  .jb-th-1 {
+				    width: 10px;
+		  }
+		  table.type01 {
+			border-collapse: collapse;
+			text-align: left;
+			line-height: 1.5;
+			margin : 20px 10px;
+		  }
+		  table.type01 th {
+			width: 150px;
+			padding: 10px;
+			font-weight: bold;
+			font-size: 10px
+			vertical-align: top;
+			border: 1px solid #ccc;
+		  }
+		  table.type01 td {
+		 	width: 350px;
+			padding: 10px;
+			vertical-align: top;
+			border: 1px solid #ccc;
+		  }
+		  .dropdown {
+  		display: inline-block;
+  		position: relative;
+			}
+
+			.dd-button {
+  		display: inline-block;
+  		border: 1px solid gray;
+  		border-radius: 4px;
+  		padding: 5px 30px 5px 20px;
+  		margin-top: 5px;
+  		background-color: #ffffff;
+  		cursor: pointer;
+  		white-space: nowrap;
+			}
+
+			.dd-button:after {
+  		content: '';
+  		position: absolute;
+  		top: 50%;
+  		right: 15px;
+  		transform: translateY(-50%);
+  		width: 0;
+  		height: 0;
+  		border-left: 5px solid transparent;
+  		border-right: 5px solid transparent;
+  		border-top: 5px solid black;
+			}
+
+			.dd-button:hover {
+  		background-color: #eeeeee;
+			}
+
+
+		.dd-input {
+  	display: none;
+		}
+
+		.dd-menu {
+  	position: absolute;
+  	top: 100%;
+  	width: 100%;
+  	border: 1px solid #ccc;
+  	border-radius: 4px;
+  	padding: 0;
+  	margin: 2px 0 0 0;
+  	box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
+  	background-color: #ffffff;
+  	list-style-type: none;
+		}
+
+		.dd-input + .dd-menu {
+  	display: none;
+		}
+
+		.dd-input:checked + .dd-menu {
+  	display: block;
+		}
+
+		.dd-menu li {
+  	padding: 10px 20px;
+  	cursor: pointer;
+  	white-space: nowrap;
+		}
+
+		.dd-menu li:hover {
+  	background-color: #f6f6f6;
+		}
+
+		.dd-menu li a {
+  	display: block;
+  	margin: -10px -20px;
+  	padding: 10px 20px;
+		}
+
+		.dd-menu li.divider{
+  	padding: 0;
+  	border-bottom: 1px solid #cccccc;
+		}
+	</style>
+</head>
 	<body class="is-preload">
 
 		<table style="width:50%; float:left;">
