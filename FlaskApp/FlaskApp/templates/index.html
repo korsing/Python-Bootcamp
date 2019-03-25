@@ -162,6 +162,10 @@
 						<li>50</li>
 					</ul>
 				</label>
+				{% for i in range(len_comp):%}
+					{{ companyNames[i] }}
+				{% endfor %}
+				<!--
 				<table class='type01' style='width:98%;'>
 					{% for i in range(0,len_comp,1): %}
 						<tr>
@@ -183,6 +187,7 @@
 			  		</tr>
 					{% endfor %}
 				</table>
+ 			-->
 			</div>
 			<!--<p style="margin-left: 10px;">Rows per page</p>-->
 			<div style="width:580px; float:bottom;">
