@@ -14,11 +14,6 @@ app = Flask(__name__)
 
 ##JS작업 교체부분############################################################
 import datetime
-
-year = datetime.datetime.now().year
-month = datetime.datetime.now().month
-day = datetime.datetime.now().date().day
-today = str(year)+'. '+str(month)+'. '+str(day)
 ##########################index_main###############################
 ####table 1#####
 x=7;
@@ -41,7 +36,7 @@ ranked_count = [15,12,11,10,8,7,5,4,3,2]
 
 ##########################index2###############################
 
-monthEn = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+
 headlines = ["2019년 불확실성↑, 본원적 경쟁력 강화…SK하이닉스, 정기 주총 개최","이철희 KT 황창규, 수십억 들여 정관계 고문 위촉...로비 의혹!","LG CNS, 전 계열사 IT시스템 90% '구름 위로'",
 				"2019년 불확실성↑, 본원적 경쟁력 강화…SK하이닉스, 정기 주총 개최","이철희 KT 황창규, 수십억 들여 정관계 고문 위촉...로비 의혹!","LG CNS, 전 계열사 IT시스템 90% '구름 위로'"];
 headlineNum = len(headlines)
@@ -64,7 +59,7 @@ compPrice = ["76,100(+0.26%)","27,950(+0.0%)","76,100(+2.7%)","76,100(+0.26%)","
 ############################################################################
 @app.route('/')
 def homepage():
-	#title, url, summary = scrapeData()
+	
 	title=[1,2,3];url=[4,5,6];summary=[7,8,9]
 	article_count = len(title)
 	return render_template('index_main.html', today = today, companyNames = companyNames, compNum = compNum, keywords = keywords, count = count,
@@ -72,8 +67,12 @@ def homepage():
 	#return render_template('index.html', title=title,url=url,summary=summary,count=article_count)
 @app.route('/headlines')
 def gather_Headlines():
-	return render_template('index_2.html', month = month, monthEn = monthEn, day = day, headlineNum = headlineNum
-							,headlines = headlines, headlineUrl = headlineUrl, contents = contents, compName = compName, compPrice = compPrice)
+	year, month, day = today()
+	title, url, summary = scrapeData()
+	num_of_headlines = len(title)
+	return render_template('index_2.html', year = year, month = month, day = day, 
+							num_of_headlines = num_of_headlines, headlines = title, urls = url, summary = summary, 
+							compName = compName, compPrice = compPrice)
 
 def scrapeData(url):
 	headLine_Title = []
@@ -100,6 +99,14 @@ def scrapeData(url):
 		headLine_Summary.append(summarize(news.text, word_count=50))
 
 	return headLine_Title, headLine_Url, headLine_Summary
+
+
+def today():
+	calendar = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+	year = datetime.datetime.now().year
+	month = calendar[datetime.datetime.now().month-1]
+	day = datetime.datetime.now().date().day
+	return year, month, day
 
 if(__name__ == 'main'):
 	app.run()
