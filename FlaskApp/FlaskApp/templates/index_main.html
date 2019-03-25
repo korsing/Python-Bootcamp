@@ -148,7 +148,7 @@
 								<li>50</li>
 							</ul>
 						</label>
-						<table>
+						<table class='type01' style='margin-left: 0px;'>
 							<tr>
 								<th style="width:22%;">Company</th>
 								<th style="width:12%;">Keyword</th>
@@ -159,8 +159,16 @@
 											{% for x in range(0,7,1): %}
 												{% if(x==0): %}
 													<td>{{companyNames[y]}}</td>
-												{% elif(x%2==1): %}
-													<td>{{keywords[y][2]}}</td>
+												{% elif(x==1): %}
+													<td>{{keywords[y][0]}}</td>
+												{% elif(x==2): %}
+													<td>{{count[y][0]}}</td>
+												{% elif(x==3): %}
+													<td>{{keywords[y][1]}}</td>
+												{% elif(x==4): %}
+													<td>{{count[y][1]}}</td>
+												{% elif(x==5): %}
+													<td>{{keywords[y][2]}}</td>	
 												{% else: %}
 													<td>{{count[y][2]}}</td>
 												{% endif %}
