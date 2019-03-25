@@ -23,14 +23,10 @@
 			<div style="float: left;width: 100%;padding-top: 15px;">
 					{% for i in range(0,headlineNum,1): %}
 							{% if(i%2==0): %}
-								<div style='float: left; width: 45%;height:200px;margin-bottom:48px;
-														padding: 0.875em 0.875em;border:0px solid grey;box-shadow: 7px 7px 4px grey;
-														margin-bottom: 10px;background-color:rgb(247,247,247);'>
+								<div style='float: left; width: 45%;height:200px;margin-bottom:48px;'>
 									<p><a href={{headlineUrl[i]}}><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
 							{% else: %}
-								<div style='float: right; width: 45%;height:200px;margin-bottom:48px;
-														padding: 0.875em 0.875em;border:0px solid grey;box-shadow: 7px 7px 4px grey;
-														margin-bottom: 10px;background-color:rgb(247,247,247);'>
+								<div style='float: right; width: 45%;height:200px;margin-bottom:48px;'>
 								<p><a href={{headlineUrl[i]}}><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
 							{% endif %}
 					 {% endfor %}
@@ -48,14 +44,10 @@
 				<div style="float: left;width: 100%;padding-top: 15px;">
 					{% for i in range(0,headlineNum,1): %}
 							{% if(i%2==0): %}
-								<div style='float: left; width: 45%;height:200px;margin-bottom:48px;
-														padding: 0.875em 0.875em;border:0px solid grey;box-shadow: 7px 7px 4px grey;
-														margin-bottom: 10px;background-color:rgb(247,247,247);'>
+								<div style='float: left; width: 45%;height:200px;margin-bottom:48px;'>
 									<p><a href={{headlineUrl[i]}}><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
 							{% else: %}
-								<div style='float: right; width: 45%;height:200px;margin-bottom:48px;
-														padding: 0.875em 0.875em;border:0px solid grey;box-shadow: 7px 7px 4px grey;
-														margin-bottom: 10px;background-color:rgb(247,247,247);'>
+								<div style='float: right; width: 45%;height:200px;margin-bottom:48px;'>
 								<p><a href={{headlineUrl[i]}}><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
 							{% endif %}
 					 {% endfor %}
@@ -72,8 +64,8 @@
 		<!-- Nav -->
 		<nav id="nav">
 			<ul>
-				<li class="current"><a href="/">DashBoard</a></li>
-				<li><a href="/headlines">Headlines</a></li>
+				<li><a href="/">DashBoard</a></li>
+				<li class="current"><a href="/headlines">Headlines</a></li>
 				<li><a href="#">About Me</a></li>
 				<li><a href="#">Contact Me</a></li>
 			</ul>
