@@ -148,6 +148,21 @@
 								<li>50</li>
 							</ul>
 						</label>
+						<table class='type01' style='width:98%;'>
+							{% for y in range(0,compLen,1): %}
+								<tr>
+									{% if (y==0): %}
+										<th style="width:22%;">Company</th>
+										<th style="width:12%;">Keyword</th>
+										<th style="width:5%;">Count</th>
+									{% elif %}
+										<tb>y</tb>
+									{% endif %}
+								</tr>
+							{% endfor %}
+						</table>
+
+
 						<table>
 							{% for names in companyNames: %}
 							<tr>
