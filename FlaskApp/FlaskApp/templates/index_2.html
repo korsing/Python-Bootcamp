@@ -24,10 +24,10 @@
 					{% for i in range(0,headlineNum,1): %}
 							{% if(i%2==0): %}
 								<div style='float: left; width: 45%;height:200px;margin-bottom:48px;'>
-									<p><a href={{headlineUrl[i]}}><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
+									<p><a href={{headlineUrl[i]}} target="_blank"><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
 							{% else: %}
 								<div style='float: right; width: 45%;height:200px;margin-bottom:48px;'>
-								<p><a href={{headlineUrl[i]}}><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
+								<p><a href={{headlineUrl[i]} target="_blank"><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
 							{% endif %}
 					 {% endfor %}
 			</div>
@@ -45,10 +45,10 @@
 					{% for i in range(0,headlineNum,1): %}
 							{% if(i%2==0): %}
 								<div style='float: left; width: 45%;height:200px;margin-bottom:48px;'>
-									<p><a href={{headlineUrl[i]}}><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
+									<p><a href={{headlineUrl[i]}} target="_blank"><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
 							{% else: %}
 								<div style='float: right; width: 45%;height:200px;margin-bottom:48px;'>
-								<p><a href={{headlineUrl[i]}}><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
+								<p><a href={{headlineUrl[i]}} target="_blank"><strong>{{headlines[i]}}</strong></a></p><p>{{contents[i]}}</p><strong>{{ compName[i] }}  {{ compPrice[i] }}</strong></p></div>
 							{% endif %}
 					 {% endfor %}
 				</div>
