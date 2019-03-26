@@ -121,56 +121,56 @@
 		<div style="width:70%;float:left;">
 			<div style="padding: 0.875em 0.875em;margin-right: 20px;width:100%;">
 				<div style="float:left;padding: 0.875em 0.875em;border:2px solid grey;border-radius: 2em;margin-right: 20px;box-shadow: 10px 10px 5px grey;width:100%;margin-bottom: 50px;">
-						<h2 class="active" style="margin-left: 10px;margin-top: 13px;float:left;"><strong style="margin-right: 50px;"> Today's Keywords</strong></h2>
-						<table class='type01' style='margin-left: 0px;'>
-							<tr>
-								<th style="width:22%;">Company</th>
-								<th style="width:12%;">Keyword #1</th>
-								<th style="width:5%;">Freq</th>
-								<th style="width:12%;">Keyword #2</th>
-								<th style="width:5%;">Freq</th>
-								<th style="width:12%;">Keyword #3</th>
-								<th style="width:5%;">Freq</th>
-							</tr>
-								{% for y in range(0,compNum,1): %}
-									<tr>
-											{% for x in range(0,7,1): %}
-												{% if(x==0): %}
-													<td style="width:12%;">{{companyNames[y]}}</td>
-												{% elif(x==1): %}
-													<td style="width:12%;">{{keywords[y][0]}}</td>
-												{% elif(x==2): %}
-													<td style="width:5%;">{{count[y][0]}}</td>
-												{% elif(x==3): %}
-													<td style="width:12%;">{{keywords[y][1]}}</td>
-												{% elif(x==4): %}
-													<td style="width:5%;">{{count[y][1]}}</td>
-												{% elif(x==5): %}
-													<td style="width:12%;">{{keywords[y][2]}}</td>
-												{% else: %}
-													<td style="width:5%;">{{count[y][2]}}</td>
-												{% endif %}
-											{% endfor %}
-								  </tr>
-								{% endfor %}
-						</table>
+					<h2 class="active" style="margin-left: 10px;margin-top: 13px;float:left;"><strong style="margin-right: 50px;"> Today's Keywords</strong></h2>
+					<table class='type01' style='margin-left: 0px;'>
+						<tr>
+							<th style="width:22%;">Company</th>
+							<th style="width:12%;">Keyword #1</th>
+							<th style="width:5%;">Freq</th>
+							<th style="width:12%;">Keyword #2</th>
+							<th style="width:5%;">Freq</th>
+							<th style="width:12%;">Keyword #3</th>
+							<th style="width:5%;">Freq</th>
+						</tr>
+							{% for y in range(0,compNum,1): %}
+								<tr>
+									{% for x in range(0,7,1): %}
+										{% if(x==0): %}
+											<td style="width:12%;">{{companyNames[y]}}</td>
+										{% elif(x==1): %}
+											<td style="width:12%;">{{keywords[y][0]}}</td>
+										{% elif(x==2): %}
+											<td style="width:5%;">{{count[y][0]}}</td>
+										{% elif(x==3): %}
+											<td style="width:12%;">{{keywords[y][1]}}</td>
+										{% elif(x==4): %}
+											<td style="width:5%;">{{count[y][1]}}</td>
+										{% elif(x==5): %}
+											<td style="width:12%;">{{keywords[y][2]}}</td>
+										{% else: %}
+											<td style="width:5%;">{{count[y][2]}}</td>
+										{% endif %}
+									{% endfor %}
+								</tr>
+							{% endfor %}
+					</table>
+				</div>
+				<div style="width:580px; float:bottom;">
+					<div class="pagination">
+						<!--<a href="#" class="button previous">Previous Page</a>-->
+						<div class="pages" style="margin-left: 10px;">
+							<a href="#" class="active">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
+							<span>&hellip;</span>
+							<a href="#">20</a>
 						</div>
-						<div style="width:580px; float:bottom;">
-							<div class="pagination">
-								<!--<a href="#" class="button previous">Previous Page</a>-->
-								<div class="pages" style="margin-left: 10px;">
-									<a href="#" class="active">1</a>
-									<a href="#">2</a>
-									<a href="#">3</a>
-									<a href="#">4</a>
-									<span>&hellip;</span>
-									<a href="#">20</a>
-								</div>
-								<a href="#" class="button next">Next Page</a>
-							</div>
-						</div>
+						<a href="#" class="button next">Next Page</a>
 					</div>
-				</div><!--70%-->
+				</div>
+			</div>
+		</div><!--70%-->
 				<div style="width:25%; float:left; min-width:300px;padding: 0.875em 0.875em; ">
 					<div style="
 					float:left;
