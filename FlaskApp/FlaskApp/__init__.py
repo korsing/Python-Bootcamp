@@ -27,7 +27,11 @@ def homepage():
 @app.route('/headlines')
 def gather_Headlines():
 	date = today()
-	title, url = scrapeData()
+	c, conn = connectDB()
+	c.execute("SELECT title from article;")
+	title = c.fetchone()
+	c.execute("SELECT article_url from article;")
+	url = c.fetchone()
 	num_of_headlines = len(title)
 	return render_template('headlines.html', date = date, titles = title, urls = url, num_of_headlines = num_of_headlines)
 
@@ -98,7 +102,5 @@ def get_StockPrice(code):
 
 # Main
 if(__name__ == 'main'):
-	while(1):
-		insertDB()
-		time.sleep(10)
+	app.run()
 
