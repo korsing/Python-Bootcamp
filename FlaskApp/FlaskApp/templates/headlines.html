@@ -56,7 +56,7 @@
 						{% for i in range(0,num_of_headlines,1): %}
 						{% if(i%2==0): %}
 							<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
-								<div>
+								<div style='width:100%;'>
 								<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>{{titles[i][0]}}</strong></a></p>
 
 								{% if(i%4==1): %}<!-- headline logo -->
@@ -81,7 +81,7 @@
 					{% for i in range(0,num_of_headlines,1): %}
 					{% if(i%2==1): %}
 						<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
-							<div>
+							<div style='width:100%;'>
 							<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>{{titles[i][0]}}</strong></a></p>
 
 							{% if(i%3==1): %}<!-- headline logo -->
