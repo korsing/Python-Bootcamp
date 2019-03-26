@@ -74,7 +74,11 @@ def scrapeData():
 		# URL 던져주면 요약해주는 함수 실행
 		
 		# DB에 추가하는 함수 실행
-	return headline_Naver, url_Naver
+		for count in range(len(title)):
+			print("Article : {}".format(headline_Naver))	
+			print("    Url : {}".format(url_Naver))	
+			print()
+	
 
 def get_StockPrice(code):
 	req_Stock = requests.get('https://finance.naver.com/item/main.nhn?code='+code)
