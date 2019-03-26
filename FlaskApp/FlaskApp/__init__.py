@@ -98,7 +98,7 @@ def get_StockPrice(code):
 
 # Main
 if(__name__ == 'main'):
-	app.run()
-	crawling_thread = threading.Thread(target = scrapeData)
-	crawling_thread.start()
+	while(1):
+		insertDB()
+		time.sleep(10)
 
