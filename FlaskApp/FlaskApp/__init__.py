@@ -12,14 +12,16 @@ import requests
 from gensim.summarization import summarize
 from newspaper import Article
 from bs4 import BeautifulSoup
+# Threading related modules
+import threading
 
 app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-
-	return render_template('index.html', date = date, companyNames = companyNames, compNum = compNum, keywords = keywords, count = count,
-							UserNames = UserNames, OnClick = OnClick, keywords_ranked = keywords_ranked, ranked_count = ranked_count)
+	
+	#return render_template('index.html', date = date, companyNames = companyNames, compNum = compNum, keywords = keywords, count = count,
+	#						UserNames = UserNames, OnClick = OnClick, keywords_ranked = keywords_ranked, ranked_count = ranked_count)
 	#return render_template('index.html', title=title,url=url,summary=summary,count=article_count)
 
 @app.route('/headlines')
@@ -31,7 +33,7 @@ def gather_Headlines():
 
 
 # Custom Functions
-def connectDB():
+def connectDB(table, ):
 	conn = pymysql.connect(host="localhost", user="root", passwd="skgkdlslrtm", db="Bootcamp", charset='utf8')
 	c = conn.cursor()
 	return c, conn
@@ -75,5 +77,6 @@ def scrapeData():
 # Main
 if(__name__ == 'main'):
 	app.run()
-
+	crawling_thread = threading.Thread(target = scrapeData)
+	crawling_thread.start()
 
