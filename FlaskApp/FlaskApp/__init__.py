@@ -34,7 +34,7 @@ def gather_Headlines():
 
 # Custom Functions
 def connectDB():
-	conn = pymysql.connect(host="localhost", user="root", passwd="skgkdlslrtm", db="Bootcamp", charset='utf8')
+	conn = pymysql.connect(host="localhost", user="root", passwd="skgkdlslrtm", db="Bootcamp", charset='utf8mb4')
 	c = conn.cursor()
 	return c, conn
 
@@ -76,8 +76,8 @@ def scrapeData():
 		# DB에 추가하는 함수 실행
 		c, conn = connectDB()
 		now = datetime.datetime.now().strftime('%Y-%m-%d')
+		query = "INSERT INTO article (title, article_url, date, sum, key_1, key_2, key_3) VALUES (%s, %s, %s, %s, %s, %s, %s)"
 		for count in range(len(title)):
-			query = "INSERT INTO article (title, article_url, date, sum, key_1, key_2, key_3) VALUES (%s, %s, %s, %s, %s, %s, %s)"
 			c.execute(query,(headline_Naver[count], url_Naver[count], now, '0','0','0','0'))
 		conn.commit()
 		conn.close()
