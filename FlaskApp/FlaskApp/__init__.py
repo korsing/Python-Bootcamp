@@ -75,8 +75,8 @@ def scrapeData():
 		
 		# DB에 추가하는 함수 실행
 		for count in range(len(title)):
-			print("Article : {}".format(headline_Naver))	
-			print("    Url : {}".format(url_Naver))	
+			print("Article : {}".format(headline_Naver[count]))	
+			print("    Url : {}".format(url_Naver[count]))	
 			print()
 	
 
