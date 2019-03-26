@@ -29,10 +29,16 @@ def gather_Headlines():
 	date = today()
 	c, conn = connectDB()
 	c.execute("SELECT title from article;")
-	title = c.fetchall()
+	title_temp = c.fetchall()
 	c.execute("SELECT article_url from article;")
-	url = c.fetchall()
+	url_temp = c.fetchall()
+
 	num_of_headlines = len(title)
+	title = []
+	url = []
+	for i in range(num_of_headlines):
+		title.append(title_temp[i])
+		url.append(url_temp[i])
 	return render_template('headlines.html', date = date, titles = title, urls = url, num_of_headlines = num_of_headlines)
 
 
