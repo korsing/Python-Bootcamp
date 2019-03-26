@@ -6,14 +6,11 @@ import pymysql
 import requests
 from gensim.summarization import summarize
 from newspaper import Article
-import datetime ########################################################수정
+import datetime
 
 app = Flask(__name__)
 
 # 전체보기 (홈화면)
-
-##JS작업 교체부분############################################################
-import datetime
 ##########################index_main###############################
 ####table 1#####
 x=7;
@@ -68,11 +65,11 @@ def homepage():
 @app.route('/headlines')
 def gather_Headlines():
 	date = today()
-	# title, url, summary = scrapeData()
-	# num_of_headlines = len(title)
+	title, url, summary = scrapeData()
+	num_of_headlines = len(title)
 	return render_template('index_2.html', date = date)
 
-def scrapeData(url):
+def scrapeData():
 	headLine_Title = []
 	headLine_Url = []
 	headLine_Summary = []
