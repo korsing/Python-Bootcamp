@@ -50,24 +50,37 @@
 						</ul>
 					</div>
 					<div style="float: left;width: 100%;padding-top: 15px;">
+						<div style='float: left; width: 47%;'>
 						{% for i in range(0,num_of_headlines,1): %}
 						{% if(i%2==0): %}
-							<div class='backgroundImage' style='float: left; width: 45%;height:200px;margin-bottom:48px'>
+							<div class='backgroundImage' style='min-height:200px;margin-bottom:48px'>
 								<p class='newsHeadline'><a target="_blank" href={{urls[i]}}><strong>{{titles[i]}}</strong></a></p>
 								<p class='newsContent'>Summary goes here</p>
-								<p style='float:right'><strong>stock price here</strong></p>
-								<p style='float:right'><strong>Company name here&nbsp;&nbsp;</strong></p>
-							</div>
-						{% else: %}
-					  	<div class='backgroundImage' style='float: right; width: 45%;height:200px;margin-bottom:48px'>
-								<p class='newsHeadline'><a target="_blank" href={{urls[i]}}><strong>{{titles[i]}}</strong></a></p>
-								<p class='newsContent'>Summary goes here</p>
-								<p style='float:right'><strong>stock price here</strong></p>
-								<p style='float:right'><strong>Company name here&nbsp;&nbsp;</strong></p>
+								{% if(1): %}<!--compImage,price,name Not Null-->
+								<p style='float:right;margin-bottom:0px;'><strong>stock price here</strong></p>
+								<p style='float:right;margin-bottom:0px;'><strong>Company name here&nbsp;&nbsp;</strong></p>
+								<img src='../static/images/graph.png' style='width:100%;'/>
+								{% endif %}
 							</div>
 						{% endif %}
-				{% endfor %}
+						{% endfor %}
 					</div>
+					<div style='float: right; width: 47%;'>
+					{% for i in range(0,num_of_headlines,1): %}
+					{% if(i%2==1): %}
+						<div class='backgroundImage' style='min-height:200px;margin-bottom:48px'>
+							<p class='newsHeadline'><a target="_blank" href={{urls[i]}}><strong>{{titles[i]}}</strong></a></p>
+							<p class='newsContent'>Summary goes here</p>
+							{% if(0): %}<!--compImage,price,name Null-->
+							<p style='float:right;margin-bottom:0px;'><strong>stock price here</strong></p>
+							<p style='float:right;margin-bottom:0px;'><strong>Company name here&nbsp;&nbsp;</strong></p>
+							<img src='../static/images/graph.png' style='width:100%;'/>
+							{% endif %}
+						</div>
+					{% endif %}
+					{% endfor %}
+				</div>
+				</div>
 				</article>
 			</div>
 		</div>
