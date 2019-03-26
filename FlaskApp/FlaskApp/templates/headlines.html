@@ -5,6 +5,35 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="../static/assets/css/main.css" />
+	<style type='text/css'>
+	.backgroundImage{
+			background-image:url('../static/images/headline.jpg');
+			background-size: cover;
+			border:0px solid grey;
+			padding:10px 10px 10px 15px;
+			box-shadow: 5px 5px 2px grey;
+			width:100%;
+	}
+	.newsHeadline{
+		font-size: 16.5px;
+		white-space: normal;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		height: 50px;
+		margin-bottom: 8px;
+	}
+	.newsContent{
+		font-size: 16px;
+		font-family: monospace;
+		white-space: normal;
+		overflow: hidden;
+		line-height: 1.5;
+		height: 6em;
+		text-overflow: ellipsis;
+		margin-bottom: 0px;
+	}
+	a:link { color: red; text-decoration: none;}
+	</style>
 </head>
 <body class="is-preload">
 <!-- Content -->
@@ -23,22 +52,36 @@
 					<div style="float: left;width: 100%;padding-top: 15px;">
 						{% for i in range(0,num_of_headlines,1): %}
 						{% if(i%2==0): %}
-							<div style='float: left; width: 45%;height:200px;margin-bottom:48px;'>
-								<p><a target="_blank" href={{urls[i]}}><strong>{{titles[i]}}</strong></a></p>
-								<p>Summary goes here</p>
-								<strong>Company name, stock price go here</strong>
+							<div class='backgroundImage' style='float: left; width: 45%;height:200px;margin-bottom:48px'>
+								<p class='newsHeadline'><a target="_blank" href={{urls[i]}}><strong>{{titles[i]}}</strong></a></p>
+								<p class='newsContent'>Summary goes here</p>
+								<p style='float:right'><strong>stock price here</strong></p>
+								<p style='float:right'><strong>Company name here&nbsp;&nbsp;</strong></p>
 							</div>
 						{% else: %}
-							<div style='float: right; width: 45%;height:200px;margin-bottom:48px;'>
-								<p><a target="_blank" href={{urls[i]}}><strong>{{titles[i]}}</strong></a></p>
-								<p>Summary goes here</p>
-								<strong>Company name, stock price go here</strong>
+					  	<div class='backgroundImage' style='float: right; width: 45%;height:200px;margin-bottom:48px'>
+								<p class='newsHeadline'><a target="_blank" href={{urls[i]}}><strong>{{titles[i]}}</strong></a></p>
+								<p class='newsContent'>Summary goes here</p>
+								<p style='float:right'><strong>stock price here</strong></p>
+								<p style='float:right'><strong>Company name here&nbsp;&nbsp;</strong></p>
 							</div>
 						{% endif %}
 				{% endfor %}
 					</div>
 				</article>
 			</div>
+		</div>
+		<div class="pagination">
+			<!--<a href="#" class="button previous">Previous Page</a>-->
+			<div class="pages">
+				<a href="#" class="active">1</a>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<span>&hellip;</span>
+				<a href="#">20</a>
+			</div>
+			<a href="#" class="button next">Next Page</a>
 		</div>
 	</div>
 	<div id="sidebar">
