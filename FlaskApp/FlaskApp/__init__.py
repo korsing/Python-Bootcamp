@@ -1,14 +1,18 @@
 #-*- coding: utf-8-*-
 
-# Modules from Open Source
+# Flask related modules
 from flask import Flask, render_template, session, redirect, flash, request
+# DB related modules
+import pymysql
+# Date and Time related modules
+import datetime
+import time
+# Crawling related modules
+import requests
+from gensim.summarization import summarize
+from newspaper import Article
+from bs4 import BeautifulSoup
 
-'''
-# Modules from Custom Files
-from connectDB import *
-from scrapeData import *
-from dateTime import *
-'''
 app = Flask(__name__)
 '''
 x=7;
@@ -48,6 +52,37 @@ def gather_Headlines():
 	num_of_headlines = len(title)
 	return render_template('index_2.html', date = date, titles = title, urls = url, num_of_headlines = num_of_headlines)
 
+
+# Custom Functions
+def connectDB():
+	conn = pymysql.connect(host="localhost", user="root", passwd="skgkdlslrtm", db="Bootcamp", charset='utf8')
+	c = conn.cursor()
+	return c, conn
+
+def today():
+	calendar = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+	year = datetime.datetime.now().year
+	month = calendar[datetime.datetime.now().month-1]
+	day = datetime.datetime.now().date().day
+	return year, month, day
+
+def scrapeData():
+	headLine_Title = []
+	headLine_Url = []
+
+	# 네이버 경제 뉴스 URL
+	url = 'https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=101'
+
+	request = requests.get(url)
+	soup = BeautifulSoup(request.content, "lxml")
+	data = soup.find_all('a', {'class': 'cluster_text_headline nclicks(cls_eco.clsart)'})
+
+	# Scrape된 헤드라인 데이터 중 text 값은 Title로, href 태그는 URL로 저장
+	for element in data:
+		headLine_Title.append(element.text)
+		article_url = element.get('href')
+		headLine_Url.append(article_url)
+	return headLine_Title, headLine_Url
 
 if(__name__ == 'main'):
 	app.run()
