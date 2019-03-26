@@ -53,10 +53,10 @@
 						<div style='float: left; width: 47%;'>
 						{% for i in range(0,num_of_headlines,1): %}
 						{% if(i%2==0): %}
-							<div class='backgroundImage' style='min-height:200px;margin-bottom:48px'>
+							<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
 								<p class='newsHeadline'><a target="_blank" href={{urls[i]}}><strong>{{titles[i]}}</strong></a></p>
 								<p class='newsContent'>Summary goes here</p>
-								{% if(1): %}<!--compImage,price,name Not Null-->
+								{% if(i%3==2): %}<!--compImage,price,name Not Null-->
 								<p style='float:right;margin-bottom:0px;'><strong>stock price here</strong></p>
 								<p style='float:right;margin-bottom:0px;'><strong>Company name here&nbsp;&nbsp;</strong></p>
 								<img src='../static/images/graph.png' style='width:100%;'/>
@@ -68,10 +68,10 @@
 					<div style='float: right; width: 47%;'>
 					{% for i in range(0,num_of_headlines,1): %}
 					{% if(i%2==1): %}
-						<div class='backgroundImage' style='min-height:200px;margin-bottom:48px'>
+						<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
 							<p class='newsHeadline'><a target="_blank" href={{urls[i]}}><strong>{{titles[i]}}</strong></a></p>
 							<p class='newsContent'>Summary goes here</p>
-							{% if(0): %}<!--compImage,price,name Null-->
+							{% if(i%3==1): %}<!--compImage,price,name Null-->
 							<p style='float:right;margin-bottom:0px;'><strong>stock price here</strong></p>
 							<p style='float:right;margin-bottom:0px;'><strong>Company name here&nbsp;&nbsp;</strong></p>
 							<img src='../static/images/graph.png' style='width:100%;'/>
@@ -79,7 +79,7 @@
 						</div>
 					{% endif %}
 					{% endfor %}
-				</div>
+					</div>
 				</div>
 				</article>
 			</div>
