@@ -19,7 +19,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-	return "
+	return "DB WORKING!"
 	#return render_template('index.html', date = date, companyNames = companyNames, compNum = compNum, keywords = keywords, count = count,
 	#						UserNames = UserNames, OnClick = OnClick, keywords_ranked = keywords_ranked, ranked_count = ranked_count)
 	#return render_template('index.html', title=title,url=url,summary=summary,count=article_count)
