@@ -34,12 +34,15 @@ ranked_count = [15,12,11,10,8,7,5,4,3,2]
 
 @app.route('/')
 def homepage():
+	return ("GEKKO WORLD!")
+	'''
 	date = today()
 	title=[1,2,3];url=[4,5,6];summary=[7,8,9]
 	article_count = len(title)
 	return render_template('index_main.html', date = date, companyNames = companyNames, compNum = compNum, keywords = keywords, count = count,
 							UserNames = UserNames, OnClick = OnClick, keywords_ranked = keywords_ranked, ranked_count = ranked_count)
 	#return render_template('index.html', title=title,url=url,summary=summary,count=article_count)
+	'''
 @app.route('/headlines')
 def gather_Headlines():
 	date = today()
