@@ -71,9 +71,27 @@ def scrapeData():
 		headline_Naver.append(title.text)
 		url_Naver.append('https://finance.naver.com' + title.find('a').get('href'))
 	
-	# URL 던져주면 요약해주는 함수 실행
-	
+		# URL 던져주면 요약해주는 함수 실행
+		
+		# DB에 추가하는 함수 실행
 	return headline_Naver, url_Naver
+
+def get_StockPrice(code):
+	req_Stock = requests.get('https://finance.naver.com/item/main.nhn?code='+code)
+	soup_Stock = BeautifulSoup(r.content, 'lxml')
+
+	price_tag = soup_Stock.find_all('p', {'class': 'no_today'})
+	variation_tag = soup_Stock.find_all('em', {'class': 'no_down'})
+
+	price = price_tag[0].contents[1].contents[1].text
+	if(variation_tag[2].contents[1].text=='-'):
+		variation = int(variation_tag[2][3].text)*-1
+	elif(variation_tag[2].contents[1].text=='+'):
+		variation = int(variation_tag[2][3].text)
+	else:
+		return None
+	return price, variation
+
 # Main
 if(__name__ == 'main'):
 	app.run()
