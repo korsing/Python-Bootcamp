@@ -34,7 +34,7 @@ def gather_Headlines():
 
 # Custom Functions
 def connectDB():
-	conn = pymysql.connect(host="localhost", user="root", passwd="skgkdlslrtm", db="Bootcamp", charset='utf8')
+	conn = pymysql.connect(host="localhost", user="root", passwd="skgkdlslrtm", db="Bootcamp", charset='utf8mb4')
 	c = conn.cursor()
 	return c, conn
 
@@ -79,7 +79,12 @@ def insertDB():
 			c.execute(query,(headline_Naver[count], url_Naver[count], now, '0','0','0','0'))
 		conn.commit()
 		conn.close()
+'''
+headline_Naver = ["나나엄ㄴㄴㅁ", "ㄴㅁ어ㅕㅗㅁ냥ㄴㅁ", "ㄴ옴냥ㄴㅁㅇ눔ㄴ여"]
+url_Naver = ["sdjasnsads", "sdbhiasdsad", "sadihasdsaudsa"]
 
+
+'''
 def scrapeData():
 	# NAVER SCRAPYING
 	
