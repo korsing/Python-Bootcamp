@@ -39,8 +39,12 @@ def gather_Headlines():
 
 @app.route('/crawl')
 def crawl():
+	return render_template('crawl.html')
+
+@app.route('/refresh')
+def refresh():
 	scrapeTodb()
-	return render_template('dashboard.html')
+	return redirect('/crawl')
 
 # Custom Functions
 def connectDB():
