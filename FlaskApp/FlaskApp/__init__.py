@@ -79,43 +79,10 @@ def insertDB():
 			c.execute(query,(headline_Naver[count], url_Naver[count], now, '0','0','0','0'))
 		conn.commit()
 		conn.close()
-'''
-headline_Naver = ["나나엄ㄴㄴㅁ", "ㄴㅁ어ㅕㅗㅁ냥ㄴㅁ", "ㄴ옴냥ㄴㅁㅇ눔ㄴ여"]
-url_Naver = ["sdjasnsads", "sdbhiasdsad", "sadihasdsaudsa"]
-
-
-'''
-def scrapeData():
-	# NAVER SCRAPYING
-	
-	headline_Naver = []
-	url_Naver = []
-
-	# 네이버 경제 뉴스 URL
-	url_Economy = 'https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=101'
-	url_Stock = 'https://finance.naver.com/news/news_list.nhn?mode=LSS3D&section_id=101&section_id2=258&section_id3=402'
-
-	req_Economy = requests.get(url_Economy)
-	req_Stock = requests.get(url_Stock)
-
-	soup_Economy = BeautifulSoup(req_Economy.content, "lxml")
-	soup_Stock = BeautifulSoup(req_Stock.content, "lxml")
-
-	headlines_Economy = soup_Economy.find_all('a', {'class': 'cluster_text_headline nclicks(cls_eco.clsart)'})
-	headlines_Stock = soup_Stock.find_all('dd',{'class':'articleSubject'})
-
-	for title in headlines_Economy:
-		headline_Naver.append(title.text)
-		url_Naver.append(title.get('href'))
-	for title in headlines_Stock:
-		headline_Naver.append(title.text)
-		url_Naver.append('https://finance.naver.com' + title.find('a').get('href'))
-			
-	return headline_Naver, url_Naver
 
 def get_StockPrice(code):
 	req_Stock = requests.get('https://finance.naver.com/item/main.nhn?code='+code)
-	soup_Stock = BeautifulSoup(r.content, 'lxml')
+	soup_Stock = BeautifulSoup(req_Stock.content, 'lxml')
 
 	price_tag = soup_Stock.find_all('p', {'class': 'no_today'})
 	variation_tag = soup_Stock.find_all('em', {'class': 'no_down'})
