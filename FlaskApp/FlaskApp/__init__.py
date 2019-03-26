@@ -65,14 +65,13 @@ def homepage():
 @app.route('/headlines')
 def gather_Headlines():
 	date = today()
-	title, url, summary = scrapeData()
+	title, url = scrapeData()
 	num_of_headlines = len(title)
 	return render_template('index_2.html', date = date)
 
 def scrapeData():
 	headLine_Title = []
 	headLine_Url = []
-	headLine_Summary = []
 
 	# 네이버 경제 뉴스 URL
 	url = 'https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=101'
@@ -86,14 +85,7 @@ def scrapeData():
 		headLine_Title.append(element.text)
 		article_url = element.get('href')
 		headLine_Url.append(article_url)
-		# newspaper 라이브러리로 기사 본문 발췌
-		news = Article(article_url, language='ko')
-		news.download()
-		news.parse()
-		# summarize 함수로 50자로 요약 진행
-		headLine_Summary.append(summarize(news.text, word_count=50))
-
-	return headLine_Title, headLine_Url, headLine_Summary
+	return headLine_Title, headLine_Url
 
 
 def today():
