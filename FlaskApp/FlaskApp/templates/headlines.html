@@ -54,7 +54,7 @@
 						{% for i in range(0,num_of_headlines,1): %}
 						{% if(i%2==0): %}
 							<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
-								<p class='newsHeadline'><a target="_blank" href={{urls[i]}}><strong>{{titles[i]}}</strong></a></p>
+								<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>{{titles[i][0]}}</strong></a></p>
 								<p class='newsContent'>Summary goes here</p>
 								{% if(i%3==0): %}<!--compImage,price,name Not Null-->
 								<p style='float:right;margin-bottom:0px;'><strong>stock price here</strong></p>

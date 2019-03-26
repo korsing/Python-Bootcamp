@@ -29,9 +29,9 @@ def gather_Headlines():
 	date = today()
 	c, conn = connectDB()
 	c.execute("SELECT title from article;")
-	title = c.fetchall()[0]
+	title = c.fetchall()
 	c.execute("SELECT article_url from article;")
-	url = c.fetchall()[0]
+	url = c.fetchall()
 
 	num_of_headlines = len(title)
 	
