@@ -102,5 +102,5 @@ def get_StockPrice(code):
 
 # Main
 if(__name__ == 'main'):
-
+	app.run()
 
