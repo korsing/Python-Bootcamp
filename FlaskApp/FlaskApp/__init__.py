@@ -37,14 +37,19 @@ def gather_Headlines():
 	
 	return render_template('headlines.html', date = date, titles = title, urls = url, num_of_headlines = num_of_headlines)
 
-@app.route('/crawl')
+@app.route('/dashboard')
 def crawl():
-	return render_template('crawl.html')
+	c, conn = connectDB()
+	c.execute("SELECT seq, title, article_url, date FROM article;")
+	data = c.fetchall()
+	len_data = len(data)
+	conn.close()
+	return render_template('dashboard.html', data = data, len_data = len_data)
 
 @app.route('/refresh')
 def refresh():
 	scrapeTodb()
-	return redirect('/crawl')
+	return redirect('/dashboard')
 
 # Custom Functions
 def connectDB():
