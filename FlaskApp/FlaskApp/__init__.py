@@ -14,7 +14,7 @@ from newspaper import Article
 from bs4 import BeautifulSoup
 
 app = Flask(__name__)
-'''
+
 x=7;
 num = 0;
 companyNames = ["(주)LG화학","S-OIL(주)","에스케이네트웍스(주)","에스케이하이닉스(주)","현대모비스(주)","삼성화재해상보험(주)","한국토지주택공사","현대중공업(주)","한국가스공사",
@@ -32,19 +32,18 @@ OnClick = ["한국가스공사","(주)포스코","엘지디스플레이(주)","�
 ####table 3#####
 keywords_ranked = ["키워드랭크1","키워드랭크2","키워드랭크3","키워드랭크4","키워드랭크5","키워드랭크6","키워드랭크7","키워드랭크8","키워드랭크9","키워드랭크10"];
 ranked_count = [15,12,11,10,8,7,5,4,3,2]
-'''
+
 
 @app.route('/')
 def homepage():
-	return "GEKKO WORLD!"
-	'''
+
 	date = today()
 	title=[1,2,3];url=[4,5,6];summary=[7,8,9]
 	article_count = len(title)
 	return render_template('index_main.html', date = date, companyNames = companyNames, compNum = compNum, keywords = keywords, count = count,
 							UserNames = UserNames, OnClick = OnClick, keywords_ranked = keywords_ranked, ranked_count = ranked_count)
 	#return render_template('index.html', title=title,url=url,summary=summary,count=article_count)
-	'''
+
 @app.route('/headlines')
 def gather_Headlines():
 	date = today()
