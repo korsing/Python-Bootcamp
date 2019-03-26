@@ -19,7 +19,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-	return "DB Construction on going.. Please wait another 600,000 seconds"
+	return "
 	#return render_template('index.html', date = date, companyNames = companyNames, compNum = compNum, keywords = keywords, count = count,
 	#						UserNames = UserNames, OnClick = OnClick, keywords_ranked = keywords_ranked, ranked_count = ranked_count)
 	#return render_template('index.html', title=title,url=url,summary=summary,count=article_count)
@@ -37,6 +37,10 @@ def gather_Headlines():
 	
 	return render_template('headlines.html', date = date, titles = title, urls = url, num_of_headlines = num_of_headlines)
 
+@app.route('/crawl')
+def crawl():
+	scrapeTodb()
+	return redirect('/dashboard')
 
 # Custom Functions
 def connectDB():
@@ -51,7 +55,7 @@ def today():
 	day = datetime.datetime.now().date().day
 	return year, month, day
 
-def insertDB():
+def scrapeTodb():
 	# NAVER SCRAPYING
 	
 	headline_Naver = []
@@ -81,8 +85,10 @@ def insertDB():
 		c, conn = connectDB()
 		now = datetime.datetime.now().strftime('%Y-%m-%d')
 		query = "INSERT INTO article (title, article_url, date, sum, key_1, key_2, key_3) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-		for count in range(3):
-			c.execute(query,(headline_Naver[count], url_Naver[count], now, '0','0','0','0'))
+		for count in range(len(headline_Naver)):
+			flag = c.execute("SELECT title FROM article where title = %s;", (headline_Naver[count]))
+			if(flag == 0):
+				c.execute(query,(headline_Naver[count], url_Naver[count], now, '0','0','0','0'))
 		conn.commit()
 		conn.close()
 
