@@ -40,7 +40,7 @@ def gather_Headlines():
 @app.route('/crawl')
 def crawl():
 	scrapeTodb()
-	return redirect('/dashboard')
+	return redirect('dashboard.html')
 
 # Custom Functions
 def connectDB():
