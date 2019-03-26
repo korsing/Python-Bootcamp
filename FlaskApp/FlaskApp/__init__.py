@@ -68,8 +68,8 @@ def homepage():
 @app.route('/headlines')
 def gather_Headlines():
 	date = today()
-	title, url, summary = scrapeData()
-	num_of_headlines = len(title)
+	# title, url, summary = scrapeData()
+	# num_of_headlines = len(title)
 	return render_template('index_2.html', date = date)
 
 def scrapeData(url):
