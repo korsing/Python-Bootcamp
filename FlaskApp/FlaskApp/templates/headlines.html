@@ -12,13 +12,15 @@
 			border:0px solid grey;
 			padding:10px 10px 10px 15px;
 			box-shadow: 5px 5px 2px grey;
-			width:100%;
+			width: 88%;
 	}
 	.newsHeadline{
 		font-size: 16.5px;
 		white-space: normal;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		float: left;
+		width:93%;
 		height: 50px;
 		margin-bottom: 8px;
 	}
@@ -55,6 +57,11 @@
 						{% if(i%2==0): %}
 							<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
 								<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>{{titles[i][0]}}</strong></a></p>
+								{% if(i%4==1): %}<!-- headline logo -->
+								<img src='../static/images/naver.png' style='width:10%;float:right;'/>
+								{% else %}
+								<img src='../static/images/nate.png' style='width:10%;float:right;'/>
+								{% endif %}
 								<p class='newsContent'>Summary goes here</p>
 								{% if(i%3==0): %}<!--compImage,price,name Not Null-->
 								<p style='float:right;margin-bottom:0px;'><strong>stock price here</strong></p>
@@ -70,11 +77,16 @@
 					{% if(i%2==1): %}
 						<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
 							<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>{{titles[i][0]}}</strong></a></p>
+							{% if(i%3==1): %}<!-- headline logo -->
+							<img src='../static/images/naver.png' style='width:10%;float:right;'/>
+							{% else %}
+							<img src='../static/images/nate.png' style='width:10%;float:right;'/>
+							{% endif %}
 							<p class='newsContent'>Summary goes here</p>
 							{% if(i%4==1): %}<!--compImage,price,name Null-->
 							<p style='float:right;margin-bottom:0px;'><strong>stock price here</strong></p>
 							<p style='float:right;margin-bottom:0px;'><strong>Company name here&nbsp;&nbsp;</strong></p>
-							<img src='../static/images/graph.png' style='width:100%;'/>
+							<img src='../static/images/graph.png' style='width:10%;'/>
 							{% endif %}
 						</div>
 					{% endif %}
