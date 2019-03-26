@@ -67,7 +67,7 @@ def gather_Headlines():
 	date = today()
 	title, url = scrapeData()
 	num_of_headlines = len(title)
-	return render_template('index_2.html', date = date)
+	return render_template('index_2.html', date = date, titles = title, urls = url, num_of_headlines = num_of_headlines)
 
 def scrapeData():
 	headLine_Title = []

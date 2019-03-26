@@ -21,7 +21,21 @@
 						</ul>
 					</div>
 					<div style="float: left;width: 100%;padding-top: 15px;">
-						Hello World!
+						{% for i in range(0,num_of_headlines,1): %}
+						{% if(i%2==0): %}
+							<div style='float: left; width: 45%;height:200px;margin-bottom:48px;'>
+								<p><a target="_blank" href={{urls[i]}}><strong>{{titles[i]}}</strong></a></p>
+								<p>Summary goes here</p>
+								<strong>Company name, stock price go here</strong>
+							</div>
+						{% else: %}
+							<div style='float: right; width: 45%;height:200px;margin-bottom:48px;'>
+								<p><a target="_blank" href={{urls[i]}}><strong>{{titles[i]}}</strong></a></p>
+								<p>Summary goes here</p>
+								<strong>Company name, stock price go here</strong>
+							</div>
+						{% endif %}
+				{% endfor %}
 					</div>
 				</article>
 			</div>
