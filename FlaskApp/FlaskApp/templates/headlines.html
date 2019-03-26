@@ -20,7 +20,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		float: left;
-		width:93%;
+		width:90%;
 		height: 50px;
 		margin-bottom: 8px;
 	}
@@ -56,14 +56,16 @@
 						{% for i in range(0,num_of_headlines,1): %}
 						{% if(i%2==0): %}
 							<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
+								<div>
 								<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>{{titles[i][0]}}</strong></a></p>
 
 								{% if(i%4==1): %}<!-- headline logo -->
-								<img src='../static/images/naverIcon.png' style='width:10%;float:right;'/>
+								<img src='../static/images/naverIcon.png' style='width:8%;float:right;'/>
 								{% else %}
-								<img src='../static/images/nateIcon.png' style='width:10%;float:right;'/>
+								<img src='../static/images/nateIcon.png' style='width:8%;float:right;'/>
 								{% endif %}
 
+								</div>
 								<p class='newsContent'>Summary goes here</p>
 								{% if(i%3==0): %}<!--compImage,price,name Not Null-->
 								<p style='float:right;margin-bottom:0px;'><strong>stock price here</strong></p>
@@ -79,21 +81,23 @@
 					{% for i in range(0,num_of_headlines,1): %}
 					{% if(i%2==1): %}
 						<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
+							<div>
 							<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>{{titles[i][0]}}</strong></a></p>
 
 							{% if(i%3==1): %}<!-- headline logo -->
-							<img src='../static/images/naverIcon.png' style='width:10%;float:right;'/>
+							<img src='../static/images/naverIcon.png' style='width:8%;float:right;'/>
 							{% else %}
-							<img src='../static/images/nateIcon.png' style='width:10%;float:right;'/>
+							<img src='../static/images/nateIcon.png' style='width:8%;float:right;'/>
 							{% endif %}
 
+							</div>
 							<p class='newsContent'>Summary goes here</p>
 							{% if(i%4==1): %}<!--compImage,price,name Null-->
 							<p style='float:right;margin-bottom:0px;'><strong>stock price here</strong></p>
 							<p style='float:right;margin-bottom:0px;'><strong>Company name here&nbsp;&nbsp;</strong></p>
 							<img src='../static/images/graph.png' style='width:10%;'/>
 							{% endif %}
-							
+
 						</div>
 					{% endif %}
 					{% endfor %}
