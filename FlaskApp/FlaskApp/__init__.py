@@ -4,9 +4,9 @@
 from flask import Flask, render_template, session, redirect, flash, request
 
 # Modules from Custom Files
-from connectDB.py import *
-from scrapeData.py import *
-from time.py import *
+from connectDB import *
+from scrapeData import *
+from dateTime import *
 
 app = Flask(__name__)
 
