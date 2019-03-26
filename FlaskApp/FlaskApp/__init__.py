@@ -78,7 +78,7 @@ def scrapeData():
 		now = datetime.datetime.now().strftime('%Y-%m-%d')
 		for count in range(len(title)):
 			query = "INSERT INTO article (title, article_url, date, sum, key_1, key_2, key_3) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-			c.execute(query,(headline_Naver[count], url_Naver[count], now, 0,0,0,0))
+			c.execute(query,(headline_Naver[count], url_Naver[count], now, '0','0','0','0'))
 		conn.commit()
 		conn.close()
 	
