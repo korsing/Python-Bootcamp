@@ -40,7 +40,7 @@ def homepage():
 	date = today()
 	title=[1,2,3];url=[4,5,6];summary=[7,8,9]
 	article_count = len(title)
-	return render_template('index_main.html', date = date, companyNames = companyNames, compNum = compNum, keywords = keywords, count = count,
+	return render_template('index.html', date = date, companyNames = companyNames, compNum = compNum, keywords = keywords, count = count,
 							UserNames = UserNames, OnClick = OnClick, keywords_ranked = keywords_ranked, ranked_count = ranked_count)
 	#return render_template('index.html', title=title,url=url,summary=summary,count=article_count)
 
@@ -49,7 +49,7 @@ def gather_Headlines():
 	date = today()
 	title, url = scrapeData()
 	num_of_headlines = len(title)
-	return render_template('index_2.html', date = date, titles = title, urls = url, num_of_headlines = num_of_headlines)
+	return render_template('headlines.html', date = date, titles = title, urls = url, num_of_headlines = num_of_headlines)
 
 
 # Custom Functions
