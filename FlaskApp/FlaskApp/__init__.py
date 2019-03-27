@@ -17,10 +17,10 @@ from newspaper import Article
 from bs4 import BeautifulSoup
 import urllib.parse
 import urllib.request
-'''
+
 # Threading related modules
 import threading
-
+'''
 # Keyword Extraction related modules
 from sklearn.feature_extraction.text import TfidfVectorizer
 from konlpy.tag import Komoran
