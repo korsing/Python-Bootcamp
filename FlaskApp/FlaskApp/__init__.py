@@ -305,7 +305,7 @@ def relatedTokeyword(keyword_from_list, c_name_from_list_1, temp):
             
     return keyword_from_c_name        
  #%% 
-'''
+
 # Main
 if(__name__ == 'main'):
 	app.run()
