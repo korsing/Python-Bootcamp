@@ -61,7 +61,7 @@ def crawl():
 def refresh():
 	scrapeArticles()
 	return redirect('/dashboard')
-'''
+
 # Custom Functions
 def connectDB():
 	conn = pymysql.connect(host="localhost", user="root", passwd="skgkdlslrtm", db="Bootcamp", charset='utf8mb4')
