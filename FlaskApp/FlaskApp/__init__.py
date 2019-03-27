@@ -47,7 +47,7 @@ def gather_Headlines():
 
 	num_of_headlines = len(title)
 	conn.close()
-	return render_template("headlines.html", titles = title, urls = url, date = date, num_of_headlines = num_of_headlines) 
+	return render_template("headlines_user.html", titles = title, urls = url, date = date, num_of_headlines = num_of_headlines) 
 
 def today():
 	calendar = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
