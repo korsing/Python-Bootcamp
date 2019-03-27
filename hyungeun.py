@@ -4,7 +4,6 @@ from konlpy.tag import Komoran
 from collections import Counter
 import numpy as np
 import os
-import pandas as pd
 import urllib.parse
 import urllib.request
 import requests
@@ -14,24 +13,8 @@ import time
 
 komoran = Komoran()
 urls = []
-
-
-def read_csv_file(filename,index=False):
-    if index == False:    
-        filepath=os.path.join(os.getcwd(),filename)
-        data = pd.read_csv(filepath)
-        data = data.values.tolist() 
-    elif index == True : 
-        filepath=os.path.join(os.getcwd(),filename)
-        data = pd.read_csv(filepath,index_col=0,header=0)
-        data = data.values.tolist() 
-    return data
-
-    
+   
 #%%
-company_list = read_csv_file('companylist.csv',index=True)
-company_list_1 = [company_list[i][0] for i in range(len(company_list))]
-company_list_2 = [komoran.nouns(company_list[i][1]) for i in range(len(company_list))]
 
  # 기사 URL
 def UrltoKeyword(urls, weight):
@@ -166,18 +149,5 @@ for t in range(1):
     noti_c_name = counter_c_name.most_common(1)
     print(noti_c_name)
     
-    # DB에 저장된 keyword 가저오기 
-    if t == 0 : 
-        keyword_prev= keyword
-            
-    weight=[]
-    for i in range(len(keyword_prev)):
-        for j in range(len(keyword)):
-            if keyword[j][0] in keyword_prev[i][0] : 
-                weight.append(keyword[j][0])
-    count_weight= Counter(weight)
-    prefered_keyword = count_weight.most_common(5)
-
-
      
         
