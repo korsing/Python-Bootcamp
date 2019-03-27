@@ -34,8 +34,32 @@ komoran = Komoran()
 
 @app.route('/')
 def homepage():
-	return "작업 중"
-	
+	return rendertemplate("dashboard.html")
+
+@app.route('/headlines')
+def gather_Headlines():
+	date = today()
+	c, conn = connectDB()
+	c.execute("SELECT title from article;")
+	title = c.fetchall()
+	c.execute("SELECT article_url from article;")
+	url = c.fetchall()
+
+	num_of_headlines = len(title)
+	return render_template("headlines.html", titles = title, urls = url, date = date, num_of_headlines = num_of_headlines) 
+
+def today():
+	calendar = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+	year = datetime.datetime.now().year
+	month = calendar[datetime.datetime.now().month-1]
+	day = datetime.datetime.now().date().day
+	return year, month, day
+
+def connectDB():
+	conn = pymysql.connect(host="localhost", user="root", passwd="skgkdlslrtm", db="Bootcamp", charset='utf8mb4')
+	c = conn.cursor()
+	return c, conn
+
 # Main
 if(__name__ == 'main'):
 	app.run()
