@@ -20,9 +20,10 @@ import urllib.request
 
 # Threading related modules
 import threading
-'''
+
 # Keyword Extraction related modules
 from sklearn.feature_extraction.text import TfidfVectorizer
+'''
 from konlpy.tag import Komoran
 from collections import Counter
 import numpy as np
