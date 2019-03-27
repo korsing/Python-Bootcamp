@@ -66,18 +66,19 @@
 									<th>Related keywords</th>
 								</tr>
 
-								{% for y in range(0,seq,1): %}<!--일단은 페이지 처리 안함-->
+								<!--일단은 페이지 처리 안함-->
+								<!-- {% for y in range(0,seq,1): %} -->
 								<tr>
-									<td rowspan="3" align="center">{{y+1}}</td>
-									<td>{{headline[i]}}</td>
+									<td rowspan="3" align="center">y+1</td>
+									<td>headline[i]</td>
 								</tr>
 								<tr>
-									<td>{{Related_Comp[i]}}</td>
+									<td>Related_Comp[i]</td>
 								</tr>
 								<tr>
-									<td>{{Related_keywords[i]}}</td>
+									<td>Related_keywords[i]</td>
 								</tr>
-								{% endfor %}
+								<!-- {% endfor %} -->
 
 							</table>
 						</div>
@@ -93,7 +94,6 @@
 									<a href="#">20</a>
 								</div>
 								<a href="#" class="button next">Next Page</a>
-							</div>
 						</div>
 					</div>
 				</div><!--70%-->
@@ -112,7 +112,7 @@
 								</tr>
 								<tr>
 									<th colspan="2">Prefered keywords</th>
-								</tr> -->
+								</tr>
 
 							{% for y in range(0,userNum,1): %}
 									<tr >
