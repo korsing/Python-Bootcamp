@@ -10,11 +10,22 @@ import requests
 from bs4 import BeautifulSoup
 from gensim.summarization import summarize 
 import time 
+import pymysql
 
 komoran = Komoran()
 urls = []
-   
-#%%
+
+def connectDB():
+    conn = pymysql.connect(host="localhost", user="root", passwd="skgkdlslrtm", db="Bootcamp", charset='utf8mb4')
+    c = conn.cursor()
+    return c, conn
+    
+c, conn = connectDB()
+c.execute("SELECT name from company;")
+temp = c.fetchall()
+company_list_1 = [temp[i][0] for i in range(len(temp))]
+
+
 
  # 기사 URL
 def UrltoKeyword(urls, weight):
@@ -122,6 +133,7 @@ def relatedTokeyword(keyword_from_list, c_name_from_list_1, temp):
                 keyword_from_c_name[i].append(k[j][1])
             
     return keyword_from_c_name         
+
 
   #%%
 timee=5#time
