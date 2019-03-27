@@ -54,58 +54,6 @@
 						</ul>
 					</div>
 					<div style="float: left;width: 100%;padding-top: 15px;">
-						<p style='height:50px;	 font-size:30px'>User Notification : Keywords({{userKeyword[Username]}})</p>
-						<div style='float: left; width: 47%;'>
-						{% for i in range(0,2,1): %}<!--user data 하나만 받아서 하는 것도 좋을거 같음-->
-							<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
-								<div style='width:100%;'>
-								<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>{{titles[i][0]}}</strong></a></p>
-
-								{% if(i%5==1): %}<!-- headline logo -->
-								<img src='../static/images/naverIcon.png' style='width:8%;float:right;'/>
-								{% else %}
-								<img src='../static/images/nateIcon.png' style='width:8%;float:right;'/>
-								{% endif %}
-
-								</div>
-								<p class='newsContent'>Summary goes here</p>
-								{% if(i%3==0): %}<!--compImage,price,name Not Null-->
-								<p style='float:right;margin-bottom:0px;'><strong>stock price here</strong></p>
-								<p style='float:right;margin-bottom:0px;'><strong>Company name here&nbsp;&nbsp;</strong></p>
-								<img src='../static/images/graph.png' style='width:100%;'/>
-								{% endif %}
-
-							</div>
-						{% endfor %}
-						</div>
-						<div style='float: right; width: 47%;'>
-
-						{% for i in range(0,num_of_headlines,1): %}
-						<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
-							<div style='width:100%;'>
-							<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>{{titles[i][0]}}</strong></a></p>
-
-							{% if(i%3==1): %}<!-- headline logo -->
-							<img src='../static/images/naverIcon.png' style='width:8%;float:right;'/>
-							{% else %}
-							<img src='../static/images/nateIcon.png' style='width:8%;float:right;'/>
-							{% endif %}
-
-							</div>
-							<p class='newsContent'>Summary goes here</p>
-							{% if(i%4==1): %}<!--compImage,price,name Null-->
-							<p style='float:right;margin-bottom:0px;'><strong>stock price here</strong></p>
-							<p style='float:right;margin-bottom:0px;'><strong>Company name here&nbsp;&nbsp;</strong></p>
-							<img src='../static/images/graph.png' style='width:100%;'/>
-							{% endif %}
-
-						</div>
-						{% endfor %}
-						</div>
-
-						<hr style="width:100%; border-top:solid 1.5px grey;">
-						<p style='height:50px;font-size:30px; width:100%; float:left;'>Headlines</p>
-
 						<div style='float: left; width: 47%;'>
 						{% for i in range(0,num_of_headlines,1): %}
 						{% if(i%2==0): %}
@@ -132,7 +80,6 @@
 						{% endfor %}
 					</div>
 					<div style='float: right; width: 47%;'>
-
 					{% for i in range(0,num_of_headlines,1): %}
 					{% if(i%2==1): %}
 						<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
