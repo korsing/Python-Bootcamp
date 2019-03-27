@@ -61,7 +61,7 @@ def connectDB():
 	c = conn.cursor()
 	return c, conn
 
- '''
+'''
 def UrltoKeyword(urls, weight):
     
     article_text_noun = []
