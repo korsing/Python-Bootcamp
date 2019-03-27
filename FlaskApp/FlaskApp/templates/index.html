@@ -1,105 +1,279 @@
 <!DOCTYPE HTML>
-<!--
-	Striped by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
--->
+
 <html>
-	<head>
-		<title>Python Bootcamp Project</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../static/assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<head>
+	<title>Python Bootcamp Project</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../static/assets/css/main.css" />
+	<style >
+		  h1 {
+			font-size: 30pt;
+		  }
+		  .jb-th-1 {
+				    width: 10px;
+		  }
+		  table.type01 {
+			border-collapse: collapse;
+			text-align: left;
+			line-height: 1.5;
+			margin : 20px 10px;
+		  }
+		  table.type01 th {
+			width: 150px;
+			padding: 10px;
+			font-weight: bold;
+			vertical-align: top;
+			border: 1px solid #ccc;
+		  }
+		  table.type01 td {
+		 	width: 350px;
+			padding: 10px;
+			vertical-align: top;
+			border: 1px solid #ccc;
+		  }
+		  .dropdown {
+  		display: inline-block;
+  		position: relative;
+			}
 
-		<!-- Content -->
-			<div id="content">
-				<div class="inner">
+			.dd-button {
+  		display: inline-block;
+  		border: 1px solid gray;
+  		border-radius: 4px;
+  		padding: 5px 30px 5px 20px;
+  		margin-top: 5px;
+  		background-color: #ffffff;
+  		cursor: pointer;
+  		white-space: nowrap;
+			}
 
-					<!-- Post -->
-					{% for i in range(5): %}
-					<article class="box post post-excerpt">
-						<header>
-							<h2><a href="#">#하이닉스, #삼성전자, #반도체</a></h2>
-							<p>{{ title[0] }}</p>
-						</header>
-						<div class="info">
+			.dd-button:after {
+  		content: '';
+  		position: absolute;
+  		top: 50%;
+  		right: 15px;
+  		transform: translateY(-50%);
+  		width: 0;
+  		height: 0;
+  		border-left: 5px solid transparent;
+  		border-right: 5px solid transparent;
+  		border-top: 5px solid black;
+			}
 
-							<span class="date"><span class="month">Jul<span>y</span></span> <span class="day">14</span><span class="year">, 2014</span></span>
-							<ul class="stats">
-								<li><a href="#" class="icon fa-heart">32</a></li>
-							</ul>
+			.dd-button:hover {
+  		background-color: #eeeeee;
+			}
+		.dd-input {
+  	display: none;
+		}
+
+		.dd-menu {
+  	position: absolute;
+  	top: 100%;
+  	width: 100%;
+  	border: 1px solid #ccc;
+  	border-radius: 4px;
+  	padding: 0;
+  	margin: 2px 0 0 0;
+  	box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
+  	background-color: #ffffff;
+  	list-style-type: none;
+		}
+
+		.dd-input + .dd-menu {
+  	display: none;
+		}
+
+		.dd-input:checked + .dd-menu {
+  	display: block;
+		}
+
+		.dd-menu li {
+  	padding: 10px 20px;
+  	cursor: pointer;
+  	white-space: nowrap;
+		}
+
+		.dd-menu li:hover {
+  	background-color: #f6f6f6;
+		}
+
+		.dd-menu li a {
+  	display: block;
+  	margin: -10px -20px;
+  	padding: 10px 20px;
+		}
+
+		.dd-menu li.divider{
+  	padding: 0;
+  	border-bottom: 1px solid #cccccc;
+		}
+	</style>
+</head>
+
+<body class="is-preload">
+	<div id="content" style="margin-left: 0px;padding-left: 40px;padding-right: 40px;">
+		<!--p id="days" style="font-size:90px"></p-->
+		<h1 id="logo"  style="margin-left: 40px;">
+				<p>{{ date[1] }} {{ date[2] }} {{ date[0] }}</p>
+		</h1>
+		<div style="width:70%;float:left;">
+			<div style="padding: 0.875em 0.875em;margin-right: 20px;width:100%;">
+				<div style="float:left;padding: 0.875em 0.875em;border:2px solid grey;border-radius: 2em;margin-right: 20px;box-shadow: 10px 10px 5px grey;width:100%;margin-bottom: 50px;">
+					<h2 class="active" style="margin-left: 10px;margin-top: 13px;float:left;"><strong style="margin-right: 50px;"> Today's Keywords</strong></h2>
+					<table class='type01' style='margin-left: 0px;'>
+						<tr>
+							<th style="width:22%;">Company</th>
+							<th style="width:12%;">Keyword #1</th>
+							<th style="width:5%;">Freq</th>
+							<th style="width:12%;">Keyword #2</th>
+							<th style="width:5%;">Freq</th>
+							<th style="width:12%;">Keyword #3</th>
+							<th style="width:5%;">Freq</th>
+						</tr>
+							{% for y in range(0,compNum,1): %}
+								<tr>
+									{% for x in range(0,7,1): %}
+										{% if(x==0): %}
+											<td style="width:12%;">{{companyNames[y]}}</td>
+										{% elif(x==1): %}
+											<td style="width:12%;">{{keywords[y][0]}}</td>
+										{% elif(x==2): %}
+											<td style="width:5%;">{{count[y][0]}}</td>
+										{% elif(x==3): %}
+											<td style="width:12%;">{{keywords[y][1]}}</td>
+										{% elif(x==4): %}
+											<td style="width:5%;">{{count[y][1]}}</td>
+										{% elif(x==5): %}
+											<td style="width:12%;">{{keywords[y][2]}}</td>
+										{% else: %}
+											<td style="width:5%;">{{count[y][2]}}</td>
+										{% endif %}
+									{% endfor %}
+								</tr>
+							{% endfor %}
+					</table>
+				</div>
+				<div style="width:580px; float:bottom;">
+					<div class="pagination">
+						<!--<a href="#" class="button previous">Previous Page</a>-->
+						<div class="pages" style="margin-left: 10px;">
+							<a href="#" class="active">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
+							<span>&hellip;</span>
+							<a href="#">20</a>
 						</div>
-						
-						<a href="#" class="image featured"><img src="../static/images/pic01.jpg" alt="" /></a>
-						<p><strong>Aenean!</strong> Aenean blandit at Eleifend, non massa adipiscing augue nisl faucibus accumsan ut Pellentesque Adipiscing Et interdum cep primis, pellentesque egestas, aliquet col sed morbi elit pharetra vestibulum pellentesque, lectus vis laoreet, pellentesque iaculis justo ac feugiat, sit parturient arcu accumsan ata vitae leo ante pellentesque quam duis accumsan mus penatibus.</p>
-						<p>Pretium mi accumsan sed erat felis vel Suscipit Aliquet Condimentum natoque at arcu diam ut cep eu mus eleifend pellentesque quam adipiscing cras aliquam urna et duis mi aenean Vestibulum dis nec blandit. Id sem amet nibh ata col risus, mi elit in augue sollicitudin non orci enim euismod at nullam at ut Commodo sit vis lobortis mus faucibus.</p>
-					</article>
-					{% endfor %}
-
-					<!-- Pagination -->
-						<div class="pagination">
-							<!--<a href="#" class="button previous">Previous Page</a>-->
-							<div class="pages">
-								<a href="#" class="active">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#">4</a>
-								<span>&hellip;</span>
-								<a href="#">20</a>
-							</div>
-							<a href="#" class="button next">Next Page</a>
-						</div>
-
+						<a href="#" class="button next">Next Page</a>
+					</div>
+				</div>
+			</div>
+		</div><!--70%-->
+				<div style="width:25%; float:left; min-width:300px;padding: 0.875em 0.875em; ">
+					<div style="
+					float:left;
+					padding: 0.875em 0.875em;
+					border:0px solid grey;
+					box-shadow: 7px 7px 4px grey;
+					margin-bottom: 10px;
+					background-color:rgb(247,247,247);
+					">
+						<h1  class="active" style="font-size:30px;"><strong>User log</strong></h1>
+						<table class='type01' style='margin-left: 0px;'>
+								<tr>
+									<th style="width:40%;">User</th>
+									<th>OnClick</th>
+								</tr>
+							{% for y in range(0,7,1): %}
+									<tr>
+										{% for x in range(0,2,1): %}
+											{% if(x==0): %}
+										  	<td>{{UserNames[y]}}</td>
+											{% else: %}
+												<td>{{OnClick[y]}}</td>
+											{% endif %}
+										{% endfor %}
+									</tr>
+							{% endfor %}
+						</table>
+					</div>
+					<div style="
+					float:left;
+					padding: 0.875em 0.875em;
+					border:0px solid grey;
+					box-shadow: 7px 7px 4px grey;
+					margin-bottom: 40px;
+					background-color:rgb(247,247,247);
+					">
+						<h1  class="active"  style="font-size:30px;"><strong>Keyword rank</strong></h1>
+						<table class='type01' style='margin-left: 0px;'>
+								<tr>
+									<th style="width:40%;">Keyword</th>
+									<th>Freq</th>
+								</tr>
+							{% for y in range(0,10,1): %}
+									<tr>
+										{% for x in range(0,2,1): %}
+											{% if(x==0): %}
+										  	<td>{{keywords_ranked[y]}}</td>
+											{% else: %}
+												<td>{{ranked_count[y]}}</td>
+											{% endif %}
+										{% endfor %}
+									</tr>
+							{% endfor %}
+						</table>
+					</div>
 				</div>
 			</div>
 
-		<!-- Sidebar -->
+			<!-- Sidebar -->
 			<div id="sidebar">
 
 				<!-- Logo -->
-					<h1 id="logo"><a href="#">SK Hynix</a></h1>
+				<h1 id="logo"><a href="/">SK Hynix</a></h1>
 
 				<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li class="current"><a href="#">DashBoard</a></li>
-							<li><a href="#">Specifics</a></li>
-							<li><a href="#">About Me</a></li>
-							<li><a href="#">Contact Me</a></li>
-						</ul>
-					</nav>
+				<nav id="nav">
+					<ul>
+						<li class="current"><a href="/">DashBoard</a></li>
+						<li><a href="/headlines">Headlines</a></li>
+						<li><a href="#">About Me</a></li>
+						<li><a href="#">Contact Me</a></li>
+					</ul>
+				</nav>
 
 				<!-- Search -->
-					<section class="box search">
-						<form method="post" action="#">
-							<input type="text" class="text" name="search" placeholder="Search" />
-						</form>
-					</section>
+				<section class="box search">
+					<form method="post" action="#">
+						<input type="text" class="text" name="search" placeholder="Search" />
+					</form>
+				</section>
 
 				<!-- Text -->
-					<section class="box text-style1">
-						<div class="inner">
-							<p>
-								<strong>Aliquam:</strong> A nibh mus fusce adipiscing morbi pellentesque faucibus mi et nec Parturient
-							</p>
-						</div>
-					</section>
+				<section class="box text-style1">
+					<div class="inner">
+						<p>
+							<strong>Aliquam:</strong> A nibh mus fusce adipiscing morbi pellentesque faucibus mi et nec Parturient
+						</p>
+					</div>
+				</section>
 
 				<!-- Copyright -->
-					<ul id="copyright">
-						<li>&copy; Copyright 2019. 개발엔 커피가 필요하조. All rights Reserved.</li>
-					</ul>
+				<ul id="copyright">
+					<li>&copy; Copyright 2019. 개발엔 커피가 필요하조. All rights Reserved.</li>
+				</ul>
 
 			</div>
 
-		<!-- Scripts -->
+			<!-- Scripts -->
 			<script src="../static/assets/js/jquery.min.js"></script>
 			<script src="../static/assets/js/browser.min.js"></script>
 			<script src="../static/assets/js/breakpoints.min.js"></script>
 			<script src="../static/assets/js/util.js"></script>
 			<script src="../static/assets/js/main.js"></script>
 
-	</body>
+</body>
 </html>
