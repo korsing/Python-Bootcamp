@@ -26,7 +26,7 @@ import numpy as np
 
 # 전역변수 선언
 app = Flask(__name__)
-#komoran = Komoran()
+komoran = Komoran()
 
 @app.route('/')
 def homepage():
@@ -193,12 +193,12 @@ def urlstoKeywords(urls,weight): # text에서 keyword, 회사명 뽑기
             keyword_from_list.append(keyword[i])
     
     return keyword_from_list, c_name_from_list_1, temp
-
-
+'''
 #%%
 company_list = read_csv_file('companylist.csv',index=True)
 company_list_1 = [company_list[i][0] for i in range(len(company_list))]
 company_list_2 = [komoran.nouns(company_list[i][1]) for i in range(len(company_list))]
+'''
 
  # 기사 URL
 def UrltoKeyword(urls, weight):
@@ -235,7 +235,6 @@ def UrltoKeyword(urls, weight):
                 
     return keyword, keyword_weight
 
-    
 def CnameandKeyword(keyword, keyword_weight,company_list_1,company_list_2,company_list): # text에서 keyword, 회사명 뽑기
 
        
