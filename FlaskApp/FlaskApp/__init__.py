@@ -47,8 +47,13 @@ def gather_Headlines():
 
 	num_of_headlines = len(title)
 	conn.close()
-	return render_template("headlines.html", titles = title[::-1], urls = url, date = date, num_of_headlines = num_of_headlines)
+	return render_template("headlines.html", titles = title, urls = url, date = date, num_of_headlines = num_of_headlines)
 
+@app.route('/refresh')
+def refresh():
+   scrapeArticles()
+   return redirect('/')
+   
 def today():
 	calendar = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
 	year = datetime.datetime.now().year
