@@ -34,7 +34,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-	return rendertemplate("dashboard.html")
+	return render_template("dashboard.html")
 
 @app.route('/headlines')
 def gather_Headlines():
