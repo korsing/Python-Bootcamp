@@ -65,8 +65,10 @@
 				<tr>
 					<th>Related keywords</th>
 				</tr>
+
+					{% for i in range(0,3,1): %}
 				<tr>
-					<td rowspan='3'>y+1</td>
+					<td rowspan='3' align='center'>y+1</td>
 					<td>headline[i]</td>
 				</tr>
 				<tr>
@@ -75,6 +77,8 @@
 				<tr>
 					<td>Related_keywords[i]</td>
 				</tr>
+					{% endfor %}
+
         </table>
       </div>
 			<div style="width:580px; float:bottom;">
@@ -104,8 +108,10 @@
 				 <th>Liked News</th>
 			 </tr>
 			 <tr>
-				 <td colspan='2'>Prefered keywords</td>
+				 <th colspan='2'>Prefered keywords</td>
 			 </tr>
+
+					{% for i in range(0,3,1): %}
 				 <tr>
 					 <td>UserName</td>
 					 <td>Userlogs</td>
@@ -113,7 +119,10 @@
 				 <tr>
 					 <td colspan='2'>Userkeywords</td>
 				 </tr>
+					{% endfor %}
+					
 	 </table>
+</div>
 
 	 </div>
 	 <!-- Sidebar -->
@@ -161,6 +170,5 @@
 	 <script src="../static/assets/js/breakpoints.min.js"></script>
 	 <script src="../static/assets/js/util.js"></script>
 	 <script src="../static/assets/js/main.js"></script>
-</div>
 </body>
 </html>
