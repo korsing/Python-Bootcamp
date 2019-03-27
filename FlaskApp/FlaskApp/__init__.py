@@ -9,6 +9,7 @@ import pymysql
 # Date and Time related modules
 import datetime
 import time
+'''
 # Crawling related modules
 import requests
 from gensim.summarization import summarize
@@ -24,6 +25,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from konlpy.tag import Komoran
 from collections import Counter
 import numpy as np
+'''
 
 # 전역변수 선언
 app = Flask(__name__)
