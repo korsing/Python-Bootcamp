@@ -15,7 +15,21 @@ from bs4 import BeautifulSoup
 # Threading related modules
 import threading
 
+##
+from sklearn.feature_extraction.text import TfidfVectorizer
+from konlpy.tag import Komoran
+from collections import Counter
+import numpy as np
+
+import pandas as pd
+import urllib.parse
+import urllib.request
+
+##
+
+# 전역변수 선언
 app = Flask(__name__)
+komoran = Komoran()
 
 @app.route('/')
 def homepage():
@@ -48,7 +62,7 @@ def crawl():
 
 @app.route('/refresh')
 def refresh():
-	scrapeTodb()
+	scrapeArticles()
 	return redirect('/dashboard')
 
 # Custom Functions
@@ -64,7 +78,8 @@ def today():
 	day = datetime.datetime.now().date().day
 	return year, month, day
 
-def scrapeTodb():
+# 각종 뉴스 포털에서 기사 제목, 링크 갖다 DB에 추가
+def scrapeArticles():
 	# NAVER SCRAPYING
 	
 	headline_Naver = []
@@ -89,7 +104,6 @@ def scrapeTodb():
 	for title in headlines_Stock:
 		headline_Naver.append(title.text)
 		url_Naver.append('https://finance.naver.com' + title.find('a').get('href'))
-			
 		# DB에 추가하는 함수 실행
 		c, conn = connectDB()
 		now = datetime.datetime.now().strftime('%Y-%m-%d')
@@ -100,7 +114,6 @@ def scrapeTodb():
 				c.execute(query,(headline_Naver[count], url_Naver[count], now, '0','0','0','0'))
 		conn.commit()
 		conn.close()
-
 def get_StockPrice(code):
 	req_Stock = requests.get('https://finance.naver.com/item/main.nhn?code='+code)
 	soup_Stock = BeautifulSoup(req_Stock.content, 'lxml')
@@ -117,6 +130,56 @@ def get_StockPrice(code):
 		return None
 	return price, variation
 
+ # 기사 URL
+def urlTokeyword(urls,weight): # text에서 keyword, 회사명 뽑기
+    article_text_noun = []
+    ## article_text_noun 뽑
+    for temp in range(len(urls)):
+        article= Article(urls[temp],language='ko')
+        article.download()
+        article.parse()
+        article_text_= article.text    
+        article_text_ = "".join([s for s in article_text_.strip().splitlines(True) if s.strip()])
+        temp_ = ' '.join(komoran.nouns(article_text_))
+        article_text_noun.append(temp_)
+        
+    ## tfidf_알고리즘 , keyword , keyword weight 뽑
+    tfidf_vectorizer = TfidfVectorizer(min_df=1)
+    tfidf_matrix = tfidf_vectorizer.fit_transform(article_text_noun)
+    keyword_weight_ = tfidf_matrix.toarray()
+    keyword_ = tfidf_vectorizer.get_feature_names()
+    
+    # keyword 와 회사이름 뽑
+    n=0
+    keyword=[]
+    keyword_weight=[]
+    for i in range(len(keyword_weight_)):
+        for j in range(len(keyword_weight_[0])):
+            if keyword_weight_[i,j] > weight : 
+                keyword.append(keyword_[j])
+                keyword_weight.append(keyword_weight_[i,j])     
+                
+    company_list = read_csv_file('companylist.csv',index=True)
+    company_list_1 = [company_list[i][0] for i in range(len(company_list))]
+    company_list_2 = [komoran.nouns(company_list[i][1]) for i in range(len(company_list))]
+    
+    # 회사이름, url번호
+    c_name_from_list_1 = []
+    for i in range(len(keyword)):                  
+        if keyword[i][0] in company_list_1 : c_name_from_list_1.append([keyword[i][0],keyword[i][1]])
+                     
+    temp = []
+    for com_name in c_name_from_list_1:
+        temp.append(com_name[0])
+        
+    # keyword, url번호
+    keyword_from_list = []    
+    for i in range(len(keyword)):
+        if(keyword[i][0] not in temp):
+            keyword_from_list.append(keyword[i])
+    
+    return keyword_from_list, c_name_from_list_1
+             
 # Main
 if(__name__ == 'main'):
 	app.run()
