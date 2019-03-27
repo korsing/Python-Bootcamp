@@ -197,7 +197,7 @@ def scrapeArticles():
        dates_Naver.append("None")
        
    c, conn = connectDB()
-   query = "INSERT INTO article (title, contents, article_url, date) VALUES (%s %s %s %s)"
+   query = "INSERT INTO article (title, contents, article_url, date) VALUES (%s, %s, %s, %s);"
    for i in range(len(headline_Naver)):
        c.execute(query,(headline_Naver[i],summary_Naver[i],url_Naver[i],dates_Naver[i]))
    conn.commit()
