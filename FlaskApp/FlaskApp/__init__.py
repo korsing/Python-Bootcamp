@@ -24,10 +24,9 @@ import threading
 # Keyword Extraction related modules
 from sklearn.feature_extraction.text import TfidfVectorizer
 from konlpy.tag import Komoran
-'''
 from collections import Counter
 import numpy as np
-'''
+
 
 # 전역변수 선언
 app = Flask(__name__)
@@ -35,8 +34,8 @@ komoran = Komoran()
 
 @app.route('/')
 def homepage():
-	return "DB WORKING!"
-
+	return "작업 중"
+	
 # Main
 if(__name__ == 'main'):
 	app.run()
