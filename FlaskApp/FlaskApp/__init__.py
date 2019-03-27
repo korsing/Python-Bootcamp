@@ -35,7 +35,7 @@ def homepage():
 	#return render_template('index.html', date = date, companyNames = companyNames, compNum = compNum, keywords = keywords, count = count,
 	#						UserNames = UserNames, OnClick = OnClick, keywords_ranked = keywords_ranked, ranked_count = ranked_count)
 	#return render_template('index.html', title=title,url=url,summary=summary,count=article_count)
-
+'''
 @app.route('/headlines')
 def gather_Headlines():
 	date = today()
@@ -146,7 +146,6 @@ def get_StockPrice(code):
 		return None
 	return price, variation
 
-'''
 def urlstoKeywords(urls,weight): # text에서 keyword, 회사명 뽑기
     article_text_noun = []
     ## article_text_noun 뽑
@@ -195,7 +194,7 @@ def urlstoKeywords(urls,weight): # text에서 keyword, 회사명 뽑기
             keyword_from_list.append(keyword[i])
     
     return keyword_from_list, c_name_from_list_1, temp
-'''
+
 
 #%%
 company_list = read_csv_file('companylist.csv',index=True)
@@ -308,6 +307,7 @@ def relatedTokeyword(keyword_from_list, c_name_from_list_1, temp):
             
     return keyword_from_c_name        
  #%% 
+'''
 # Main
 if(__name__ == 'main'):
 	app.run()
