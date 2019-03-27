@@ -31,7 +31,7 @@ import numpy as np
 
 # 전역변수 선언
 app = Flask(__name__)
-# komoran = Komoran()
+komoran = Komoran()
 
 @app.route('/')
 def homepage():
