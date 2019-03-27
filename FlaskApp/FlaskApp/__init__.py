@@ -9,7 +9,7 @@ import pymysql
 # Date and Time related modules
 import datetime
 import time
-'''
+
 # Crawling related modules
 import requests
 from gensim.summarization import summarize
@@ -17,6 +17,7 @@ from newspaper import Article
 from bs4 import BeautifulSoup
 import urllib.parse
 import urllib.request
+'''
 # Threading related modules
 import threading
 
