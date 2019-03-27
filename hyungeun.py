@@ -10,6 +10,7 @@ import requests
 from bs4 import BeautifulSoup
 from gensim.summarization import summarize 
 import time 
+import pymysql
 
 komoran = Komoran()
 urls = []
