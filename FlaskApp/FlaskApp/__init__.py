@@ -144,7 +144,7 @@ def get_StockPrice(code):
 		return None
 	return price, variation
 
- # 기사 URL
+'''
 def urlstoKeywords(urls,weight): # text에서 keyword, 회사명 뽑기
     article_text_noun = []
     ## article_text_noun 뽑
@@ -193,7 +193,8 @@ def urlstoKeywords(urls,weight): # text에서 keyword, 회사명 뽑기
             keyword_from_list.append(keyword[i])
     
     return keyword_from_list, c_name_from_list_1, temp
-             
+'''
+  
 # Main
 if(__name__ == 'main'):
 	app.run()
