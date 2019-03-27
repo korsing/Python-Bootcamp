@@ -63,7 +63,7 @@ def UrltoKeyword(urls, weight):
     return keyword, keyword_weight
 
     
-def CnameandKeyword(keyword, keyword_weight,company_list_1,company_list_2,company_list): # text에서 keyword, 회사명 뽑기
+def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keyword, 회사명 뽑기
 
     # 회사이름, url번호
     c_name_from_list_1 = []
@@ -153,7 +153,7 @@ for t in range(1):
       
         
     keyword, keyword_weight = UrltoKeyword(urls, 0.2)
-    keyword_from_list, c_name_from_list_1, temp=CnameandKeyword(keyword, keyword_weight,company_list_1,company_list_2,company_list)
+    keyword_from_list, c_name_from_list_1, temp=CnameandKeyword(keyword, keyword_weight,company_list_1)
     keyword_from_c_name=relatedTokeyword(keyword_from_list, c_name_from_list_1, temp) 
     
     #%%
