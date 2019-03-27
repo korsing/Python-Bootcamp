@@ -3,7 +3,7 @@
 # Flask related modules
 from flask import Flask, render_template, session, redirect, flash, request
 
-'''
+
 # DB related modules
 import pymysql
 # Date and Time related modules
@@ -24,7 +24,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from konlpy.tag import Komoran
 from collections import Counter
 import numpy as np
-'''
+
 # 전역변수 선언
 app = Flask(__name__)
 # komoran = Komoran()
