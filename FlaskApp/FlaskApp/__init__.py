@@ -23,14 +23,14 @@ import threading
 
 # Keyword Extraction related modules
 from sklearn.feature_extraction.text import TfidfVectorizer
-from konlpy.tag import Komoran
+#from konlpy.tag import Komoran
 from collections import Counter
 import numpy as np
 
 
 # 전역변수 선언
 app = Flask(__name__)
-komoran = Komoran()
+#komoran = Komoran()
 
 @app.route('/')
 def homepage():
@@ -46,6 +46,7 @@ def gather_Headlines():
 	url = c.fetchall()
 
 	num_of_headlines = len(title)
+	conn.close()
 	return render_template("headlines.html", titles = title, urls = url, date = date, num_of_headlines = num_of_headlines) 
 
 def today():
