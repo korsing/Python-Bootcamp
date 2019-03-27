@@ -12,20 +12,16 @@ import requests
 from gensim.summarization import summarize
 from newspaper import Article
 from bs4 import BeautifulSoup
+import urllib.parse
+import urllib.request
 # Threading related modules
 import threading
 
-##
+# Keyword Extraction related modules
 from sklearn.feature_extraction.text import TfidfVectorizer
 from konlpy.tag import Komoran
 from collections import Counter
 import numpy as np
-
-import pandas as pd
-import urllib.parse
-import urllib.request
-
-##
 
 # 전역변수 선언
 app = Flask(__name__)
@@ -104,16 +100,34 @@ def scrapeArticles():
 	for title in headlines_Stock:
 		headline_Naver.append(title.text)
 		url_Naver.append('https://finance.naver.com' + title.find('a').get('href'))
-		# DB에 추가하는 함수 실행
-		c, conn = connectDB()
+
+	insertDB('article', [headline_Naver, url_Naver])
+
+def insertDB(table, value):
+	return table # 디버깅용 프린트
+	c, conn = connectDB()
+	if(table == 'article'):
+		title = value[0]
+		url = value[1]
 		now = datetime.datetime.now().strftime('%Y-%m-%d')
 		query = "INSERT INTO article (title, article_url, date, sum, key_1, key_2, key_3) VALUES (%s, %s, %s, %s, %s, %s, %s)"
 		for count in range(len(headline_Naver)):
 			flag = c.execute("SELECT title FROM article where title = %s;", (headline_Naver[count]))
 			if(flag == 0):
-				c.execute(query,(headline_Naver[count], url_Naver[count], now, '0','0','0','0'))
-		conn.commit()
-		conn.close()
+				c.execute(query,(title[count], url[count], now, '0','0','0','0'))
+	elif(table == 'seq_com'):
+		return "seq_com의 경우"
+	elif(table == 'seq_key'):
+		return "seq_key의 경우"
+	elif(table == 'matchs'):
+		return "matchs의 경우"
+	elif(table == 'users'):
+		return "users의 경우"
+	else:
+		return "NOT VALID TABLE NAME"
+	conn.commit()
+	conn.close()
+
 def get_StockPrice(code):
 	req_Stock = requests.get('https://finance.naver.com/item/main.nhn?code='+code)
 	soup_Stock = BeautifulSoup(req_Stock.content, 'lxml')
@@ -131,7 +145,7 @@ def get_StockPrice(code):
 	return price, variation
 
  # 기사 URL
-def urlTokeyword(urls,weight): # text에서 keyword, 회사명 뽑기
+def urlstoKeywords(urls,weight): # text에서 keyword, 회사명 뽑기
     article_text_noun = []
     ## article_text_noun 뽑
     for temp in range(len(urls)):
@@ -178,7 +192,7 @@ def urlTokeyword(urls,weight): # text에서 keyword, 회사명 뽑기
         if(keyword[i][0] not in temp):
             keyword_from_list.append(keyword[i])
     
-    return keyword_from_list, c_name_from_list_1
+    return keyword_from_list, c_name_from_list_1, temp
              
 # Main
 if(__name__ == 'main'):
