@@ -81,14 +81,14 @@ def homepage():
 def gather_Headlines():
     date = today()
     c, conn = connectDB()
-
+    startNum=40
     c.execute("SELECT COUNT(title) from article;")
     cnt = c.fetchone()[0]
     print(cnt)
-    c.execute("SELECT title from article where seq between %d and %d;"%(cnt-10+658, cnt+658))
+    c.execute("SELECT title from article where seq between %d and %d;"%(cnt-49+658+startNum, cnt+658))
     title = c.fetchall()
     print("title",title)
-    c.execute("SELECT article_url from article where seq between %d and %d;"%(cnt-10+658,cnt+658))
+    c.execute("SELECT article_url from article where seq between %d and %d;"%(cnt-49+658+startNum,cnt+658))
     url = c.fetchall()
     print("url",url)
     c.execute("SELECT company from seq_com;")
@@ -106,7 +106,7 @@ def gather_Headlines():
         compInfor.append([])
 
     print("seq_company",seq_company)
-    for i in range(0,len(seq_company)):
+    for i in range(startNum,len(seq_company)):
         if (seq_company[i][0]!=''):
             compname = seq_company[i][0].split(',')
             for j in range(0,len(com_name_list_compare)):
@@ -119,7 +119,7 @@ def gather_Headlines():
                     compInfor[i].append(img_scr)
 
     print("compInfor",compInfor)
-    num_of_headlines = 16
+    num_of_headlines = 50 - startNum
     conn.close()
 
     return render_template("headlines.html", titles = title, urls = url, date = date, num_of_headlines = num_of_headlines, compInfor=compInfor)
