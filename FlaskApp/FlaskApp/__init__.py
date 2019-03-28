@@ -40,7 +40,6 @@ def homepage():
     
     c.execute("SELECT title from article;")
     headline = c.fetchone()
-    return "2"
 
     c.execute("SELECT company from seq_company;")
     seq_company = c.fetchone()
