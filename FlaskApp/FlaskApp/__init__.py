@@ -87,6 +87,7 @@ def connectDB():
 def UrltoKeyword(urls, weight):
     print("UrltoKeyword Function Started!")
     article_text_noun = []
+    print("article_text_noun을 뽑기 시작합니다.")
     ## article_text_noun 뽑
     for temp in range(len(urls)):
         article= Article(urls[temp],language='ko')
@@ -96,7 +97,7 @@ def UrltoKeyword(urls, weight):
         article_text_ = "".join([s for s in article_text_.strip().splitlines(True) if s.strip()])
         temp_ = ' '.join(komoran.nouns(article_text_))
         article_text_noun.append(temp_)
-        
+    print("keyword , keyword weight를 뽑기 시작합니다.")    
     ## tfidf_알고리즘 , keyword , keyword weight 뽑
     tfidf_vectorizer = TfidfVectorizer(min_df=1)
     tfidf_matrix = tfidf_vectorizer.fit_transform(article_text_noun)
@@ -109,6 +110,8 @@ def UrltoKeyword(urls, weight):
     keyword=[]
     keyword_weight=[]
     wei=weight
+    print("APPEND 시작합니다.")    
+
     for i in range(len(keyword_weight_)):
         for j in range(len(keyword_weight_[0])):
             if keyword_weight_[i,j] > wei: 
