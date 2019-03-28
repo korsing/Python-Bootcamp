@@ -282,7 +282,7 @@ def scrapeArticles():
 
     count=50  #임의로 열개만 
 
-    c.execute("TRUNCATE TABLE seq_keword;")
+    c.execute("TRUNCATE TABLE seq_keyword;")
     c.execute("TRUNCATE TABLE seq_com;")
     conn.commit()
 
