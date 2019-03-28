@@ -44,7 +44,7 @@ def homepage():
     c.execute("SELECT COUNT(title) from article")
     cnt = c.fetchall()[0]
     print(cnt)
-    c.execute("SELECT title from article where seq between %d and %d;"%(cnt-50, cnt))
+    c.execute("SELECT title from article where seq between %d and %d;"%(cnt-49, cnt))
     headline = c.fetchall()
 
     c.execute("SELECT company from seq_com;")
@@ -97,7 +97,7 @@ def UrltoKeyword(urls, weight):
     article_text_noun = []
     ## article_text_noun 뽑
     print(len(urls))
-    for temp in range(len(urls)-49,len(urls)+1,1):
+    for temp in range(len(urls)-49,len(urls),1):
         article= Article(urls[temp],language='ko')
         article.download()
         article.parse()
