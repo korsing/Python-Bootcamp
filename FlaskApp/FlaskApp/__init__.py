@@ -146,6 +146,7 @@ def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keywor
     return keyword_from_list, c_name_from_list_1, temp
     
 def relatedTokeyword(keyword_from_list, c_name_from_list_1, temp):
+    print("relatedToKeyword  시작합니다")
     url = "https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query="
     temp = list(set(temp)) 
     
