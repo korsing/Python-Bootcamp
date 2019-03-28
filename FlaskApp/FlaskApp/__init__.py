@@ -414,8 +414,9 @@ def get_StockPrice(code):
            variation = '(0.00%)'
 
 
-    imageUrl = soup_Stock.find('img', {'id': 'img_chart_area'})
-    img_scr = imageUrl.get('scr')
+    imageUrl = soup_Stock.find_all('img', {'id': 'img_chart_area'})
+    print(imageUrl)
+    img_scr = imageUrl[0].get('scr')
     print(img_scr)
     return price, variation
 
