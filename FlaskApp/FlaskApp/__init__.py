@@ -37,7 +37,7 @@ def homepage():
     c, conn = connectDB()
     c.execute("SELECT COUNT(seq) from article;")
     count = c.fetchone()  # article seq
-    return "1"
+    
     c.execute("SELECT title from article;")
     headline = c.fetchone()
     return "2"
