@@ -35,6 +35,7 @@ keyword_li =[]
 keyword_list=[]
 company_li=[]
 company_list=[]
+compInfor=[]
 
 @app.route('/')
 def homepage():
@@ -92,10 +93,28 @@ def gather_Headlines():
     print("url",url)
     c.execute("SELECT company from seq_com;")
     seq_company = c.fetchall()
+    c.execute("SELECT code from company;")
+    com_code_list =  c.fetchall()
+    c.execute("SELECT name from company;")
+    com_name_list =  c.fetchall()
+
+    com_code_list_compare =  [i[0] for i in com_code_list]
+    com_name_list_compare =  [i[0] for i in com_name_list]
+
+    compInfor.clear()
+    for k in range(len(seq_company)):
+        compInfor.append([])
+
     print("seq_company",seq_company)
     for i in range(0,len(seq_company)):
         if (seq_compan[i][0]!=''):
             compname = seq_compan[i][0].split(',')
+            for j in range(0,len(com_name_list_compare)):
+                if (compname[0] == com_name_list_compare[j]):
+                    compInfor[i].append(compname[0])
+                    compInfor[i].append(get_StockPrice(com_code_list_compare[j]))
+
+    print("compInfor",compInfor)                
 
 
 
@@ -305,7 +324,6 @@ def scrapeArticles():
     c.execute("SELECT name from company;")
     temp =  c.fetchall()
     com_list =  [i[0] for i in temp]
-    print("com_list",com_list)
 
     A, B = UrltoKeyword(url_list, 0.1)
 
