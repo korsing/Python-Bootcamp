@@ -400,14 +400,15 @@ def get_StockPrice(code):
 
    price_tag = soup_Stock.find_all('p', {'class': 'no_today'})
    variation_tag = soup_Stock.find_all('em', {'class': 'no_down'})
+   print("variation_tag",variation_tag)
 
    price = price_tag[0].contents[1].contents[1].text
-   if(variation_tag[2].contents[1].text=='-'):
-      variation = eval(variation_tag[2].contents[3].text)*-1
-   elif(variation_tag[2].contents[1].text=='+'):
-      variation = eval(variation_tag[2].contents[3].text)
-   else:
-      return None
+   # if(variation_tag[2].contents[1].text=='-'):
+   #    variation = eval(variation_tag[2].contents[3].text)*-1
+   # elif(variation_tag[2].contents[1].text=='+'):
+   #    variation = eval(variation_tag[2].contents[3].text)
+   # else:
+   #    return None
    return price, variation
 
 '''
