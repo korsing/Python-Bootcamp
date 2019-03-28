@@ -90,8 +90,19 @@ def gather_Headlines():
     c.execute("SELECT article_url from article where seq between %d and %d;"%(cnt-49+658,cnt+658))
     url = c.fetchall()
     print("url",url)
+    c.execute("SELECT company from seq_com;")
+    seq_company = c.fetchall()
+    print("seq_company",seq_company)
+    for i in range(0,len(seq_company)):
+        if (seq_compan[i][0]!=''):
+            compname = seq_compan[i][0].split(',')
+
+
+
     num_of_headlines = 16
     conn.close()
+
+
     return render_template("headlines.html", titles = title, urls = url, date = date, num_of_headlines = num_of_headlines)
 
 # @app.route('/refresh')
@@ -294,7 +305,7 @@ def scrapeArticles():
     c.execute("SELECT name from company;")
     temp =  c.fetchall()
     com_list =  [i[0] for i in temp]
-
+    print("com_list",com_list)
 
     A, B = UrltoKeyword(url_list, 0.1)
 
