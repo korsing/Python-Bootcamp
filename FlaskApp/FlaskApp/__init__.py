@@ -49,10 +49,10 @@ def homepage():
 
     c.execute("SELECT company from seq_com;")
     seq_company = c.fetchall()
-    
+
     c.execute("SELECT keyword from seq_keyword;")
     seq_key = c.fetchall()
-    
+
     conn.close()
     return render_template('dashboard.html', count=count, headline=headline, seq_company=seq_company, seq_key=seq_key)
 
@@ -74,11 +74,11 @@ def gather_Headlines():
 
 @app.route('/refresh')
 def refresh():
-    
+
     scrapeArticles()
 
     return redirect('/')
-   
+
 def today():
 	calendar = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
 	year = datetime.datetime.now().year
@@ -101,7 +101,7 @@ def UrltoKeyword(urls, weight):
         article= Article(urls[temp],language='ko')
         article.download()
         article.parse()
-        article_text_= article.text    
+        article_text_= article.text
         article_text_ = "".join([s for s in article_text_.strip().splitlines(True) if s.strip()])
         temp_ = ' '.join(komoran.nouns(article_text_))
         article_text_noun.append(temp_)
@@ -110,7 +110,7 @@ def UrltoKeyword(urls, weight):
     tfidf_matrix = tfidf_vectorizer.fit_transform(article_text_noun)
     keyword_weight_ = tfidf_matrix.toarray()
     keyword_ = tfidf_vectorizer.get_feature_names()
-    
+
     a=[]
     keyword=[]
     keyword_weight=[]
@@ -118,83 +118,85 @@ def UrltoKeyword(urls, weight):
 
     for i in range(len(keyword_weight_)):
         for j in range(len(keyword_weight_[0])):
-            if keyword_weight_[i,j] > wei: 
+            if keyword_weight_[i,j] > wei:
                 keyword.append([keyword_[j],i])
                 keyword_weight.append([keyword_weight_[i,j],i])
-                a.append(article_text_noun[i])     
-                
-    return keyword, keyword_weight 
+                a.append(article_text_noun[i])
+
+    return keyword, keyword_weight
 
 def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keyword, 회사명 뽑기
     print("CnameandKeyword Function Started!")
     # 회사이름, url번호
     c_name_from_list_1 = []
     for i in range(len(keyword)):
-        for j in range(len(company_list_1)):               
-            if keyword[i][0] ==( company_list_1[j].lower() or company_list_1[j].upper()): 
-                c_name_from_list_1.append([company_list_1[j],keyword[i][1]])                       
+        for j in range(len(company_list_1)):
+            if keyword[i][0] ==( company_list_1[j].lower() or company_list_1[j].upper()):
+                c_name_from_list_1.append([company_list_1[j],keyword[i][1]])
 
     temp = []
     for com_name in c_name_from_list_1:
         temp.append(com_name[0])
-        
+
     # keyword, url번호
-    keyword_from_list = []    
+    keyword_from_list = []
     for i in range(len(keyword)):
         if(keyword[i][0] not in temp):
             keyword_from_list.append(keyword[i])
     return keyword_from_list, c_name_from_list_1, temp
-    
+
 def relatedTokeyword(keyword_from_list, c_name_from_list_1, temp):
     print("relatedToKeyword  시작합니다")
     url = "https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query="
-    temp = list(set(temp)) 
-    
+    temp = list(set(temp))
+    print("temp :", len(temp),temp)
     related_word = []
     for i in range(len(temp)):
         search = temp[i]
-    
+
         query = url + search
         r = requests.get(query)
-    
+
         soup = BeautifulSoup(r.content, 'lxml')
         soup2 = soup.find_all('ul',{'class':'_related_keyword_ul'})
-        
+
         related_word_ = []
         for j in soup2:
             related_word_.append(j.text.split("  "))
         related_word.extend(related_word_)
-    
+    print("extend end",related_word)
     # 연관검색어 keyword 추가
     rr = []
     for i in related_word:
-        rr2 = []     
+        rr2 = []
         for j in i:
             if(len(j)):
                 for k in j.split():
                     if(k not in rr):
                         rr2.append(k)
         rr.append(rr2)
-    
-    rr = [list(set(rr[i])) for i in range(len(rr))]    
-    keyword_from_c_name = {temp[i]:rr[i][1:7] for i in range(len(rr))}   
-    
+
+    rr = [list(set(rr[i])) for i in range(len(rr))]
+    keyword_from_c_name = {temp[i]:rr[i][1:7] for i in range(len(rr))}
+
+    print("rr", len(c_name_from_list_1),rr)
     k=[]
     for i in range(len(c_name_from_list_1)):
         for j in range(len(keyword_from_list)):
             if c_name_from_list_1[i][1] == keyword_from_list[j][1]:
                 if( [c_name_from_list_1[i][0],keyword_from_list[j][0]] not in k):
                     k.append([c_name_from_list_1[i][0],keyword_from_list[j][0]])
-                
-    #뉴스 본문 keyword 추가    
+
+    #뉴스 본문 keyword 추가
+    print("after news")
     for i in temp :
         for j in range(len(k)):
             if k[j][0] == i:
                 keyword_from_c_name[i].append(k[j][1])
-            
+    print("relate")
     return keyword_from_c_name
 
-    
+
 # 각종 뉴스 포털에서 기사 제목, 링크 갖다 DB에 추가
 def scrapeArticles():
     print("scrapeArticles Function Started!")
@@ -262,7 +264,7 @@ def scrapeArticles():
     for count in range(len(headline)):
         c.execute(query, (headline[count], url[count], now, 'summary goes here')) #<--요약봇 ㅜㅡㅜㅜㅡㅜ
     #conn.commit()
-    
+
     c.execute("SELECT article_url from article;")
     temp  = c.fetchall()
     url_list = [i[0] for i in temp]
@@ -281,7 +283,7 @@ def scrapeArticles():
     company_li.clear()
     company_list.clear()
 
-    count=50  #임의로 열개만 
+    count=50  #임의로 열개만
 
     c.execute("TRUNCATE TABLE seq_keyword;")
     c.execute("TRUNCATE TABLE seq_com;")
@@ -294,8 +296,8 @@ def scrapeArticles():
             if(_A[i][1]==j):
                 keyword_li[j].append(_A[i][0])
 
-    
-    
+
+
     for i in range(len(keyword_li)):
         TempStr = ','.join(keyword_li[i])
         sql = "INSERT INTO seq_keyword (seq, keyword) VALUES (%s,%s)"
@@ -303,7 +305,7 @@ def scrapeArticles():
         c.execute(sql,val)
         #keyword_list.append(TempStr)
 
-    
+
 
     for k in range(count):
         company_li.append([])
@@ -311,32 +313,32 @@ def scrapeArticles():
         for j in range(0,count):
             if(_B[i][1]==j):
                 company_li[j].append(_B[i][0])
-    
-   
+
+
     for i in range(len(company_li)):
         TempStr2 = ','.join(company_li[i])
         sql = "INSERT INTO seq_com (seq, company) VALUES (%s,%s)"
         val = (i,TempStr2)
-        c.execute(sql,val) 
+        c.execute(sql,val)
         #company_list.append(TempStr2)
-    
-    #conn.commit()   
+
+    #conn.commit()
     conn.commit()
     conn.close()
 
     relatedTokeyword(_A,_B,_C)
 
-    
 
 
 
-   
+
+
 # def insert_Seq_Comp_Key(keyword_list,company_list) :
 #     c,conn = connectDB()
 #     for i in range(10):
 #         c.execute("INSERT INTO TABLE seq_com ")
-         
- 
+
+
 
 
 
@@ -355,7 +357,7 @@ def get_StockPrice(code):
       variation = eval(variation_tag[2].contents[3].text)
    else:
       return None
-   return price, variation    
+   return price, variation
 
 '''
  #backend func -
@@ -370,7 +372,7 @@ def Select_Seq(url):
 #Seq_com, Seq_Key 테이블에 회사명/키워드 삽입  #이미 있는 headline이면 insert 막는다
 '''
 def insert_Seq_Comp_Key(companylist, keywordlist,seq):
-    
+
     newCompanylst =','.join(i for i in companylist)
     newKeywordlist = ','.join(i for i in keywordlist)
     c, conn = connectDB()
@@ -440,10 +442,9 @@ def User(userid):
     conn.commit()
     conn.close()
 
-   
+
 #---
- '''  
+ '''
 # Main
 if(__name__ == 'main'):
 	app.run()
-
