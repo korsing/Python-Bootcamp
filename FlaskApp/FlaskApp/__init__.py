@@ -267,7 +267,7 @@ def scrapeArticles():
     c.execute("SELECT article_url from article;")
     temp  = c.fetchall()
     url_list = [i[0] for i in temp]
-
+    print(url_list)
     c.execute("SELECT company from company;")
     temp =  c.fetchall()
     com_list =  [i[0] for i in temp]
