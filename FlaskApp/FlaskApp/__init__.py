@@ -272,7 +272,7 @@ def scrapeArticles():
     temp  = c.fetchall()
     url_list = [i[0] for i in temp]
     #print(url_list)
-    c.execute("SELECT company from company;")
+    c.execute("SELECT name from company;")
     temp =  c.fetchall()
     com_list =  [i[0] for i in temp]
 
