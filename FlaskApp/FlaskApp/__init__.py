@@ -112,17 +112,17 @@ def gather_Headlines():
             for j in range(0,len(com_name_list_compare)):
                 if (compname[0] == com_name_list_compare[j]):
                     compInfor[i].append(compname[0])
-                    compInfor[i].append(get_StockPrice(com_code_list_compare[j]))
+                    price, variation, color, img_scr = get_StockPrice(com_code_list_compare[j])
+                    compInfor[i].append(price)
+                    compInfor[i].append(variation)
+                    compInfor[i].append(color)
+                    compInfor[i].append(img_scr)
 
     print("compInfor",compInfor)
-
-
-
     num_of_headlines = 16
     conn.close()
 
-
-    return render_template("headlines.html", titles = title, urls = url, date = date, num_of_headlines = num_of_headlines)
+    return render_template("headlines.html", titles = title, urls = url, date = date, num_of_headlines = num_of_headlines, compInfor=compInfor)
 
 # @app.route('/refresh')
 # def refresh():
@@ -405,19 +405,23 @@ def get_StockPrice(code):
    price = price_tag[0].contents[1].contents[1].text
 
    variation = '(0.00%)'
+   color = 'black'
    if(len(variation_tag)>=3):
        if(variation_tag[2].contents[1].text=='-'):
-           variation = eval(variation_tag[2].contents[3].text)*-1
+           variation = '('+str(eval(variation_tag[2].contents[3].text)*(-1))+')'
+           color = 'blue'
        elif(variation_tag[2].contents[1].text=='+'):
-           variation = eval(variation_tag[2].contents[3].text)
+           variation = '('+str(eval(variation_tag[2].contents[3].text))+')'
+           color = 'red'
        else:
            variation = '(0.00%)'
+
 
    imageUrl = soup_Stock.find_all('img', {'id': 'img_chart_area'})
    print(imageUrl)
    img_scr = imageUrl[0].get('scr')
    print(img_scr)
-   return price, variation
+   return price, variation, color, img_scr
 
 '''
  #backend func -
