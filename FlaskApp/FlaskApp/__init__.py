@@ -85,7 +85,7 @@ def connectDB():
 
 
 def UrltoKeyword(urls, weight):
-    
+    print("UrltoKeyword Function Started!")
     article_text_noun = []
     ## article_text_noun 뽑
     for temp in range(len(urls)):
@@ -119,7 +119,7 @@ def UrltoKeyword(urls, weight):
     return keyword, keyword_weight 
 
 def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keyword, 회사명 뽑기
-
+    print("CnameandKeyword Function Started!")
     c, conn = connectDB()
     # 회사이름, url번호
     c_name_from_list_1 = []
@@ -128,6 +128,8 @@ def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keywor
             if keyword[i][0] ==( company_list_1[j].lower() or company_list_1[j].upper()): 
                 c_name_from_list_1.append([company_list_1[j],keyword[i][1]])
                 c.execute("INSERT INTO seq_company (company,seq) VALUES %s, %d;",(company_list_1[j], keyword[i][1]))
+                c.commit()
+
 
                         
 
@@ -141,6 +143,8 @@ def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keywor
         if(keyword[i][0] not in temp):
             keyword_from_list.append(keyword[i])
             c.execute("INSERT INTO seq_key (keyword,seq) VALUES %s, %d;",(keyword[i][0], keyword[i][1]))
+            c.commit()
+
     
     c.commit()
     conn.close()           
@@ -198,7 +202,7 @@ def relatedTokeyword(keyword_from_list, c_name_from_list_1, temp):
     
 # 각종 뉴스 포털에서 기사 제목, 링크 갖다 DB에 추가
 def scrapeArticles():
-
+    print("scrapeArticles Function Started!")
     # NAVER SCRAPYING
     year = datetime.datetime.now().date().year
     month = datetime.datetime.now().date().month
@@ -267,7 +271,7 @@ def scrapeArticles():
     c.execute("SELECT article_url from article;")
     temp  = c.fetchall()
     url_list = [i[0] for i in temp]
-    print(url_list)
+    #print(url_list)
     c.execute("SELECT company from company;")
     temp =  c.fetchall()
     com_list =  [i[0] for i in temp]
