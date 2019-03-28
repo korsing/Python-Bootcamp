@@ -257,7 +257,7 @@ def scrapeArticles():
     query = "INSERT INTO article (title, article_url, date, contents) VALUES (%s, %s, %s, %s)"
     for count in range(len(headline)):
         c.execute(query, (headline[count], url[count], now, 'summary goes here')) #<--요약봇 ㅜㅡㅜㅜㅡㅜ
-    conn.commit()
+    #conn.commit()
     
     c.execute("SELECT article_url from article;")
     temp  = c.fetchall()
@@ -305,10 +305,11 @@ def scrapeArticles():
    
     for i in range(len(company_li)):
         TempStr2 = ','.join(company_li[i])
-        c.execute("INSERT INTO TABLE seq_com (seq, company) Values (%d, %s);",(i,TempStr2)
+        c.execute("INSERT INTO TABLE seq_com (seq, company) Values (%d, %s);",(i,TempStr2))
         #company_list.append(TempStr2)
     
-    conn.commit()   
+    #conn.commit()   
+    conn.commit()
     conn.close()
 
     relatedTokeyword(_A,_B,_C)
@@ -317,13 +318,13 @@ def scrapeArticles():
 
 
 
-    
-def insert_Seq_Comp_Key(keyword_list,company_list) :
-    c,conn = connectDB()
-    for i in range(10):
-        c.execute("INSERT INTO TABLE seq_com ")
-        
-
+   
+# def insert_Seq_Comp_Key(keyword_list,company_list) :
+#     c,conn = connectDB()
+#     for i in range(10):
+#         c.execute("INSERT INTO TABLE seq_com ")
+         
+ 
 
 
 
