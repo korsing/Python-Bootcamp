@@ -47,13 +47,16 @@ def homepage():
     print(cnt)
     c.execute("SELECT title from article where seq between %s and %s;"%(cnt-49, cnt))
     headline = c.fetchall()
+    print("headline",headline)
 
     c.execute("SELECT company from seq_com;")
     seq_company = c.fetchall()
+    print("seq_company",seq_company)
 
     c.execute("SELECT keyword from seq_keyword;")
     seq_key = c.fetchall()
-
+    print("seq_key",seq_key)
+    
     conn.close()
     return render_template('dashboard.html', count=count, headline=headline, seq_company=seq_company, seq_key=seq_key)
 
