@@ -53,14 +53,14 @@
 						</ul>
 					</div>
 					<div style="float: left;width: 100%;padding-top: 15px;">
-						<h1 id="logo" style="margin-bottom:10px;">User Notification : Keywords(userKeyword[Username])</h1>
+						<h1 id="logo" style="margin-bottom:10px;">User Notification</h1>
 						<div style='float: left; width: 47%;'>
 						{% for i in range(0,1,1): %}
 							<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
 								<div style='width:100%;'>
 								<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>{{titles[i][0]}}</strong></a></p>
 
-								{% if(i%5==1): %}<!-- headline logo -->
+								{% if( 'naver' in urls[i][0] ): %}<!-- headline logo -->
 								<img src='../static/images/naverIcon.png' style='width:8%;float:right;'/>
 								{% else %}
 								<img src='../static/images/nateIcon.png' style='width:8%;float:right;'/>
@@ -83,7 +83,7 @@
 							<div style='width:100%;'>
 							<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>{{titles[i][0]}}</strong></a></p>
 
-							{% if(i%3==0): %}<!-- headline logo -->
+							{% if( 'naver' in urls[i][0] ): %}<!-- headline logo -->
 							<img src='../static/images/naverIcon.png' style='width:8%;float:right;'/>
 							{% else: %}
 							<img src='../static/images/nateIcon.png' style='width:8%;float:right;'/>
@@ -111,7 +111,7 @@
 								<div style='width:100%;'>
 								<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>{{titles[i][0]}}</strong></a></p>
 
-								{% if(i%5==1): %}<!-- headline logo -->
+								{% if( 'naver' in urls[i][0] ): %}<!-- headline logo -->
 								<img src='../static/images/naverIcon.png' style='width:8%;float:right;'/>
 								{% else: %}
 								<img src='../static/images/nateIcon.png' style='width:8%;float:right;'/>
@@ -137,7 +137,7 @@
 							<div style='width:100%;'>
 							<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>{{titles[i][0]}}</strong></a></p>
 
-							{% if(i%3==1): %}<!-- headline logo -->
+							{% if( 'naver' in urls[i][0] ): %}<!-- headline logo -->
 							<img src='../static/images/naverIcon.png' style='width:8%;float:right;'/>
 							{% else: %}
 							<img src='../static/images/nateIcon.png' style='width:8%;float:right;'/>
