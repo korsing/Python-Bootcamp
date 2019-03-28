@@ -85,10 +85,10 @@ def gather_Headlines():
     c.execute("SELECT COUNT(title) from article;")
     cnt = c.fetchone()[0]
     print(cnt)
-    c.execute("SELECT title from article where seq between %d and %d;"%(cnt-20+658, cnt+658))
+    c.execute("SELECT title from article where seq between %d and %d;"%(cnt-10+658, cnt+658))
     title = c.fetchall()
     print("title",title)
-    c.execute("SELECT article_url from article where seq between %d and %d;"%(cnt-20+658,cnt+658))
+    c.execute("SELECT article_url from article where seq between %d and %d;"%(cnt-10+658,cnt+658))
     url = c.fetchall()
     print("url",url)
     c.execute("SELECT company from seq_com;")
