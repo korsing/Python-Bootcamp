@@ -81,7 +81,7 @@ def homepage():
 def gather_Headlines():
     date = today()
     c, conn = connectDB()
-    startNum=40
+    startNum=55
     c.execute("SELECT COUNT(title) from article;")
     cnt = c.fetchone()[0]
     print(cnt)
@@ -419,7 +419,7 @@ def get_StockPrice(code):
 
    imageUrl = soup_Stock.find_all('img', {'id': 'img_chart_area'})
    print(imageUrl)
-   img_scr = imageUrl[0].get('scr')
+   img_scr = imageUrl.get('scr')
    print(img_scr)
    return price, variation, color, img_scr
 
