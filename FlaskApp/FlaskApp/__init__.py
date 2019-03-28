@@ -124,18 +124,12 @@ def UrltoKeyword(urls, weight):
 
 def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keyword, 회사명 뽑기
     print("CnameandKeyword Function Started!")
-    c, conn = connectDB()
     # 회사이름, url번호
     c_name_from_list_1 = []
     for i in range(len(keyword)):
         for j in range(len(company_list_1)):               
             if keyword[i][0] ==( company_list_1[j].lower() or company_list_1[j].upper()): 
-                c_name_from_list_1.append([company_list_1[j],keyword[i][1]])
-                print(type(keyword[i][1]))
-                c.execute("INSERT INTO seq_com (seq, company) VALUES (%s, %s);",(keyword[i][1], company_list_1[j]))
-                conn.commit()
-
-                        
+                c_name_from_list_1.append([company_list_1[j],keyword[i][1]])                       
 
     temp = []
     for com_name in c_name_from_list_1:
@@ -146,13 +140,9 @@ def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keywor
     for i in range(len(keyword)):
         if(keyword[i][0] not in temp):
             keyword_from_list.append(keyword[i])
-            c.execute("INSERT INTO seq_key (keyword,seq,k_seq) VALUES (%s, %d,%d);",(keyword[i][0], int(keyword[i][1]),0))
-            conn.commit()
-
-    
-    conn.commit()
-    conn.close()           
-
+    print(keyword_from_list)
+    print("\n\n\n\n\n\n")
+    print(c_name_from_list_1)
     return keyword_from_list, c_name_from_list_1, temp
     
 def relatedTokeyword(keyword_from_list, c_name_from_list_1, temp):
