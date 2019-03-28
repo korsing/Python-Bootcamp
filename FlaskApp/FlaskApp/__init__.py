@@ -413,12 +413,11 @@ def get_StockPrice(code):
        else:
            variation = '(0.00%)'
 
-
-    imageUrl = soup_Stock.find_all('img', {'id': 'img_chart_area'})
-    print(imageUrl)
-    img_scr = imageUrl[0].get('scr')
-    print(img_scr)
-    return price, variation
+   imageUrl = soup_Stock.find_all('img', {'id': 'img_chart_area'})
+   print(imageUrl)
+   img_scr = imageUrl[0].get('scr')
+   print(img_scr)
+   return price, variation
 
 '''
  #backend func -
