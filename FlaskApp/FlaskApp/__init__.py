@@ -31,6 +31,10 @@ import numpy as np
 # 전역변수 선언
 app = Flask(__name__)
 komoran = Komoran()
+keyword_li =[]
+keyword_list=[]
+company_li=[]
+company_list=[]
 
 @app.route('/')
 def homepage():
@@ -68,8 +72,10 @@ def gather_Headlines():
 
 @app.route('/refresh')
 def refresh():
-   scrapeArticles()
-   return redirect('/')
+    
+    scrapeArticles()
+
+    return redirect('/')
    
 def today():
 	calendar = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
@@ -87,10 +93,8 @@ def connectDB():
 def UrltoKeyword(urls, weight):
     print("UrltoKeyword Function Started!")
     article_text_noun = []
-    print("article_text_noun을 뽑기 시작합니다.")
     ## article_text_noun 뽑
     for temp in range(1000,1010,1):
-        print("{}번째 기사 작업 중".format(temp))
         article= Article(urls[temp],language='ko')
         article.download()
         article.parse()
@@ -98,20 +102,16 @@ def UrltoKeyword(urls, weight):
         article_text_ = "".join([s for s in article_text_.strip().splitlines(True) if s.strip()])
         temp_ = ' '.join(komoran.nouns(article_text_))
         article_text_noun.append(temp_)
-    print("keyword , keyword weight를 뽑기 시작합니다.")    
     ## tfidf_알고리즘 , keyword , keyword weight 뽑
     tfidf_vectorizer = TfidfVectorizer(min_df=1)
     tfidf_matrix = tfidf_vectorizer.fit_transform(article_text_noun)
     keyword_weight_ = tfidf_matrix.toarray()
     keyword_ = tfidf_vectorizer.get_feature_names()
     
-    
-
     a=[]
     keyword=[]
     keyword_weight=[]
     wei=weight
-    print("APPEND 시작합니다.")    
 
     for i in range(len(keyword_weight_)):
         for j in range(len(keyword_weight_[0])):
@@ -140,9 +140,6 @@ def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keywor
     for i in range(len(keyword)):
         if(keyword[i][0] not in temp):
             keyword_from_list.append(keyword[i])
-    print(keyword_from_list)
-    print("\n\n\n\n\n\n")
-    print(c_name_from_list_1)
     return keyword_from_list, c_name_from_list_1, temp
     
 def relatedTokeyword(keyword_from_list, c_name_from_list_1, temp):
@@ -270,13 +267,64 @@ def scrapeArticles():
     temp =  c.fetchall()
     com_list =  [i[0] for i in temp]
 
+
     A, B = UrltoKeyword(url_list, 0.1)
 
     _A, _B, _C  = CnameandKeyword(A,B,com_list)
 
+    keyword_li.clear()
+    keyword_list.clear()
+    company_li.clear()
+    company_list.clear()
+
+    count=10  #임의로 열개만 
+
+    for k in range(count):
+        keyword_li.append([])
+    for i in range(0,len(_A)):
+        for j in range(0,count):
+            if(_A[i][1]==j):
+                keyword_li[j].append(_A[i][0])
+
+    
+    
+    for i in range(len(keyword_li)):
+        TempStr = ','.join(keyword_li[i])
+        c.execute("INSERT INTO TABLE seq_com (seq, company) Values (%d, %s);",i,TempStr)
+        #keyword_list.append(TempStr)
+
+    
+
+    for k in range(count):
+        company_li.append([])
+    for i in range(0,len(_B)):
+        for j in range(0,count):
+            if(_B[i][1]==j):
+                company_li[j].append(_B[i][0])
+    
+   
+    for i in range(len(company_li)):
+        TempStr2 = ','.join(company_li[i])
+        c.execute("INSERT INTO TABLE seq_com (seq, company) Values (%d, %s);",i,TempStr2)
+        #company_list.append(TempStr2)
+    
+    conn.commit()   
+    conn.close()
+
     relatedTokeyword(_A,_B,_C)
 
-    conn.close()
+    
+
+
+
+    
+def insert_Seq_Comp_Key(keyword_list,company_list) :
+    c,conn = connectDB()
+    for i in range(10):
+        c.execute("INSERT INTO TABLE seq_com ")
+        
+
+
 
 
 
