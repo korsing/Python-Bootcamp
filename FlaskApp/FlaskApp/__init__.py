@@ -34,7 +34,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-	def crawl():
     c, conn = connectDB()
     c.execute("SELECT COUNT(seq) from article;")
     count = c.fetchone()[0]  # article seq
@@ -62,7 +61,7 @@ def homepage():
 
     conn.close()
     return render_template('dashboard.html', count=count, headline=headline, seq_company=seq_company, seq_key=seq_key,
-                           userid = userid, userlog = userlog, keies = keies, total_users = total_users)
+                        userid = userid, userlog = userlog, keies = keies, total_users = total_users)
 
 
 
@@ -200,7 +199,7 @@ def relatedTokeyword(keyword_from_list, c_name_from_list_1, temp):
                 keyword_from_c_name[i].append(k[j][1])
             
     return keyword_from_c_name
-    
+
     
 # 각종 뉴스 포털에서 기사 제목, 링크 갖다 DB에 추가
 def scrapeArticles():
@@ -271,7 +270,7 @@ def scrapeArticles():
     conn.commit()
     conn.close()
 
-
+'''
  #backend func -
 def Select_Seq(url):
     c, conn = connectDB()
@@ -354,7 +353,7 @@ def User(userid):
 
    
 #---
-   
+ '''  
 # Main
 if(__name__ == 'main'):
 	app.run()
