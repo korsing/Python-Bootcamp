@@ -36,16 +36,16 @@ app = Flask(__name__)
 def homepage():
     c, conn = connectDB()
     c.execute("SELECT COUNT(seq) from article;")
-    count = c.fetchone()[0]  # article seq
+    count = c.fetchone()  # article seq
 
     c.execute("SELECT title from article;")
-    headline = c.fetchone()[0]
+    headline = c.fetchone()
 
-    c.execute("SELECT * from seq_company;")
+    c.execute("SELECT company from seq_company;")
     seq_company = c.fetchone()
 
-    c.execute("SELECT * from seq_key;")
-    seq_key = c.fetchone()[0]
+    c.execute("SELECT keyword from seq_key;")
+    seq_key = c.fetchone()
 
     '''
     c.execute("SELECT user from users")
