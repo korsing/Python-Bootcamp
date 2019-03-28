@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Python Bootcamp Project</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../static/assets/css/main.css" />
+	<style type='text/css'>
+	.backgroundImage{
+			background-image:url('../static/images/headlineBg.jpg');
+			background-size: cover;
+			border:0px solid grey;
+			padding:10px 10px 10px 15px;
+			box-shadow: 5px 5px 2px grey;
+			width: 88%;
+	}
+	.newsHeadline{
+		font-size: 16.5px;
+		white-space: normal;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		float: left;
+		width:90%;
+		height: 50px;
+		margin-bottom: 8px;
+	}
+	.newsContent{
+		font-size: 16px;
+		font-family: monospace;
+		white-space: normal;
+		overflow: hidden;
+		line-height: 1.5;
+		float: left;
+		width:100%;
+		height: 6em;
+		text-overflow: ellipsis;
+		margin-bottom: 0px;
+	}
+	a:link { color: red; text-decoration: none;}
+	</style>
+</head>
+<body class="is-preload">
+<!-- Content -->
+<div id="content">
+	<div class="inner">
+		<!-- Post -->
+			<div style="float: left;width: 100%;margin-bottom:20px;">
+				<article class="box post post-excerpt">
+					<div class="info" style="margin-top: 50px;">
+						<span class="date"><span class="month">Mar</span> <span class="day">28</span></span>
+						<ul class="stats">
+							<li><a href="#" class="icon fa-heart">32</a></li>
+						</ul>
+					</div>
+					<div style="float: left;width: 100%;padding-top: 15px;">
+						<h1 id="logo" style="margin-bottom:10px;">User Notification</h1>
+						<div style='float: left; width: 47%;'>
+						<!-- {% for i in range(0,1,1): %} -->
+							<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
+								<div style='width:100%;'>
+								<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>대우건설, 푸르지오 브랜드 리뉴얼..그린(자연)에 블랙(고급)을 더하다</strong></a></p>
+
+								<!-- {% if(i%5==1): %} -->
+								<img src='../static/images/naverIcon.png' style='width:8%;float:right;'/>
+								<!-- {% else %} -->
+								<!-- <img src='../static/images/nateIcon.png' style='width:8%;float:right;'/> -->
+								<!-- {% endif %} -->
+
+								</div>
+								<p class='newsContent'>"과거의 푸르지오가 '자연'이었다면 미래의 푸르지오는 '자연스러움'이다.
+
+백정완 대우건설 주택건축사업본부장은 28일 푸르지오 브랜드 리뉴얼 기자간담회에서 "푸르지오의 본질에 최근의 라이프 스타일 흐름을 더했다"며 "푸르지오 아파트를..</p>
+								<!-- {% if(i%3==0): %} -->
+								<p style='color:blue;float:right;margin-bottom:0px;'><strong style="color:blue;">5,010(-0.2%)</strong></p>
+								<p style='float:right;margin-bottom:0px;'><strong>대우건설&nbsp;&nbsp;</strong></p>
+								<img src='https://ssl.pstatic.net/imgfinance/chart/item/area/day/047040.png?sidcode=1553749660293' style='width:100%;'/>
+								<!-- {% endif %} -->
+
+							</div>
+						<!-- {% endfor %} -->
+					</div>
+					<div style='float: right; width: 47%;'>
+					<!-- {% for i in range(0,1,1): %} -->
+						<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
+							<div style='width:100%;'>
+							<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>박삼구 금호아시아나그룹 회장, 그룹 경영 퇴진 결정</strong></a></p>
+
+							<!-- {% if(i%3==0): %} -->
+							<!-- <img src='../static/images/naverIcon.png' style='width:8%;float:right;'/> -->
+							<!-- {% else: %} -->
+							<img src='../static/images/nateIcon.png' style='width:8%;float:right;'/>
+							<!-- {% endif %} -->
+
+							</div>
+							<p class='newsContent'>금호아시아나그룹은 박삼구 회장이 그룹 경영에서 퇴진하기로 결정했다고 28일 밝혔다. 금호아시아나그룹에 따르면 박삼구 회장은 전날 저녁 이동걸 산업은행 회장을 만나 아시아나항공의 금융시장 조기 신뢰 회복을 위해 KDB산업은행에 협조를..
+</p>
+							<!-- {% if(i%4==1): %} -->
+							<p style='color:red;float:right;margin-bottom:0px;'><strong style="color:red;">3670(+7.31%)</strong></p>
+							<p style='float:right;margin-bottom:0px;'><strong>아시아나항공&nbsp;&nbsp;</strong></p>
+							<img src='https://ssl.pstatic.net/imgfinance/chart/item/area/day/020560.png?sidcode=1553749429058' style='width:100%;'/>
+							<!-- {% endif %} -->
+
+						</div>
+					<!-- {% endfor %} -->
+					</div>
+						<hr style="width:100%;border: solid 1.5px grey;padding-top: 0px;margin-bottom: 20px;">
+						<h1 id="logo" style="margin-bottom:10px;">Headlines</h1>
+
+
+						<div style='float: left; width: 47%;'>
+						<!-- {% for i in range(0,num_of_headlines,1): %}
+						{% if(i%2==0): %} -->
+							<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
+								<div style='width:100%;'>
+								<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>삼성 의류청정기 ‘에어드레서’ 블랙에디션 출시</strong></a></p>
+
+								<!-- {% if(i%5==1): %} -->
+								<img src='../static/images/naverIcon.png' style='width:8%;float:right;'/>
+								<!-- {% else: %} -->
+								<!-- <img src='../static/images/nateIcon.png' style='width:8%;float:right;'/> -->
+								<!-- {% endif %} -->
+
+								</div>
+								<p class='newsContent'>삼성전자가 의류청정기 '에어드레서' 블랙에디션을 28일 출시했다.
+삼성전자 생활가전사업부 송명주 상무는 "'에어드레서'는 미세먼지와 냄새분해 등 의류청정기에 대한 소비자 니즈를 적극 반영해 큰 인기를 얻고 있는 제품"이라며 "차별..</p>
+								<!-- {% if(i%3==0): %} -->
+								<p style='color:blue;float:right;margin-bottom:0px;'><strong style="color:red;">44,850(-1.10%)</strong></p>
+								<p style='float:right;margin-bottom:0px;'><strong>삼성전자&nbsp;&nbsp;</strong></p>
+								<img src='../static/images/graph.png' style='width:100%;'/>
+								<!-- {% endif %} -->
+
+							</div>
+						<!-- {% endif %}
+						{% endfor %} -->
+					</div>
+					<div style='float: right; width: 47%;'>
+
+					<!-- {% for i in range(0,num_of_headlines,1): %}
+					{% if(i%2==1): %} -->
+						<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
+							<div style='width:100%;'>
+							<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>고용부, 내년 최저임금 심의 요청 미룬다…"시장혼란 방지가 우선</strong></a></p>
+
+							<!-- {% if(i%3==1): %} -->
+							<!-- <img src='../static/images/naverIcon.png' style='width:8%;float:right;'/> -->
+							<!-- {% else: %} -->
+							<img src='../static/images/nateIcon.png' style='width:8%;float:right;'/>
+							<!-- {% endif %} -->
+
+							</div>
+							<p class='newsContent'>고용노동부가 내년도 최저임금 심의 요청을 연기할 방침인 것으로 확인됐다. 최저임금 결정 구조 개편을 담은 최저임금법 개정안에 대한 국회 논의가 마무리되지 않아서다. 현행 최저임금법에 따르면 고용부 장관은  3월 31일 최저임금위에 다음..</p>
+							<!-- {% if(i%4==1): %} -->
+							<!-- <p style='color:red;float:right;margin-bottom:0px; '><strong style="color:blue;">stock price here</strong></p>
+							<p style='float:right;margin-bottom:0px;'><strong>Company name here&nbsp;&nbsp;</strong></p>
+							<img src='../static/images/graph.png' style='width:100%;'/> -->
+							<!-- {% endif %} -->
+
+						</div>
+						<div class='backgroundImage' style='min-height:200px;margin-bottom:48px;'>
+							<div style='width:100%;'>
+							<p class='newsHeadline'><a target="_blank" href={{urls[i][0]}}><strong>현실이 된 인구쇼크… 한국 인구 올해부터 자연감소</strong></a></p>
+
+							<!-- {% if(i%3==1): %} -->
+							<img src='../static/images/naverIcon.png' style='width:8%;float:right;'/>
+							<!-- {% else: %} -->
+							<!-- <img src='../static/images/nateIcon.png' style='width:8%;float:right;'/> -->
+							<!-- {% endif %} -->
+
+							</div>
+							<p class='newsContent'>사망자가 출생아보다 많아지는 '인구 자연감소'가 당초 예상보다 10년이나 앞당겨진 올해부터 시작될 것으로 예측됐다. 초저출산이 심화하며 향후 50년간 우리나라 인구는 지금보다 1,200만명 줄어들고, 특히 '일 할 나이'인 생산연령인구는 2,000..</p>
+							<!-- {% if(i%4==1): %} -->
+							<!-- <p style='color:red;float:right;margin-bottom:0px; '><strong style="color:blue;">stock price here</strong></p>
+							<p style='float:right;margin-bottom:0px;'><strong>Company name here&nbsp;&nbsp;</strong></p>
+							<img src='../static/images/graph.png' style='width:100%;'/> -->
+							<!-- {% endif %} -->
+
+						</div>
+					<!-- {% endif %}
+					{% endfor %} -->
+					</div>
+				</div>
+				</article>
+			</div>
+		</div>
+	</div>
+	<div id="sidebar">
+
+		<!-- Logo -->
+		<h1 id="logo"><a href="/refresh">SK Hynix</a></h1>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul>
+				<li><a href="/">DashBoard</a></li>
+				<li class="current"><a href="/headlines">Headlines</a></li>
+				<li><a href="#">About Me</a></li>
+				<li><a href="#">Contact Me</a></li>
+			</ul>
+		</nav>
+
+		<!-- Search -->
+		<section class="box search">
+			<form method="post" action="#">
+				<input type="text" class="text" name="search" placeholder="Search" />
+			</form>
+		</section>
+
+		<!-- Text -->
+		<section class="box text-style1">
+			<div class="inner">
+				<p>
+					<strong>Aliquam:</strong> A nibh mus fusce adipiscing morbi pellentesque faucibus mi et nec Parturient
+				</p>
+			</div>
+		</section>
+
+		<!-- Copyright -->
+		<ul id="copyright">
+			<li>&copy; Copyright 2019. 개발엔 커피가 필요하조. All rights Reserved.</li>
+		</ul>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="../static/assets/js/jquery.min.js"></script>
+	<script src="../static/assets/js/browser.min.js"></script>
+	<script src="../static/assets/js/breakpoints.min.js"></script>
+	<script src="../static/assets/js/util.js"></script>
+	<script src="../static/assets/js/main.js"></script>
+
+</body>
+</html>

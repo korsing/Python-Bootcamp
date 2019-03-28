@@ -122,7 +122,7 @@ def gather_Headlines():
     num_of_headlines = 50 - startNum
     conn.close()
 
-    return render_template("headlines.html", titles = title, urls = url, date = date)
+    return render_template("headlines_temp.html", titles = title, urls = url, date = date)
 
 # @app.route('/refresh')
 # def refresh():
