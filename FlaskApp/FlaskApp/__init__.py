@@ -227,7 +227,7 @@ def scrapeArticles():
 
     soup_Economy = BeautifulSoup(req_Economy.content, "lxml")
     soup_Stock = BeautifulSoup(req_Stock.content, "lxml")
-    soup_Economy_Nate = BeautifulSoup(req_Economy_Nate.content, "html-parser")
+    soup_Economy_Nate = BeautifulSoup(req_Economy_Nate.content, "lxml")
 
     headlines_Economy = soup_Economy.find_all('a', {'class': 'cluster_text_headline nclicks(cls_eco.clsart)'})
     headlines_Stock = soup_Stock.find_all('dd', {'class': 'articleSubject'})
