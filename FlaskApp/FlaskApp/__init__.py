@@ -81,7 +81,7 @@ def homepage():
 def gather_Headlines():
     date = today()
     c, conn = connectDB()
-    startNum=55
+    startNum=45
     c.execute("SELECT COUNT(title) from article;")
     cnt = c.fetchone()[0]
     print(cnt)
