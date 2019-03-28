@@ -411,7 +411,7 @@ def get_StockPrice(code):
    elif(variation_tag[2].contents[1].text=='+'):
       variation = eval(variation_tag[2].contents[3].text)
    else:
-      variation = (0.00%)
+      variation = '(0.00%)'
    return price, variation
 
 '''
