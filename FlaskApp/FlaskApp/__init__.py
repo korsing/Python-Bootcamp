@@ -34,36 +34,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-    c, conn = connectDB()
-    c.execute("SELECT COUNT(seq) from article;")
-    count = c.fetchone()  # article seq
-    
-    c.execute("SELECT title from article;")
-    headline = c.fetchone()
-
-    c.execute("SELECT company from seq_company;")
-    seq_company = c.fetchone()
-
-    c.execute("SELECT keyword from seq_key;")
-    seq_key = c.fetchone()
-
-
-    '''
-    c.execute("SELECT user from users")
-    userid= c.fetchone()[0]
-
-    c.execute("SELECT seq from users")
-    userlog = c.fetchone()[0]
-
-    c.execute("SELECT pref_key_1 as key1, pref_key_2 as key2, pref_key_3 as key3 from users")
-    keies=c.fetchone()[0]
-
-    c.execute("SELECT COUNT(user) from users;")
-    total_users= c.fetchone
-    '''
-    conn.close()
+    count = 3
+    headline = ["기사제목1", "기사제목2", "기사제목3"]
+    seq_company = ["삼성전자", "sk하이닉스", "진욱앤컴퍼니"]
+    seq_key = ["키워드1", "키워드2", "키워드3"]
     return render_template('dashboard.html', count=count, headline=headline, seq_company=seq_company, seq_key=seq_key)
-                        # userid = userid, userlog = userlog, keies = keies, total_users = total_users)
 
 
 
