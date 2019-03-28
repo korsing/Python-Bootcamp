@@ -403,8 +403,7 @@ def get_StockPrice(code):
    print("variation_tag",variation_tag)
 
    price = price_tag[0].contents[1].contents[1].text
-   print("price_tag[0].contents[1].contents[1].text",price_tag[0].contents[1].contents[1].text)
-   print("variation_tag[2].contents[1].text",variation_tag[2].contents[1].text)
+
    if(len(variation_tag)>=3):
        if(variation_tag[2].contents[1].text=='-'):
           variation = eval(variation_tag[2].contents[3].text)*-1
