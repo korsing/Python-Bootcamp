@@ -82,12 +82,12 @@ def gather_Headlines():
 	c, conn = connectDB()
 
     # c.execute("SELECT COUNT(title) from article;")
-    cnt = 2300
-    print(cnt)
-    c.execute("SELECT title from article where seq between %d and %d;"%(cnt-49+658, cnt+658))
+    # cnt = 2300
+    # print(cnt)
+    c.execute("SELECT title from article;")
     title = c.fetchall()
     print("title",title)
-	c.execute("SELECT article_url from article where seq between %d and %d;"%(cnt-49+658, cnt+658))
+	c.execute("SELECT article_url from article;")
 	url = c.fetchall()
     print("url",url)
 	num_of_headlines = 16
