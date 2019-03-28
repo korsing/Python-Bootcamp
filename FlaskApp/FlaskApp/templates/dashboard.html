@@ -66,16 +66,16 @@
 					<th>Related keywords</th>
 				</tr>
 
-					{% for i in range(0,5,1): %}
+					{% for i in range(0,count,1): %}
 				<tr>
 					<td rowspan='3' align='center'>y+1</td>
-					<td>headline[i]</td>
+					<td>{{headline}}</td>
 				</tr>
 				<tr>
-					<td>Related_Comp[i]</td>
+					<td>{{seq_company}}</td>
 				</tr>
 				<tr>
-					<td>Related_keywords[i]</td>
+					<td>{{seq_key}}}}</td>
 				</tr>
 					{% endfor %}
 
