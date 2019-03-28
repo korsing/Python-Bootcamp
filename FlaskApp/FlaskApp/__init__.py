@@ -120,13 +120,17 @@ def UrltoKeyword(urls, weight):
 
 def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keyword, 회사명 뽑기
 
+    c, conn = connectDB()
     # 회사이름, url번호
     c_name_from_list_1 = []
     for i in range(len(keyword)):
         for j in range(len(company_list_1)):               
             if keyword[i][0] ==( company_list_1[j].lower() or company_list_1[j].upper()): 
                 c_name_from_list_1.append([company_list_1[j],keyword[i][1]])
-                         
+                c.execute("INSERT INTO seq_company (company,seq) VALUES (%s, %d);",(company_list_1[j], keyword[i][1]))
+
+                        
+
     temp = []
     for com_name in c_name_from_list_1:
         temp.append(com_name[0])
@@ -136,7 +140,11 @@ def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keywor
     for i in range(len(keyword)):
         if(keyword[i][0] not in temp):
             keyword_from_list.append(keyword[i])
+            c.execute("INSERT INTO seq_key (keyword,seq) VALUES (%s, %d);",(keyword[i][0], keyword[i][1]))
     
+    c.commit()
+    conn.close()           
+
     return keyword_from_list, c_name_from_list_1, temp
     
 def relatedTokeyword(keyword_from_list, c_name_from_list_1, temp):
@@ -268,8 +276,9 @@ def Select_Seq(url):
 '''
 
 #Seq_com, Seq_Key 테이블에 회사명/키워드 삽입  #이미 있는 headline이면 insert 막는다
+'''
 def insert_Seq_Comp_Key(companylist, keywordlist,seq):
-
+    
     newCompanylst =','.join(i for i in companylist)
     newKeywordlist = ','.join(i for i in keywordlist)
     c, conn = connectDB()
@@ -279,7 +288,7 @@ def insert_Seq_Comp_Key(companylist, keywordlist,seq):
     c.execute(query_key, (seq, newKeywordlist))
     c.commit()
     conn.close()
-
+'''
 '''
 
 #Matchs 테이블 채우기
