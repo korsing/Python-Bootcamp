@@ -23,14 +23,14 @@ import threading
 
 # Keyword Extraction related modules
 from sklearn.feature_extraction.text import TfidfVectorizer
-from konlpy.tag import Komoran
+# from konlpy.tag import Komoran
 from collections import Counter
 import numpy as np
 
 
 # 전역변수 선언
 app = Flask(__name__)
-komoran = Komoran()
+# komoran = Komoran()
 keyword_li =[]
 keyword_list=[]
 company_li=[]
@@ -124,12 +124,12 @@ def gather_Headlines():
 
     return render_template("headlines_temp.html", titles = title, urls = url, date = date)
 
-@app.route('/refresh')
-def refresh():
-
-    scrapeArticles()
-
-    return redirect('/')
+# @app.route('/refresh')
+# def refresh():
+#
+#     scrapeArticles()
+#
+#     return redirect('/')
 
 def today():
 	calendar = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
@@ -155,7 +155,7 @@ def UrltoKeyword(urls, weight):
         article.parse()
         article_text_= article.text
         article_text_ = "".join([s for s in article_text_.strip().splitlines(True) if s.strip()])
-        temp_ = ' '.join(komoran.nouns(article_text_))
+        # temp_ = ' '.join(komoran.nouns(article_text_))
         article_text_noun.append(temp_)
     ## tfidf_알고리즘 , keyword , keyword weight 뽑
     tfidf_vectorizer = TfidfVectorizer(min_df=1)
