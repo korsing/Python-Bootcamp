@@ -81,7 +81,7 @@ def gather_Headlines():
 	date = today()
 	c, conn = connectDB()
 
-    c.execute("SELECT COUNT(title) from article;")
+    c.execute("SELECT COUNT(title) from article")
     cnt = c.fetchone()[0]
 
     c.execute("SELECT title from article where seq between %d and %d;"%(cnt-49+658, cnt+658))
