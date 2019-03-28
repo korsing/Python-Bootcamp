@@ -97,7 +97,7 @@ def connectDB():
 	c = conn.cursor()
 	return c, conn
 
-'''
+
 def UrltoKeyword(urls, weight):
     
     article_text_noun = []
@@ -131,7 +131,7 @@ def UrltoKeyword(urls, weight):
                 a.append(article_text_noun[i])     
                 
     return keyword, keyword_weight 
-'''
+
 def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keyword, 회사명 뽑기
 
     # 회사이름, url번호
