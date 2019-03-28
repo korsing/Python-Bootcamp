@@ -102,24 +102,24 @@ def gather_Headlines():
     com_name_list_compare =  [i[0] for i in com_name_list]
 
     compInfor.clear()
-    for k in range(len(seq_company)):
-        compInfor.append([])
-
-    print("seq_company",seq_company)
-    for i in range(startNum,len(seq_company)):
-        if (seq_company[i][0]!=''):
-            compname = seq_company[i][0].split(',')
-            for j in range(0,len(com_name_list_compare)):
-                if (compname[0] == com_name_list_compare[j]):
-                    compInfor[i].append(compname[0])
-                    price, variation, color, img_scr = get_StockPrice(com_code_list_compare[j])
-                    compInfor[i].append(price)
-                    compInfor[i].append(variation)
-                    compInfor[i].append(color)
-                    compInfor[i].append(img_scr)
-
-    print("compInfor",compInfor)
-    num_of_headlines = 50 - startNum
+    # for k in range(len(seq_company)):
+    #     compInfor.append([])
+    #
+    # print("seq_company",seq_company)
+    # for i in range(startNum,len(seq_company)):
+    #     if (seq_company[i][0]!=''):
+    #         compname = seq_company[i][0].split(',')
+    #         for j in range(0,len(com_name_list_compare)):
+    #             if (compname[0] == com_name_list_compare[j]):
+    #                 compInfor[i].append(compname[0])
+    #                 price, variation, color, img_scr = get_StockPrice(com_code_list_compare[j])
+    #                 compInfor[i].append(price)
+    #                 compInfor[i].append(variation)
+    #                 compInfor[i].append(color)
+    #                 compInfor[i].append(img_scr)
+    #
+    # print("compInfor",compInfor)
+    # num_of_headlines = 50 - startNum
     conn.close()
 
     return render_template("headlines_temp.html", titles = title, urls = url, date = date)
