@@ -34,7 +34,38 @@ app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-	return render_template("dashboard.html")
+	def crawl():
+    c, conn = connectDB()
+    c.execute("SELECT COUNT(seq) from article;")
+    count = c.fetchone()[0]  # article seq
+
+    c.execute("SELECT title from article;")
+    headline = c.fetchone()[0]
+
+    c.execute("SELECT * from seq_company;")
+    seq_company = c.fetchone()[0]
+
+    c.execute("SELECT * from seq_key;")
+    seq_key = c.fetchone()[0]
+
+    c.execute("SELECT user from users")
+    userid= c.fetchone()[0]
+
+    c.execute("SELECT seq from users")
+    userlog = c.fetchone()[0]
+
+    c.execute("SELECT pref_key_1 as key1, pref_key_2 as key2, pref_key_3 as key3 from users")
+    keies=c.fetchone()[0]
+
+    c.execute("SELECT COUNT(user) from users;")
+    total_users= c.fetchone
+
+    conn.close()
+    return render_template('dashboard.html', count=count, headline=headline, seq_company=seq_company, seq_key=seq_key,
+                           userid = userid, userlog = userlog, keies = keies, total_users = total_users)
+
+
+
 
 @app.route('/headlines')
 def gather_Headlines():
@@ -170,44 +201,159 @@ def relatedTokeyword(keyword_from_list, c_name_from_list_1, temp):
             
     return keyword_from_c_name
     
+    
 # 각종 뉴스 포털에서 기사 제목, 링크 갖다 DB에 추가
 def scrapeArticles():
-   # NAVER SCRAPYING
+
+    # NAVER SCRAPYING
+    year = datetime.datetime.now().date().year
+    month = datetime.datetime.now().date().month
+    day = datetime.datetime.now().date().day
+
+    if month < 10:
+        month = "0" + str(month)
+    else:
+        month = str(month)
+    if day < 10:
+        day = "0" + str(day)
+    else:
+        day = str(day)
+
+    headline = []
+    url = []
+
+    # 네이버 /네이트 경제 뉴스 URL
+    url_Economy = 'https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=101'
+    url_Stock = 'https://finance.naver.com/news/news_list.nhn?mode=LSS3D&section_id=101&section_id2=258&section_id3=402'
+    url_Economy_Nate = 'https://news.nate.com/subsection?cate=eco01&mid=n0305&type=t&date=%d%s%s' % (year, month, day)
+
+    req_Economy = requests.get(url_Economy)
+    req_Stock = requests.get(url_Stock)
+    req_Economy_Nate = requests.get(url_Economy_Nate)
+
+    soup_Economy = BeautifulSoup(req_Economy.content, "lxml")
+    soup_Stock = BeautifulSoup(req_Stock.content, "lxml")
+    soup_Economy_Nate = BeautifulSoup(req_Economy_Nate, 'lxml')
+
+    headlines_Economy = soup_Economy.find_all('a', {'class': 'cluster_text_headline nclicks(cls_eco.clsart)'})
+    headlines_Stock = soup_Stock.find_all('dd', {'class': 'articleSubject'})
+    headlines_Economy_Nate = soup_Economy_Nate.find_all('ul', {"class": "mduSubject"})
+
+    for title in headlines_Economy:
+        headline.append(title.text)
+        url.append(title.get('href'))
+    for title in headlines_Stock:
+        headline.append(title.text)
+        url.append('https://finance.naver.com' + title.find('a').get('href'))
+
+    for i in range(len(headlines_Economy_Nate)):
+        for j in range(len(headlines_Economy_Nate[i].findAll('a'))):
+            headline.append(headlines_Economy_Nate[i].findAll('a')[j].text)
+            url.append('https://news.nate.com/' + headlines_Economy_Nate[i].findAll('a')[j].get('href'))
+    '''
+    logo = ''
+    for i in url:
+        if 'naver' in i:
+            logo = 'naver'
+        else:
+            logo = 'nate'
+
+    new_index = [i for i in range(len(headline))]
+    new_index = shuffle(new_index)
+    '''
+    # DB에 추가하는 함수 실행
+
+    c, conn = connectDB()
+    now = datetime.datetime.now().strftime('%Y-%m-%d')
+    query = "INSERT INTO article (title, article_url, date, contents) VALUES (%s, %s, %s, %s)"
+    for count in range(len(headline)):
+        c.execute(query, (headline[count], url[count], now, 'summary goes here')) #<--요약봇 ㅜㅡㅜㅜㅡㅜ
+    conn.commit()
+    conn.close()
+
+
+ #backend func -
+def Select_Seq(url):
+    c, conn = connectDB()
+    c.execute("SELECT seq from article where article_url = %s;",url)
+    seq= c.fetchall()
+    conn.close()
+    return seq
+
+#Seq_com, Seq_Key 테이블에 회사명/키워드 삽입  #이미 있는 headline이면 insert 막는다
+def insert_Seq_Comp_Key(companylist, keywordlist,seq):
+
+    newCompanylst =','.join(i for i in companylist)
+    newKeywordlist = ','.join(i for i in keywordlist)
+    c, conn = connectDB()
+    query_com = "INSERT INTO seq_company VALUES (%d, %s);"
+    query_key = "INSERT INTO seq_key VALUES (%d, %s);"
+    c.execute(query_com,(seq, newCompanylst))
+    c.execute(query_key, (seq, newKeywordlist))
+    c.commit()
+    conn.close()
+
+
+
+#Matchs 테이블 채우기
+def insert_Matchs():
+
+    c,conn = connectDB()
+    query_com = "SELECT company FROM seq_company;"
+    c.execute(query_com)
+    com_Tuple = c.fetchall()
+    li_com_Tuple = str(com_Tuple[0]).split(',')
+
+    for i in li_com_Tuple:
+        c.execute("SELECT code from company where name=%s;",i)
+        i_code = c.fetchone()
+        i_code = str(i_code[0])
+        c.execute("INSERT INTO Matchs (name, code) VALUES (%s,%s);",(i,i_code))
+        query_keyword = ("SELECT keyword from seq_keyword k, seq_company c where k.seq=c.seq and where c.companies=%s;",i)
+        c.execute(query_keyword)
+        keyword_Tuple= c.fetchone()[0]
+        str_keyword= ','.join(keyword_Tuple)
+        c.execute("INSERT INTO Matchs (keyword) VALUES (%s);",str_keyword)
+
+    c.commit()
+    conn.close()
+
+
+#userid 입력받아서 기사별 선호도 추출, weight순으로 prefered keyword 생성
+
+def User(userid):
+
+    dict_for_prefer ={}
+    c, conn = connectDB()
+    c.execute("SELECT seq FROM User where userid = %s;",userid)
+    user_seq = c.fetchone
+    userstring= str(user_seq[0])
+    usersplit = userstring.split(',')
+
+    for i in usersplit:
+        if usersplit.index(i) == 0:
+            c.execute("SELECT keyword FROM seq_key where seq = %s;",i)
+            temp = c.fetchone()
+            temp = str(temp[0]).split(',')
+            for j in temp :
+                dict_for_prefer[j] = 1
+
+        else:
+            c.execute("SELECT keyword FROM seq_keyword where seq = %s;", i)
+            temp = c.fetchone()
+            temp = str(temp[0]).split(',')
+            for j in temp :
+                if j in dict_for_prefer.keys():
+                    dict_for_prefer[j] +=1
+                else:
+                    dict_for_prefer[j] = 1
+    dict_for_prefer = sorted(dict_for_prefer, key=dict_for_prefer.get )[::-1]
+    c.execute("INSERT INTO users (pref_key1, pref_key2, pref_key3) VALUES (%s %s %s);",(dict_for_prefer[0],dict_for_prefer[1],dict_for_prefer[2]))
+    c.commit()
+    conn.close()
+
    
-   headline_Naver = []
-   url_Naver = []
-
-   # 네이버 경제 뉴스 URL
-   url_Economy = 'https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=101'
-   url_Stock = 'https://finance.naver.com/news/news_list.nhn?mode=LSS3D&section_id=101&section_id2=258&section_id3=402'
-
-   req_Economy = requests.get(url_Economy)
-   req_Stock = requests.get(url_Stock)
-
-   soup_Economy = BeautifulSoup(req_Economy.content, "lxml")
-   soup_Stock = BeautifulSoup(req_Stock.content, "lxml")
-
-   headlines_Economy = soup_Economy.find_all('a', {'class': 'cluster_text_headline nclicks(cls_eco.clsart)'})
-   headlines_Stock = soup_Stock.find_all('dd',{'class':'articleSubject'})
-
-   for title in headlines_Economy:
-      headline_Naver.append(title.text)
-      url_Naver.append(title.get('href'))
-   for title in headlines_Stock:
-      headline_Naver.append(title.text)
-      url_Naver.append('https://finance.naver.com' + title.find('a').get('href'))
-
-   summary_Naver = []; dates_Naver = []
-   for i in range(len(headline_Naver)):
-       summary_Naver.append("None")
-       dates_Naver.append("None")
-       
-   c, conn = connectDB()
-   query = "INSERT INTO article (title, contents, article_url, date) VALUES (%s, %s, %s, %s);"
-   for i in range(len(headline_Naver)):
-       c.execute(query,(headline_Naver[i],summary_Naver[i],url_Naver[i],dates_Naver[i]))
-   conn.commit()
-   conn.close()
+#---
    
 # Main
 if(__name__ == 'main'):
