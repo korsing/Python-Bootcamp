@@ -278,6 +278,7 @@ def Select_Seq(url):
     seq= c.fetchall()
     conn.close()
     return seq
+'''
 
 #Seq_com, Seq_Key 테이블에 회사명/키워드 삽입  #이미 있는 headline이면 insert 막는다
 def insert_Seq_Comp_Key(companylist, keywordlist,seq):
@@ -292,7 +293,7 @@ def insert_Seq_Comp_Key(companylist, keywordlist,seq):
     c.commit()
     conn.close()
 
-
+'''
 
 #Matchs 테이블 채우기
 def insert_Matchs():
