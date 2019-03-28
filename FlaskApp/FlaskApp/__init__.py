@@ -290,7 +290,7 @@ def scrapeArticles():
     
     for i in range(len(keyword_li)):
         TempStr = ','.join(keyword_li[i])
-        sql = """INSERT INTO TABLE seq_keyword (seq, keyword) VALUES (%s,%s)"""
+        sql = "INSERT INTO seq_keyword (seq, keyword) VALUES (%s,%s)"
         val = (i,TempStr)
         c.execute(sql,val)
         #keyword_list.append(TempStr)
@@ -307,7 +307,7 @@ def scrapeArticles():
    
     for i in range(len(company_li)):
         TempStr2 = ','.join(company_li[i])
-        sql = """INSERT INTO TABLE seq_com (seq, keyword) VALUES (%s,%s)"""
+        sql = "INSERT INTO seq_com (seq, keyword) VALUES (%s,%s)"
         val = (i,TempStr2)
         c.execute(sql,val) 
         #company_list.append(TempStr2)
