@@ -263,7 +263,24 @@ def scrapeArticles():
     for count in range(len(headline)):
         c.execute(query, (headline[count], url[count], now, 'summary goes here')) #<--요약봇 ㅜㅡㅜㅜㅡㅜ
     conn.commit()
+    
+    c.execute("SELECT article_url from article;")
+    temp  = c.fetchall()
+    url_list = [i[0] for i in temp]
+
+    c.execute("SELECT company from company;")
+    temp =  c.fetchall()
+    com_list =  [i[0] for i in temp]
+
+    A, B = UrltoKeyword(url_list, 0.1)
+
+    _A, _B, _C  = CnameandKeyword(A,B,com_list)
+
+    relatedTokeyword(_A,_B,_C)
+
     conn.close()
+
+
 
 def get_StockPrice(code):
    req_Stock = requests.get('https://finance.naver.com/item/main.nhn?code='+code)
