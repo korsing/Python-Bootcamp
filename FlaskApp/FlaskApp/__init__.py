@@ -227,7 +227,7 @@ def scrapeArticles():
 
     soup_Economy = BeautifulSoup(req_Economy.content, "lxml")
     soup_Stock = BeautifulSoup(req_Stock.content, "lxml")
-    soup_Economy_Nate = BeautifulSoup(req_Economy_Nate, 'lxml')
+    soup_Economy_Nate = BeautifulSoup(req_Economy_Nate.content, "html-parser")
 
     headlines_Economy = soup_Economy.find_all('a', {'class': 'cluster_text_headline nclicks(cls_eco.clsart)'})
     headlines_Stock = soup_Stock.find_all('dd', {'class': 'articleSubject'})
@@ -264,6 +264,22 @@ def scrapeArticles():
         c.execute(query, (headline[count], url[count], now, 'summary goes here')) #<--요약봇 ㅜㅡㅜㅜㅡㅜ
     conn.commit()
     conn.close()
+
+def get_StockPrice(code):
+   req_Stock = requests.get('https://finance.naver.com/item/main.nhn?code='+code)
+   soup_Stock = BeautifulSoup(req_Stock.content, 'lxml')
+
+   price_tag = soup_Stock.find_all('p', {'class': 'no_today'})
+   variation_tag = soup_Stock.find_all('em', {'class': 'no_down'})
+
+   price = price_tag[0].contents[1].contents[1].text
+   if(variation_tag[2].contents[1].text=='-'):
+      variation = eval(variation_tag[2].contents[3].text)*-1
+   elif(variation_tag[2].contents[1].text=='+'):
+      variation = eval(variation_tag[2].contents[3].text)
+   else:
+      return None
+   return price, variation    
 
 '''
  #backend func -
