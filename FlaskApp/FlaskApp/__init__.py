@@ -76,12 +76,12 @@ def gather_Headlines():
 	conn.close()
 	return render_template("headlines.html", titles = title, urls = url, date = date, num_of_headlines = num_of_headlines)
 
-@app.route('/refresh')
-def refresh():
-
-    scrapeArticles()
-
-    return redirect('/')
+# @app.route('/refresh')
+# def refresh():
+#
+#     scrapeArticles()
+#
+#     return redirect('/')
 
 def today():
 	calendar = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
