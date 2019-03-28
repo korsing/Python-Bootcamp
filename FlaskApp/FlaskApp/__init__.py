@@ -46,7 +46,7 @@ def homepage():
 
     c.execute("SELECT keyword from seq_key;")
     seq_key = c.fetchone()
-    return "4"
+
 
     '''
     c.execute("SELECT user from users")
@@ -62,7 +62,7 @@ def homepage():
     total_users= c.fetchone
     '''
     conn.close()
-    # return render_template('dashboard.html', count=count, headline=headline, seq_company=seq_company, seq_key=seq_key)
+    return render_template('dashboard.html', count=count, headline=headline, seq_company=seq_company, seq_key=seq_key)
                         # userid = userid, userlog = userlog, keies = keies, total_users = total_users)
 
 
