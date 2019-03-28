@@ -107,14 +107,14 @@ def gather_Headlines():
 
     print("seq_company",seq_company)
     for i in range(0,len(seq_company)):
-        if (seq_compan[i][0]!=''):
+        if (seq_company[i][0]!=''):
             compname = seq_compan[i][0].split(',')
             for j in range(0,len(com_name_list_compare)):
                 if (compname[0] == com_name_list_compare[j]):
                     compInfor[i].append(compname[0])
                     compInfor[i].append(get_StockPrice(com_code_list_compare[j]))
 
-    print("compInfor",compInfor)                
+    print("compInfor",compInfor)
 
 
 
