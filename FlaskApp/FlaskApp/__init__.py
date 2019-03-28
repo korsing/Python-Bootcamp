@@ -282,6 +282,10 @@ def scrapeArticles():
 
     count=50  #임의로 열개만 
 
+    c.execute("TRUNCATE TABLE seq_keword;")
+    c.execute("TRUNCATE TABLE seq_com;")
+    conn.commit()
+
     for k in range(count):
         keyword_li.append([])
     for i in range(0,len(_A)):
