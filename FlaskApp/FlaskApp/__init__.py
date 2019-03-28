@@ -419,7 +419,7 @@ def get_StockPrice(code):
 
    imageUrl = soup_Stock.find_all('img', {'id': 'img_chart_area'})
    print(imageUrl)
-   img_scr = imageUrl.get('scr')
+   img_scr = 'https://ssl.pstatic.net/imgfinance/chart/item/area/day/017670.png?sidcode=1553799190374'
    print(img_scr)
    return price, variation, color, img_scr
 
