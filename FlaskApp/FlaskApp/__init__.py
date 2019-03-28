@@ -78,21 +78,21 @@ def homepage():
 
 @app.route('/headlines')
 def gather_Headlines():
-	date = today()
-	c, conn = connectDB()
+    date = today()
+    c, conn = connectDB()
 
-    # c.execute("SELECT COUNT(title) from article;")
-    # cnt = 2300
-    # print(cnt)
-    c.execute("SELECT title from article;")
+    c.execute("SELECT COUNT(title) from article;")
+    cnt = c.fetchone()[0]
+    print(cnt)
+    c.execute("SELECT title from article where seq between %d and %d;"%(cnt-49+658, cnt+658))
     title = c.fetchall()
     print("title",title)
-	c.execute("SELECT article_url from article;")
-	url = c.fetchall()
+    c.execute("SELECT article_url from article where seq between %d and %d;"%(cnt-49+658,cnt+658))
+    url = c.fetchall()
     print("url",url)
-	num_of_headlines = 16
-	conn.close()
-	return render_template("headlines.html", titles = title, urls = url, date = date, num_of_headlines = num_of_headlines)
+    num_of_headlines = 16
+    conn.close()
+    return render_template("headlines.html", titles = title, urls = url, date = date, num_of_headlines = num_of_headlines)
 
 # @app.route('/refresh')
 # def refresh():
