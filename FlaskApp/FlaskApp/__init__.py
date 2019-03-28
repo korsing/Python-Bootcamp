@@ -404,20 +404,20 @@ def get_StockPrice(code):
 
    price = price_tag[0].contents[1].contents[1].text
 
+   variation = '(0.00%)'
    if(len(variation_tag)>=3):
        if(variation_tag[2].contents[1].text=='-'):
-          variation = eval(variation_tag[2].contents[3].text)*-1
+           variation = eval(variation_tag[2].contents[3].text)*-1
        elif(variation_tag[2].contents[1].text=='+'):
-          variation = eval(variation_tag[2].contents[3].text)
+           variation = eval(variation_tag[2].contents[3].text)
        else:
-          variation = '(0.00%)'
-    else:
-        variation = '(0.00%)'
+           variation = '(0.00%)'
+
 
     imageUrl = soup_Stock.find('img', {'id': 'img_chart_area'})
     img_scr = imageUrl.get('scr')
-    print(img_scr)      
-   return price, variation
+    print(img_scr)
+    return price, variation
 
 '''
  #backend func -
