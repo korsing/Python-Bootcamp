@@ -37,15 +37,18 @@ def homepage():
     c, conn = connectDB()
     c.execute("SELECT COUNT(seq) from article;")
     count = c.fetchone()  # article seq
-
+    return "1"
     c.execute("SELECT title from article;")
     headline = c.fetchone()
+    return "2"
 
     c.execute("SELECT company from seq_company;")
     seq_company = c.fetchone()
+    return "3"
 
     c.execute("SELECT keyword from seq_key;")
     seq_key = c.fetchone()
+    return "4"
 
     '''
     c.execute("SELECT user from users")
@@ -61,8 +64,8 @@ def homepage():
     total_users= c.fetchone
     '''
     conn.close()
-    return render_template('dashboard.html', count=count, headline=headline, seq_company=seq_company, seq_key=seq_key)
-                        #userid = userid, userlog = userlog, keies = keies, total_users = total_users)
+    # return render_template('dashboard.html', count=count, headline=headline, seq_company=seq_company, seq_key=seq_key)
+                        # userid = userid, userlog = userlog, keies = keies, total_users = total_users)
 
 
 
