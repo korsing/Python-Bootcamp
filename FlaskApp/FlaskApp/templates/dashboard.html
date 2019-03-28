@@ -69,10 +69,14 @@
 					{% for i in range(0,count,1): %}
 				<tr>
 					<td rowspan='3' align='center'>{{i+1}}</td>
-					<td>{{headline[i][0]}}</td>
+					<td><h4>{{headline[i][0]}}</h4></td>
 				</tr>
 				<tr>
-					<td>{{seq_company[i][0]}}</td>
+						{% if(seq_company[i][0]==''): %}
+										<td> -> NULL</td>
+						{% else: %}
+										<td> -> {{seq_company[i][0]}}</td>
+						{% endif%}
 				</tr>
 				<tr>
 					<td>{{seq_key[i][0]}}</td>
