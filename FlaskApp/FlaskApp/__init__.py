@@ -34,9 +34,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-    c, conn = connectDB()
-    c.execute("SELECT COUNT(seq) from seq_company;")
-    count  = c.fetchone()[0]
+    #c, conn = connectDB()
+    #c.execute("SELECT COUNT(seq) from seq_company;")
+    count  =307
     
     c.execute("SELECT title from article;")
     headline = c.fetchall()
