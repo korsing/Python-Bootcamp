@@ -43,7 +43,6 @@ def homepage():
 
     c.execute("SELECT company from seq_company;")
     seq_company = c.fetchone()
-    return "3"
 
     c.execute("SELECT keyword from seq_key;")
     seq_key = c.fetchone()
