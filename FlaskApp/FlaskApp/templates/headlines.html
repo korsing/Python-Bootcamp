@@ -68,10 +68,10 @@
 
 								</div>
 								<p class='newsContent'>Summary goes here</p>
-								{% if(i%3==0): %}<!--compImage,price,name Not Null-->
-								<p style='color:red;float:right;margin-bottom:0px;'><strong style="color:blue;">stock price here</strong></p>
-								<p style='float:right;margin-bottom:0px;'><strong>Company name here&nbsp;&nbsp;</strong></p>
-								<img src='../static/images/graph.png' style='width:100%;'/>
+								{% if({{compInfor[0]}}!=''): %}<!--compImage,price,name Not Null-->
+								<p style='color:red;float:right;margin-bottom:0px;'><strong style="color:{{compInfor[3]}};">{{compInfor[1]}}{{compInfor[2]}}</strong></p>
+								<p style='float:right;margin-bottom:0px;'><strong>{{compInfor[0]}}&nbsp;&nbsp;</strong></p>
+								<img src={{compInfor[4]}} style='width:100%;'/>
 								{% endif %}
 
 							</div>
@@ -91,10 +91,10 @@
 
 							</div>
 							<p class='newsContent'>Summary goes here</p>
-							{% if(i%4==1): %}<!--compImage,price,name Null-->
-							<p style='color:blue;float:right;margin-bottom:0px;'><strong style="color:red;">stock price here</strong></p>
-							<p style='float:right;margin-bottom:0px;'><strong>Company name here&nbsp;&nbsp;</strong></p>
-							<img src='../static/images/graph.png' style='width:100%;'/>
+							{% if({{compInfor[0]}}!=''): %}<!--compImage,price,name Not Null-->
+							<p style='color:red;float:right;margin-bottom:0px;'><strong style="color:{{compInfor[3]}};">{{compInfor[1]}}{{compInfor[2]}}</strong></p>
+							<p style='float:right;margin-bottom:0px;'><strong>{{compInfor[0]}}&nbsp;&nbsp;</strong></p>
+							<img src={{compInfor[4]}} style='width:100%;'/>
 							{% endif %}
 
 						</div>
@@ -119,10 +119,10 @@
 
 								</div>
 								<p class='newsContent'>Summary goes here</p>
-								{% if(i%3==0): %}<!--compImage,price,name Not Null-->
-								<p style='color:blue;float:right;margin-bottom:0px;'><strong style="color:red;">stock price here</strong></p>
-								<p style='float:right;margin-bottom:0px;'><strong>Company name here&nbsp;&nbsp;</strong></p>
-								<img src='../static/images/graph.png' style='width:100%;'/>
+								{% if({{compInfor[0]}}!=''): %}<!--compImage,price,name Not Null-->
+								<p style='color:red;float:right;margin-bottom:0px;'><strong style="color:{{compInfor[3]}};">{{compInfor[1]}}{{compInfor[2]}}</strong></p>
+								<p style='float:right;margin-bottom:0px;'><strong>{{compInfor[0]}}&nbsp;&nbsp;</strong></p>
+								<img src={{compInfor[4]}} style='width:100%;'/>
 								{% endif %}
 
 							</div>
@@ -145,10 +145,10 @@
 
 							</div>
 							<p class='newsContent'>Summary goes here</p>
-							{% if(i%4==1): %}<!--compImage,price,name Null-->
-							<p style='color:red;float:right;margin-bottom:0px; '><strong style="color:blue;">stock price here</strong></p>
-							<p style='float:right;margin-bottom:0px;'><strong>Company name here&nbsp;&nbsp;</strong></p>
-							<img src='../static/images/graph.png' style='width:100%;'/>
+							{% if({{compInfor[0]}}!=''): %}<!--compImage,price,name Not Null-->
+							<p style='color:red;float:right;margin-bottom:0px;'><strong style="color:{{compInfor[3]}};">{{compInfor[1]}}{{compInfor[2]}}</strong></p>
+							<p style='float:right;margin-bottom:0px;'><strong>{{compInfor[0]}}&nbsp;&nbsp;</strong></p>
+							<img src={{compInfor[4]}} style='width:100%;'/>
 							{% endif %}
 
 						</div>
