@@ -44,6 +44,7 @@ def homepage():
     c.execute("SELECT COUNT(title) from article")
     cnt = c.fetchone()[0]
 
+
     print(cnt)
     c.execute("SELECT title from article where seq between %d and %d;"%(cnt-49+657, cnt+657))
     headline = c.fetchall()
