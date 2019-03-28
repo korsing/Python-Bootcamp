@@ -42,7 +42,7 @@ def homepage():
     #c.execute("SELECT COUNT(seq) from seq_company;")
     count  =10
     c.execute("SELECT COUNT(title) from article")
-    cnt = c.fetchall()[0]
+    cnt = c.fetchone()[0]
 
     print(cnt)
     c.execute("SELECT title from article where seq between %s and %s;"%(cnt-49, cnt))
