@@ -133,8 +133,7 @@ def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keywor
                 c_name_from_list_1.append([company_list_1[j],keyword[i][1]])
                 print(type(keyword[i][1]))
                 c.execute("INSERT INTO seq_com (seq, company) VALUES (%s, %s);",(keyword[i][1], company_list_1[j]))
-                c.commit()
-
+                conn.commit()
 
                         
 
@@ -148,10 +147,10 @@ def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keywor
         if(keyword[i][0] not in temp):
             keyword_from_list.append(keyword[i])
             c.execute("INSERT INTO seq_key (keyword,seq,k_seq) VALUES (%s, %d,%d);",(keyword[i][0], int(keyword[i][1]),0))
-            c.commit()
+            conn.commit()
 
     
-    c.commit()
+    conn.commit()
     conn.close()           
 
     return keyword_from_list, c_name_from_list_1, temp
@@ -328,7 +327,7 @@ def insert_Seq_Comp_Key(companylist, keywordlist,seq):
     query_key = "INSERT INTO seq_key VALUES (%d, %s);"
     c.execute(query_com,(seq, newCompanylst))
     c.execute(query_key, (seq, newKeywordlist))
-    c.commit()
+    conn.commit()
     conn.close()
 '''
 '''
@@ -353,7 +352,7 @@ def insert_Matchs():
         str_keyword= ','.join(keyword_Tuple)
         c.execute("INSERT INTO Matchs (keyword) VALUES (%s);",str_keyword)
 
-    c.commit()
+    conn.commit()
     conn.close()
 
 
@@ -387,7 +386,7 @@ def User(userid):
                     dict_for_prefer[j] = 1
     dict_for_prefer = sorted(dict_for_prefer, key=dict_for_prefer.get )[::-1]
     c.execute("INSERT INTO users (pref_key1, pref_key2, pref_key3) VALUES (%s %s %s);",(dict_for_prefer[0],dict_for_prefer[1],dict_for_prefer[2]))
-    c.commit()
+    conn.commit()
     conn.close()
 
    
