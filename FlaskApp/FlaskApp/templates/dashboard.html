@@ -73,13 +73,13 @@
 				</tr>
 				<tr>
 						{% if(seq_company[i][0]==''): %}
-										<td> -> NULL</td>
+										<td>&nbsp;->&nbsp;No Company Related</td>
 						{% else: %}
-										<td> -> {{seq_company[i][0]}}</td>
+										<td>&nbsp;->&nbsp;{{seq_company[i][0]}}</td>
 						{% endif%}
 				</tr>
 				<tr>
-					<td>{{seq_key[i][0]}}</td>
+					<td>&nbsp;->&nbsp;{{seq_key[i][0]}}</td>
 				</tr>
 					{% endfor %}
 
@@ -115,13 +115,13 @@
 				 <th colspan='2'>Prefered keywords</td>
 			 </tr>
 
-					{% for i in range(0,8,1): %}
+					{% for i in range(0,5,1): %}
 				 <tr>
-					 <td>UserName</td>
-					 <td>Userlogs</td>
+					 <td align='center'>userid[i]</td>
+					 <td align='center'>seq[i]</td>
 				 </tr>
 				 <tr>
-					 <td colspan='2'>Userkeywords</td>
+					 <td colspan='2'align='center'>pref_key[i]</td>
 				 </tr>
 					{% endfor %}
 

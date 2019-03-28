@@ -58,8 +58,20 @@ def homepage():
     seq_key = c.fetchall()
     print("seq_key",seq_key)
 
+    c.execute("SELECT userid from users2;")
+    userid = c.fetchall()
+    print("userid",userid)
+
+    c.execute("SELECT seq from users2;")
+    seq = c.fetchall()
+    print("seq",seq)
+
+    c.execute("SELECT pref_key from users2;")
+    pref_key = c.fetchall()
+    print("pref_key",pref_key)
+
     conn.close()
-    return render_template('dashboard.html', count=count, headline=headline, seq_company=seq_company, seq_key=seq_key)
+    return render_template('dashboard.html', count=count, headline=headline, seq_company=seq_company, seq_key=seq_key, userid=userid, seq=seq, pref_key=pref_key)
 
 
 
