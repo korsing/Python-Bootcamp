@@ -41,14 +41,16 @@ def homepage():
     c, conn = connectDB()
     #c.execute("SELECT COUNT(seq) from seq_company;")
     count  =10
-    
-    c.execute("SELECT title from article;")
+    c.execute("SELECT COUNT(title) from article")
+    cnt = c.fetchall()[0]
+    print(cnt)
+    c.execute("SELECT title from article where seq between %d and %d;"%(cnt-50, cnt))
     headline = c.fetchall()
 
-    c.execute("SELECT company from seq_company;")
+    c.execute("SELECT company from seq_com;")
     seq_company = c.fetchall()
     
-    c.execute("SELECT keyword from seq_key;")
+    c.execute("SELECT keyword from seq_keyword;")
     seq_key = c.fetchall()
     
     conn.close()
@@ -94,7 +96,8 @@ def UrltoKeyword(urls, weight):
     print("UrltoKeyword Function Started!")
     article_text_noun = []
     ## article_text_noun 뽑
-    for temp in range(1000,1010,1):
+    print(len(urls))
+    for temp in range(len(urls)-49,len(urls)+1,1):
         article= Article(urls[temp],language='ko')
         article.download()
         article.parse()
@@ -277,7 +280,7 @@ def scrapeArticles():
     company_li.clear()
     company_list.clear()
 
-    count=10  #임의로 열개만 
+    count=50  #임의로 열개만 
 
     for k in range(count):
         keyword_li.append([])
