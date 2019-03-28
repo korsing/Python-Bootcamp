@@ -89,7 +89,7 @@ def UrltoKeyword(urls, weight):
     article_text_noun = []
     print("article_text_noun을 뽑기 시작합니다.")
     ## article_text_noun 뽑
-    for temp in range(1000,1050,1):
+    for temp in range(1000,1010,1):
         print("{}번째 기사 작업 중".format(temp))
         article= Article(urls[temp],language='ko')
         article.download()
@@ -132,7 +132,7 @@ def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keywor
             if keyword[i][0] ==( company_list_1[j].lower() or company_list_1[j].upper()): 
                 c_name_from_list_1.append([company_list_1[j],keyword[i][1]])
                 print(type(keyword[i][1]))
-                c.execute("INSERT INTO seq_com (seq, company) VALUES (%d, %s);",(keyword[i][1], company_list_1[j]))
+                c.execute("INSERT INTO seq_com (seq, company) VALUES (%s, %s);",(keyword[i][1], company_list_1[j]))
                 c.commit()
 
 
