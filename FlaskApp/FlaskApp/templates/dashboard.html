@@ -68,14 +68,14 @@
 
 					{% for i in range(0,count,1): %}
 				<tr>
-					<td rowspan='3' align='center'>{{i}}</td>
+					<td rowspan='3' align='center'>{{i+1}}</td>
 					<td>{{headline}}</td>
 				</tr>
 				<tr>
-					<td>{{seq_company}}</td>
+					<td>{{seq_company[i]}}</td>
 				</tr>
 				<tr>
-					<td>{{seq_key}}</td>
+					<td>{{seq_key[i]}}</td>
 				</tr>
 					{% endfor %}
 
