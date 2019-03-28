@@ -90,6 +90,7 @@ def UrltoKeyword(urls, weight):
     print("article_text_noun을 뽑기 시작합니다.")
     ## article_text_noun 뽑
     for temp in range(len(urls)):
+        print("{}번째 기사 작업 중".format(temp))
         article= Article(urls[temp],language='ko')
         article.download()
         article.parse()
