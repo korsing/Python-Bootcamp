@@ -42,9 +42,10 @@ def homepage():
     #c.execute("SELECT COUNT(seq) from seq_company;")
     count  =10
     c.execute("SELECT COUNT(title) from article")
-    cnt = int(c.fetchall()[0])
+    cnt = c.fetchall()[0]
+
     print(cnt)
-    c.execute("SELECT title from article where seq between %d and %d;"%(cnt-49, cnt))
+    c.execute("SELECT title from article where seq between %s and %s;"%(cnt-49, cnt))
     headline = c.fetchall()
 
     c.execute("SELECT company from seq_com;")
