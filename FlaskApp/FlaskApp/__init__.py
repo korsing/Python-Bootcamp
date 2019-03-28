@@ -131,7 +131,8 @@ def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keywor
         for j in range(len(company_list_1)):               
             if keyword[i][0] ==( company_list_1[j].lower() or company_list_1[j].upper()): 
                 c_name_from_list_1.append([company_list_1[j],keyword[i][1]])
-                c.execute("INSERT INTO seq_company (company,seq) VALUES %s, %d;",(company_list_1[j], keyword[i][1]))
+                print(type(keyword[i][1]))
+                c.execute("INSERT INTO seq_company (company,seq) VALUES (%s, %d);",(company_list_1[j], int(keyword[i][1])))
                 c.commit()
 
 
@@ -146,7 +147,7 @@ def CnameandKeyword(keyword, keyword_weight,company_list_1): # text에서 keywor
     for i in range(len(keyword)):
         if(keyword[i][0] not in temp):
             keyword_from_list.append(keyword[i])
-            c.execute("INSERT INTO seq_key (keyword,seq) VALUES %s, %d;",(keyword[i][0], keyword[i][1]))
+            c.execute("INSERT INTO seq_key (keyword,seq) VALUES (%s, %d);",(keyword[i][0], int(keyword[i][1])))
             c.commit()
 
     
