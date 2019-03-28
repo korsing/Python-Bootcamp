@@ -42,7 +42,7 @@ def homepage():
     headline = c.fetchone()[0]
 
     c.execute("SELECT * from seq_company;")
-    seq_company = c.fetchone()[0]
+    seq_company = c.fetchone()
 
     c.execute("SELECT * from seq_key;")
     seq_key = c.fetchone()[0]
